@@ -1,0 +1,126 @@
+{
+  "stores": [
+    {
+      "id": "aedba722-206b-4856-9df4-28fc4bcb011e",
+      "name": "Kai Schneider",
+      "logo": "",
+      "banner": "",
+      "owner": "Uta Terry",
+      "email": "Juliet Thornton",
+      "phone": "Gray Perkins",
+      "rent": "Courtney Torres",
+      "commission": "Dexter Pruitt",
+      "status": false
+    },
+    {
+      "id": "0a52d76f-fa9e-4fcf-9d33-41b18e2227e2",
+      "name": "Fleur Tate",
+      "logo": "",
+      "banner": "",
+      "owner": "Uriel Spears",
+      "email": "Dolan Lang",
+      "phone": "Drew Barr",
+      "rent": "Ali Robbins",
+      "commission": "Marny Mcdowell",
+      "status": false
+    },
+    {
+      "id": "81da1b3f-4eb0-4de5-982b-81f530941417",
+      "name": "Sonia Combs",
+      "logo": "",
+      "banner": "",
+      "owner": "Abel Jimenez",
+      "email": "Chester Barton",
+      "phone": "Micah Gentry",
+      "rent": "Nigel Carney",
+      "commission": "Amery Duran",
+      "status": false
+    },
+    {
+      "id": "f6b1d0b9-3452-4ad3-b53b-d3766caa4470",
+      "name": "Derek Castillo",
+      "logo": "",
+      "banner": "",
+      "owner": "Dahlia Hooper",
+      "email": "Jackson Oconnor",
+      "phone": "Chiquita Oneill",
+      "rent": "Zephr Gillespie",
+      "commission": "Jocelyn Knapp",
+      "status": false
+    },
+    {
+      "id": "0f987a28-1117-4058-b144-608af10efb05",
+      "name": "Rhea Howard",
+      "logo": "",
+      "banner": "",
+      "owner": "Kiona Mendoza",
+      "email": "Ethan Franco",
+      "phone": "Kirby Prince",
+      "rent": "Ariana Stevens",
+      "commission": "Chaney King",
+      "status": false
+    },
+    {
+      "id": "2ecb1860-b011-4e6c-81d1-6d7860108d71",
+      "name": "Rhea Burks",
+      "status": false
+    },
+    {
+      "id": "ec1446bb-9234-4c3e-bb25-819de427036b",
+      "name": "asdasdasd",
+      "status": false
+    },
+    {
+      "id": "66df17d0-2afb-4b0b-99f5-8c9841453606",
+      "name": "asdasd",
+      "status": false
+    }
+  ],
+  "storeCategory": [],
+  "customer": [
+    {
+      "id": "fe9641d0-7a38-4e19-9f46-91a72b97fdd2",
+      "title": "",
+      "saleAgentCode": "Rhona Anthony",
+      "firstName": "Adara West",
+      "lastName": "Conan Shepard",
+      "companyName": "Maryam Macdonald",
+      "companyVat": "Oprah Craig",
+      "companyRegistration": "Alexa Reese",
+      "website": "Tucker England",
+      "vat": false,
+      "discount": "Sean Pitts",
+      "contactPerson": "Karen Miranda",
+      "telephone": "Gloria Snider",
+      "country": "",
+      "state": "",
+      "city": "",
+      "postCode": "Jeremy Harrell",
+      "address": "Fugiat sunt ea faci",
+      "email": "Sophia Bernard",
+      "isNewsLetter": false,
+      "ebay": "Not applicable",
+      "amazon": "Not applicable\t",
+      "saleYear": 0,
+      "saleToDate": 0,
+      "status": false
+    }
+  ],
+  "country": [
+    {
+      "id": "3cb2e15c-d80b-4fc8-b36c-6f1442d78cd8",
+      "name": "awdasdasd",
+      "status": false
+    }
+  ],
+  "state": [],
+  "city": [],
+  "categories": [],
+  "abandoned-cart": [],
+  "account": [],
+  "web-order": [],
+  "store-category": [],
+  "profile": {
+    "name": "typicode"
+  }
+}
