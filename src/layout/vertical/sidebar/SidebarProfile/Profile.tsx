@@ -15,15 +15,10 @@ export const Profile = () => {
   const hideMenu = lgUp ? customizer.isCollapse && !customizer.isSidebarHover : '';
 
   return (
-    <Box
-      display={'flex'}
-      alignItems="center"
-      gap={2}
-      sx={{ m: 3, p: 2, bgcolor: `${'secondary.light'}` }}
-    >
+    <Box display={'flex'} alignItems="center" gap={2} sx={{ m: 3, p: 2, bgcolor: `${'secondary.light'}` }}>
       {!hideMenu ? (
         <>
-          <Avatar alt="Remy Sharp" src={"/images/profile/user-1.jpg"} sx={{height: 40, width: 40}} />
+          <Avatar alt="Remy Sharp" src={'/images/profile/user-1.jpg'} sx={{ height: 40, width: 40 }} />
 
           <Box>
             <Typography variant="h6">Mathew</Typography>
@@ -37,6 +32,10 @@ export const Profile = () => {
                 href="/login"
                 aria-label="logout"
                 size="small"
+                onClick={() => {
+                  // empty local storage
+                  localStorage.clear();
+                }}
               >
                 <IconPower size="20" />
               </IconButton>
