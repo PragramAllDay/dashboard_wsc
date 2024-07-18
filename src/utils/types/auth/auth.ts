@@ -13,3 +13,11 @@ export interface loginType {
 export interface signInType {
   title?: string;
 }
+
+
+
+export type LoginErrorType = {
+  status: boolean;
+  message: string;
+}
+
