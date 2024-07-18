@@ -1,22 +1,21 @@
+import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormGroup from '@mui/material/FormGroup';
 import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
-import Link from 'next/link';
-import { loginType } from '@/utils/types/auth/auth';
-import CustomCheckbox from '@/components/forms/theme-elements/CustomCheckbox';
+import { LoginErrorType, loginType } from '@/utils/types/auth/auth';
 import CustomTextField from '@/components/forms/theme-elements/CustomTextField';
 import CustomFormLabel from '@/components/forms/theme-elements/CustomFormLabel';
-import { useState } from 'react';
 import { useLoginMutation } from '@/store/slice/api/auth';
 import { useRouter } from 'next/navigation';
+import Typography from '@mui/material/Typography';
+import './style.css';
+
 const AuthLogin = ({ title, subtitle, subtext }: loginType) => {
   const router = useRouter();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [loginError, setLoginError] = useState<LoginErrorType>({ status: false, message: '' });
   const [login, { data, error, isLoading }] = useLoginMutation();
 
   const handleSubmit = async (event: any) => {
@@ -24,11 +23,16 @@ const AuthLogin = ({ title, subtitle, subtext }: loginType) => {
     try {
       const authData = { email: username, password };
       const response = await login(authData).unwrap();
+
+      console.log(response);
       localStorage.setItem('admin_session', JSON.stringify(response));
 
       // redirect to homepage
       router.push('/');
-    } catch (err) {
+    } catch (err: any) {
+      if (err?.data) {
+        setLoginError(() => ({ status: true, message: err?.data?.detail }));
+      }
       // handle error, e.g., display error message
       console.error('Login failed', err);
     }
@@ -49,9 +53,15 @@ const AuthLogin = ({ title, subtitle, subtext }: loginType) => {
           </Typography>
         </Divider>
       </Box>
-
       <form onSubmit={handleSubmit}>
-        <Stack>
+        <Stack
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '.5rem',
+            width: '100%',
+          }}
+        >
           <Box>
             <CustomFormLabel htmlFor="username">Username</CustomFormLabel>
             <CustomTextField id="username" variant="outlined" fullWidth value={username} onChange={(e: any) => setUsername(e.target.value)} />
@@ -60,18 +70,14 @@ const AuthLogin = ({ title, subtitle, subtext }: loginType) => {
             <CustomFormLabel htmlFor="password">Password</CustomFormLabel>
             <CustomTextField id="password" type="password" variant="outlined" fullWidth value={password} onChange={(e: any) => setPassword(e.target.value)} />
           </Box>
-          <Stack justifyContent="space-between" direction="row" alignItems="center" my={2}>
-            {/* Additional form elements, e.g., Remember Me checkbox, Forgot Password link */}
-          </Stack>
+          <Box sx={{}}>{loginError.status && <p className="err-msg"> {loginError.message}</p>}</Box>
+          <Box>
+            <Button color="primary" variant="contained" size="large" fullWidth type="submit" disabled={isLoading}>
+              Sign In
+            </Button>
+          </Box>
         </Stack>
-
-        <Box>
-          <Button color="primary" variant="contained" size="large" fullWidth type="submit" disabled={isLoading}>
-            Sign In
-          </Button>
-        </Box>
       </form>
-      {/* {subtitle} */}
     </>
   );
 };

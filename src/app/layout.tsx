@@ -24,15 +24,13 @@ export const MyApp = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <>
-    
       <NextAppDirEmotionCacheProvider options={{ key: 'modernize' }}>
-      <ThemeProvider theme={theme}>
-        <RTL direction={customizer.activeDir}>
-          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-          <CssBaseline />
-          {children}
-        </RTL>
-      </ThemeProvider>
+        <ThemeProvider theme={theme}>
+          <RTL direction={customizer.activeDir}>
+            <CssBaseline />
+            {children}
+          </RTL>
+        </ThemeProvider>
       </NextAppDirEmotionCacheProvider>
     </>
   );
@@ -52,7 +50,6 @@ export default function RootLayout({
       <body>
         <Provider store={store}>
           {loading ? (
-            // eslint-disable-next-line react/no-children-prop
             <MyApp children={children} />
           ) : (
             <Box
