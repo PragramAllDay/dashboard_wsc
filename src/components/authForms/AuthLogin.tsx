@@ -58,17 +58,19 @@ const AuthLogin = ({ title, subtitle, subtext }: loginType) => {
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            gap: '.5rem',
+            gap: '1.2rem',
             width: '100%',
           }}
         >
           <Box>
-            <CustomFormLabel htmlFor="username">Username</CustomFormLabel>
-            <CustomTextField id="username" variant="outlined" fullWidth value={username} onChange={(e: any) => setUsername(e.target.value)} />
-          </Box>
-          <Box>
-            <CustomFormLabel htmlFor="password">Password</CustomFormLabel>
-            <CustomTextField id="password" type="password" variant="outlined" fullWidth value={password} onChange={(e: any) => setPassword(e.target.value)} />
+            <Box>
+              <CustomFormLabel htmlFor="username">Username</CustomFormLabel>
+              <CustomTextField id="username" variant="outlined" fullWidth value={username} onChange={(e: any) => setUsername(e.target.value)} />
+            </Box>
+            <Box>
+              <CustomFormLabel htmlFor="password">Password</CustomFormLabel>
+              <CustomTextField id="password" type="password" variant="outlined" fullWidth value={password} onChange={(e: any) => setPassword(e.target.value)} />
+            </Box>
           </Box>
           <Box sx={{}}>{loginError.status && <p className="err-msg"> {loginError.message}</p>}</Box>
           <Box>
