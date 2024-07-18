@@ -12,9 +12,9 @@ import CustomTextField from '@/components/forms/theme-elements/CustomTextField';
 import CustomFormLabel from '@/components/forms/theme-elements/CustomFormLabel';
 import { useState } from 'react';
 import { useLoginMutation } from '@/store/slice/api/auth';
-import { navigate } from '@/utils/redirect';
-
+import { useRouter } from 'next/navigation';
 const AuthLogin = ({ title, subtitle, subtext }: loginType) => {
+  const router = useRouter();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [login, { data, error, isLoading }] = useLoginMutation();
@@ -25,10 +25,9 @@ const AuthLogin = ({ title, subtitle, subtext }: loginType) => {
       const authData = { email: username, password };
       const response = await login(authData).unwrap();
       localStorage.setItem('admin_session', JSON.stringify(response));
-      // handle successful login, e.g., redirect, display message
-      console.log('Login successful', response);
+
       // redirect to homepage
-      navigate('/');
+      router.push('/');
     } catch (err) {
       // handle error, e.g., display error message
       console.error('Login failed', err);

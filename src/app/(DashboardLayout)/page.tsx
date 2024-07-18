@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import PageContainer from '@/components/container/PageContainer';
@@ -17,13 +17,11 @@ import TopPerformers from '@/components/dashboard/modern/TopPerformers';
 import WeeklyStats from '@/components/dashboard/modern/WeeklyStats';
 import { useEffect, useState } from 'react';
 
-
-export default function Dashboard() {
+const Dashboard = () => {
   const [isLoading, setLoading] = useState(true);
   useEffect(() => {
     setLoading(false);
   }, []);
-
 
   return (
     <PageContainer title="Dashboard" description="this is Dashboard">
@@ -77,6 +75,7 @@ export default function Dashboard() {
         </Grid>
       </Box>
     </PageContainer>
-  )
-}
+  );
+};
 
+export default Dashboard;
