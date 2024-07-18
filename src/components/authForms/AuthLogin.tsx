@@ -9,14 +9,13 @@ import CustomFormLabel from '@/components/forms/theme-elements/CustomFormLabel';
 import { useLoginMutation } from '@/store/slice/api/auth';
 import { useRouter } from 'next/navigation';
 import Typography from '@mui/material/Typography';
-import "./style.css"
-
+import './style.css';
 
 const AuthLogin = ({ title, subtitle, subtext }: loginType) => {
   const router = useRouter();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [loginError, setLoginError] = useState<LoginErrorType>({ status: false, message: "" })
+  const [loginError, setLoginError] = useState<LoginErrorType>({ status: false, message: '' });
   const [login, { data, error, isLoading }] = useLoginMutation();
 
   const handleSubmit = async (event: any) => {
@@ -25,14 +24,14 @@ const AuthLogin = ({ title, subtitle, subtext }: loginType) => {
       const authData = { email: username, password };
       const response = await login(authData).unwrap();
 
-      console.log(response)
+      console.log(response);
       localStorage.setItem('admin_session', JSON.stringify(response));
 
       // redirect to homepage
       router.push('/');
     } catch (err: any) {
       if (err?.data) {
-        setLoginError(() => ({ status: true, message: err?.data?.detail }))
+        setLoginError(() => ({ status: true, message: err?.data?.detail }));
       }
       // handle error, e.g., display error message
       console.error('Login failed', err);
@@ -55,7 +54,14 @@ const AuthLogin = ({ title, subtitle, subtext }: loginType) => {
         </Divider>
       </Box>
       <form onSubmit={handleSubmit}>
-        <Stack>
+        <Stack
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '.5rem',
+            width: '100%',
+          }}
+        >
           <Box>
             <CustomFormLabel htmlFor="username">Username</CustomFormLabel>
             <CustomTextField id="username" variant="outlined" fullWidth value={username} onChange={(e: any) => setUsername(e.target.value)} />
@@ -64,16 +70,13 @@ const AuthLogin = ({ title, subtitle, subtext }: loginType) => {
             <CustomFormLabel htmlFor="password">Password</CustomFormLabel>
             <CustomTextField id="password" type="password" variant="outlined" fullWidth value={password} onChange={(e: any) => setPassword(e.target.value)} />
           </Box>
-          {
-            loginError.status && <p className='err-msg'>Error: {loginError.message}</p>
-          }
-          <Box mt={4}>
+          <Box sx={{}}>{loginError.status && <p className="err-msg"> {loginError.message}</p>}</Box>
+          <Box>
             <Button color="primary" variant="contained" size="large" fullWidth type="submit" disabled={isLoading}>
               Sign In
             </Button>
           </Box>
         </Stack>
-
       </form>
     </>
   );
