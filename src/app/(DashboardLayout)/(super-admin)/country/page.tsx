@@ -2,13 +2,13 @@
 import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import PageContainer from "@/components/container/PageContainer";
-import { countryFilterField, countryListCells, countryListColumns } from "@/utils/data/table";
+import { countryFilterField, countryListCells, countryListColumns } from "@/utils/data/table/super-admin";
 import { useDispatch, useSelector } from "@/store/hooks";
 import { CountryType } from "@/utils/types/categories";
 import { PaginationType } from "@/utils/types/pagination";
 import ReusableModal from "@/components/reusable-modal";
 import ReusableTable2 from "@/components/reusable-table-2";
-import { modalCountryListFields, modalCountryListTitle } from "@/utils/data/modal";
+import { modalCountryListFields, modalCountryListTitle } from "@/utils/data/modal/super-admin";
 import { ModalMod } from "@/utils/enum";
 import { addCountry, deleteCountryById, getCountryList, updateCountry } from "@/store/slice/super-admin/country";
 import { useDeleteCountryMutation, useGetCountryQuery, usePatchCountryMutation, usePostCountryMutation } from "@/store/slice/api/country";

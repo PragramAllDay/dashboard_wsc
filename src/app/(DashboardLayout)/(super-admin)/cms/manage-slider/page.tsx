@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import PageContainer from "@/components/container/PageContainer";
-import { sliderCells, sliderColumns } from "@/utils/data/table";
+import { sliderCells, sliderColumns } from "@/utils/data/table/super-admin";
 // import {
 //     deleteStore,
 //     getStore,
@@ -15,7 +15,7 @@ import { SliderType } from "@/utils/types/cms";
 import { PaginationType } from "@/utils/types/pagination";
 import ReusableModal from "@/components/reusable-modal";
 import ReusableTable2 from "@/components/reusable-table-2";
-import { modalSliderFields, modalSliderTitle } from "@/utils/data/modal";
+import { modalSliderFields, modalSliderTitle } from "@/utils/data/modal/super-admin";
 import { ModalMod } from "@/utils/enum";
 
 export default function Slider() {

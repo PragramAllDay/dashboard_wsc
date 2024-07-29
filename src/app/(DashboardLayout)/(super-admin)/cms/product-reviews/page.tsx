@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import PageContainer from "@/components/container/PageContainer";
-import { productReviewCells, productReviewColumns } from "@/utils/data/table";
+import { productReviewCells, productReviewColumns } from "@/utils/data/table/super-admin";
 // import {
 //     deleteStore,
 //     getStore,

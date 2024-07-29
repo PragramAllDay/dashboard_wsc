@@ -1,49 +1,61 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
-import CustomizerReducer from './customizer/CustomizerSlice';
-import StoresReducer from './slice/super-admin/stores';
-import CategoryReducer from './slice/super-admin/category';
-import UserTrackingReducer from './slice/super-admin/cms/user-tracking';
-import AccountsReducer from './slice/super-admin/accounts';
-import AbandonedCartReducer from './slice/super-admin/cms/abandoned-cart';
-import WebOrderReducer from './slice/super-admin/web-order';
-import CmsPagesReducer from './slice/super-admin/cms/cms-pages';
+
+import ManageCategoryReducer from './slice/store-owner/catalog/manage-categories';
+import ManageAttributeReducer from './slice/store-owner/catalog/manage-attribute';
 import ManageNewsLetterReducer from './slice/super-admin/cms/manage-news-letter';
-import SliderReducer from './slice/super-admin/cms/slider';
+import ManageProductReducer from './slice/store-owner/catalog/manage-product';
 import ProductReviewReducer from './slice/super-admin/cms/product-review';
-import { storeApi } from './slice/api/store';
+import AbandonedCartReducer from './slice/super-admin/cms/abandoned-cart';
+import UserTrackingReducer from './slice/super-admin/cms/user-tracking';
+import SalesAgentReducer from './slice/store-owner/sales-agents';
+import CmsPagesReducer from './slice/super-admin/cms/cms-pages';
+import CustomizerReducer from './customizer/CustomizerSlice';
+import WebOrderReducer from './slice/super-admin/web-order';
+import AccountsReducer from './slice/super-admin/accounts';
+import CategoryReducer from './slice/super-admin/category';
 import CustomerReducer from './slice/super-admin/customer';
-import { stateApi } from './slice/api/state';
-import { customerApi } from './slice/api/customer';
-import { countryApi } from './slice/api/country';
-import { cityApi } from './slice/api/city';
-import { categoriesApi } from './slice/api/categories';
-import { storeCategoryApi } from './slice/api/store-category';
-import { webOrderApi } from './slice/api/web-order';
-import { accountApi } from './slice/api/account';
-import { abandonedCartApi } from './slice/api/abandoned-cart';
+import SliderReducer from './slice/super-admin/cms/slider';
 import CountryReducer from './slice/super-admin/country';
-import CityReducer from './slice/super-admin/city';
+import StoresReducer from './slice/super-admin/stores';
 import StateReducer from './slice/super-admin/state';
+import CityReducer from './slice/super-admin/city';
+
+import { storeCategoryApi } from './slice/api/store-category';
+import { abandonedCartApi } from './slice/api/abandoned-cart';
+import { categoriesApi } from './slice/api/categories';
+import { webOrderApi } from './slice/api/web-order';
+import { customerApi } from './slice/api/customer';
+import { accountApi } from './slice/api/account';
+import { countryApi } from './slice/api/country';
+import { storeApi } from './slice/api/store';
+import { stateApi } from './slice/api/state';
+import { cityApi } from './slice/api/city';
 import { authApi } from './slice/api/auth';
+
 
 export const store = configureStore({
   reducer: {
-    customizer: CustomizerReducer,
-    accountReducer: AccountsReducer,
-    categoryReducer: CategoryReducer,
-    storesReducer: StoresReducer,
-    userTracking: UserTrackingReducer,
+    manageNewsLetterReducer: ManageNewsLetterReducer,
+    manageAttributeReducer: ManageAttributeReducer,
+    manageCategoryReducer: ManageCategoryReducer,
+    productReviewReducer: ProductReviewReducer,
+    manageProductReducer: ManageProductReducer,
+    salesAgentReducer: SalesAgentReducer,
     abandonedCart: AbandonedCartReducer,
+    userTracking: UserTrackingReducer,
     webOrderReducer: WebOrderReducer,
     cmsPagesReducer: CmsPagesReducer,
-    manageNewsLetterReducer: ManageNewsLetterReducer,
-    sliderReducer: SliderReducer,
-    productReviewReducer: ProductReviewReducer,
+    categoryReducer: CategoryReducer,
     customerReducer: CustomerReducer,
+    accountReducer: AccountsReducer,
     countryReducer: CountryReducer,
-    cityReducer: CityReducer,
+    customizer: CustomizerReducer,
+    storesReducer: StoresReducer,
+    sliderReducer: SliderReducer,
     stateReducer: StateReducer,
+    cityReducer: CityReducer,
+
     [storeApi.reducerPath]: storeApi.reducer,
     [countryApi.reducerPath]: countryApi.reducer,
     [stateApi.reducerPath]: stateApi.reducer,
@@ -72,19 +84,26 @@ export const store = configureStore({
 });
 
 const rootReducer = combineReducers({
-  customizer: CustomizerReducer,
-  accountReducer: AccountsReducer,
-  categoryReducer: CategoryReducer,
-  storesReducer: StoresReducer,
-  userTracking: UserTrackingReducer,
+  manageNewsLetterReducer: ManageNewsLetterReducer,
+  manageAttributeReducer: ManageAttributeReducer,
+  manageCategoryReducer: ManageCategoryReducer,
+  manageProductReducer: ManageProductReducer,
+  productReviewReducer: ProductReviewReducer,
   abandonedCart: AbandonedCartReducer,
+  userTracking: UserTrackingReducer,
   webOrderReducer: WebOrderReducer,
   cmsPagesReducer: CmsPagesReducer,
-  manageNewsLetterReducer: ManageNewsLetterReducer,
+  categoryReducer: CategoryReducer,
+  customerReducer: CustomerReducer,
+  accountReducer: AccountsReducer,
+  countryReducer: CountryReducer,
+  customizer: CustomizerReducer,
+  storesReducer: StoresReducer,
   sliderReducer: SliderReducer,
-  productReviewReducer: ProductReviewReducer,
+  stateReducer: StateReducer,
+  cityReducer: CityReducer,
 });
 
 export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
 export type AppState = ReturnType<typeof rootReducer>;
+export type AppDispatch = typeof store.dispatch;

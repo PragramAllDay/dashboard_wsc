@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import PageContainer from "@/components/container/PageContainer";
-import { webOrderCells, webOrderColumns, webOrderFilterField } from "@/utils/data/table";
+import { webOrderCells, webOrderColumns } from "@/utils/data/table/super-admin";
 // import {
 //     deleteStore,
 //     getStore,
@@ -14,6 +14,7 @@ import { PaginationType } from "@/utils/types/pagination";
 import ReusableTable2 from "@/components/reusable-table-2";
 import { WebOrderType } from "@/utils/types/web-order";
 import { getWebOrderList } from "@/store/slice/super-admin/web-order";
+import { webOrderFilterField } from "@/utils/data/table-filter/super-admin";
 
 export default function WebOrder() {
     const pagination: PaginationType = useSelector((state) => state.webOrderReducer.webOrderPagination)

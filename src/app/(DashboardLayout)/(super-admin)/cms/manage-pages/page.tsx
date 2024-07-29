@@ -2,8 +2,8 @@
 import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import PageContainer from "@/components/container/PageContainer";
-import { pagesCells, pagesColumns } from "@/utils/data/table";
-// import {
+import { pagesCells, pagesColumns } from "@/utils/data/table/super-admin";
+// import {super-admin
 //     deleteStore,
 //     getStore,
 //     patchStore,
@@ -15,7 +15,7 @@ import { CMSPagesType } from "@/utils/types/cms";
 import { PaginationType } from "@/utils/types/pagination";
 import ReusableModal from "@/components/reusable-modal";
 import ReusableTable2 from "@/components/reusable-table-2";
-import { modalPagesFields, modalPagesTitle } from "@/utils/data/modal";
+import { modalPagesFields, modalPagesTitle } from "@/utils/data/modal/super-admin";
 import { ModalMod } from "@/utils/enum";
 
 export default function ManagePages() {

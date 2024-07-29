@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import PageContainer from "@/components/container/PageContainer";
-import { countryFilterField, cityListCells, cityListColumns } from "@/utils/data/table";
+import { cityListCells, cityListColumns } from "@/utils/data/table/super-admin";
 // import {
 //     deleteStore,
 //     getStore,
@@ -15,8 +15,9 @@ import { CityType, StateType } from "@/utils/types/categories";
 import { PaginationType } from "@/utils/types/pagination";
 import ReusableModal from "@/components/reusable-modal";
 import ReusableTable2 from "@/components/reusable-table-2";
-import { modalCityListFields, modalCityListTitle } from "@/utils/data/modal";
+import { modalCityListFields, modalCityListTitle } from "@/utils/data/modal/super-admin";
 import { ModalMod } from "@/utils/enum";
+import { countryFilterField } from "@/utils/data/table-filter/super-admin";
 
 export default function City() {
     const [isModal, setIsModal] = useState<boolean>(false);

@@ -1,18 +1,19 @@
 "use client";
-import { useEffect, useState } from "react";
-import Box from "@mui/material/Box";
+import { accountsCells, accountsColumns } from "@/utils/data/table/super-admin";
+import { accountFilterField } from "@/utils/data/table-filter/super-admin";
 import PageContainer from "@/components/container/PageContainer";
-import { accountFilterField, accountsCells, accountsColumns } from "@/utils/data/table";
+import ReusableTable2 from "@/components/reusable-table-2";
+import { PaginationType } from "@/utils/types/pagination";
+import { useDispatch, useSelector } from "@/store/hooks";
+import { AccountsType } from "@/utils/types/accounts";
+import { useEffect } from "react";
+import Box from "@mui/material/Box";
 // import {
 //     deleteStore,
 //     getStore,
 //     patchStore,
 //     postStore,
 // } from "@/lib/request/Store/request";
-import { useDispatch, useSelector } from "@/store/hooks";
-import { AccountsType } from "@/utils/types/accounts";
-import { PaginationType } from "@/utils/types/pagination";
-import ReusableTable2 from "@/components/reusable-table-2";
 
 
 function Accounts() {

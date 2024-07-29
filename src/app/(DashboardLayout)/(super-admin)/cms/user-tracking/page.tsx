@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import PageContainer from "@/components/container/PageContainer";
-import { cmsUserTrackingCells, cmsUserTrackingColumns } from "@/utils/data/table";
+import { cmsUserTrackingCells, cmsUserTrackingColumns } from "@/utils/data/table/super-admin";
 // import {
 //     deleteStore,
 //     getStore,
