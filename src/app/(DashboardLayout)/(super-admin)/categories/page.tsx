@@ -10,15 +10,15 @@ import { categoriesCells, categoriesColumns } from "@/utils/data/table/super-adm
 //     postStore,
 // } from "@/lib/request/Store/request";
 import { useDispatch, useSelector } from "@/store/hooks";
-import { addCategory, deleteCategory, getCategoryList, updateCategory } from "@/store/slice/super-admin/category";
+import { addCategory, deleteCategory, updateCategory } from "@/store/slice/super-admin/category";
 import { modalCategoriesFields, modalCategoriesTitle } from "@/utils/data/modal/super-admin";
 import { categoryFilterField } from "@/utils/data/table-filter/super-admin";
-import { initialCategoriesState } from "@/utils/data/initial-state";
 import { PaginationType } from "@/utils/types/pagination";
 import ReusableTable2 from "@/components/reusable-table-2";
 import { CategoryType } from "@/utils/types/categories";
 import ReusableModal from "@/components/reusable-modal";
 import { ModalMod } from "@/utils/enum";
+import { initialCategoriesState } from "@/utils/data/initial-state/super-admin";
 
 
 

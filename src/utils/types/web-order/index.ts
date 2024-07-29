@@ -1,5 +1,5 @@
 export type WebOrderType = {
-    id: string;
+    id?: string;
     order: string;
     store: string;
     date: string;
@@ -18,4 +18,14 @@ export type WebOrderType = {
 }
 
 
+export type BackOrderType = {
+    id?: string;
+    thumbnail: any;
+    name: string;
+    sku: string;
+    usersNo: number;
+    existing: number;
+    requestedQuantity: number;
+    status?: string;
+}
 

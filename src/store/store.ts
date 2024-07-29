@@ -10,6 +10,7 @@ import AbandonedCartReducer from './slice/super-admin/cms/abandoned-cart';
 import UserTrackingReducer from './slice/super-admin/cms/user-tracking';
 import SalesAgentReducer from './slice/store-owner/sales-agents';
 import CmsPagesReducer from './slice/super-admin/cms/cms-pages';
+import BackOrderReducer from './slice/store-owner/back-order';
 import CustomizerReducer from './customizer/CustomizerSlice';
 import WebOrderReducer from './slice/super-admin/web-order';
 import AccountsReducer from './slice/super-admin/accounts';
@@ -43,6 +44,7 @@ export const store = configureStore({
     manageProductReducer: ManageProductReducer,
     salesAgentReducer: SalesAgentReducer,
     abandonedCart: AbandonedCartReducer,
+    backOrderReducer: BackOrderReducer,
     userTracking: UserTrackingReducer,
     webOrderReducer: WebOrderReducer,
     cmsPagesReducer: CmsPagesReducer,

@@ -85,3 +85,22 @@ export const SalesAgentCells: CellType[] = [
     { id: 3, name: "referenceCode" },
     { id: 4, name: "commission" },
 ]
+
+
+export const backOrderListColumns: CellType[] = [
+    { id: 1, name: "ID" },
+    { id: 2, name: "Product Name" },
+    { id: 3, name: "Sku" },
+    { id: 4, name: "Users" },
+    { id: 5, name: "Existing Quantity" },
+    { id: 6, name: "Requested Quantity" },
+]
+
+export const backOrderListCells: CellType[] = [
+    { id: 1, name: "id" },
+    { id: 2, name: "name" },
+    { id: 3, name: "sku" },
+    { id: 4, name: "usersNo" },
+    { id: 5, name: "existing" },
+    { id: 6, name: "requestedQuantity" },
+]

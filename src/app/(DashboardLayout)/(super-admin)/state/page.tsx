@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import PageContainer from "@/components/container/PageContainer";
-import { countryFilterField, stateListCells, stateListColumns } from "@/utils/data/table/super-admin";
+import { stateListCells, stateListColumns } from "@/utils/data/table/super-admin";
 // import {
 //     deleteStore,
 //     getStore,
@@ -17,6 +17,7 @@ import ReusableModal from "@/components/reusable-modal";
 import ReusableTable2 from "@/components/reusable-table-2";
 import { modalStateListFields, modalStateListTitle } from "@/utils/data/modal/super-admin";
 import { ModalMod } from "@/utils/enum";
+import { countryFilterField } from "@/utils/data/table-filter/super-admin";
 
 export default function State() {
     const [isModal, setIsModal] = useState<boolean>(false);

@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import PageContainer from "@/components/container/PageContainer";
-import { countryFilterField, countryListCells, countryListColumns } from "@/utils/data/table/super-admin";
+import { countryListCells, countryListColumns } from "@/utils/data/table/super-admin";
 import { useDispatch, useSelector } from "@/store/hooks";
 import { CountryType } from "@/utils/types/categories";
 import { PaginationType } from "@/utils/types/pagination";
@@ -12,6 +12,7 @@ import { modalCountryListFields, modalCountryListTitle } from "@/utils/data/moda
 import { ModalMod } from "@/utils/enum";
 import { addCountry, deleteCountryById, getCountryList, updateCountry } from "@/store/slice/super-admin/country";
 import { useDeleteCountryMutation, useGetCountryQuery, usePatchCountryMutation, usePostCountryMutation } from "@/store/slice/api/country";
+import { countryFilterField } from "@/utils/data/table-filter/super-admin";
 
 export default function Country() {
     const { data, error, isLoading } = useGetCountryQuery()
