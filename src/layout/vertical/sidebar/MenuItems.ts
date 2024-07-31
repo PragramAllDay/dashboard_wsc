@@ -1,4 +1,4 @@
-import { uniqueId } from "lodash";
+import { uniqueId } from 'lodash';
 
 interface MenuitemsType {
   [x: string]: any;
@@ -14,115 +14,117 @@ interface MenuitemsType {
   variant?: string;
   external?: boolean;
 }
-import {
-  IconBoxMultiple,
-  IconPoint,
-  IconAperture,
-} from "@tabler/icons-react";
+import { IconBoxMultiple, IconPoint, IconAperture } from '@tabler/icons-react';
 
+const MenuitemsTwo: MenuitemsType[] = [
+  { navlabel: true, subheader: 'Home' },
+  {
+    id: uniqueId(),
+    title: 'Dashboard',
+    icon: IconAperture,
+    href: '/store-owner',
+  },
+];
 const Menuitems: MenuitemsType[] = [
   {
     navlabel: true,
-    subheader: "Home",
+    subheader: 'Home',
   },
   {
     id: uniqueId(),
-    title: "Dashboard",
+    title: 'Dashboard',
     icon: IconAperture,
-    href: "/",
-
+    href: '/',
   },
   {
     navlabel: true,
-    subheader: "Other",
+    subheader: 'Other',
   },
   {
     id: uniqueId(),
-    title: "Country",
+    title: 'Country',
     icon: IconAperture,
-    href: "/country",
+    href: '/country',
   },
   {
     id: uniqueId(),
-    title: "State",
+    title: 'State',
     icon: IconAperture,
-    href: "/state",
+    href: '/state',
   },
   {
     id: uniqueId(),
-    title: "City",
+    title: 'City',
     icon: IconAperture,
-    href: "/city",
+    href: '/city',
   },
   {
     id: uniqueId(),
-    title: "Stores",
+    title: 'Stores',
     icon: IconAperture,
-    href: "/stores",
+    href: '/stores',
   },
   {
     id: uniqueId(),
-    title: "Categories",
+    title: 'Categories',
     icon: IconBoxMultiple,
-    href: "/categories/",
+    href: '/categories/',
     children: [
       {
         id: uniqueId(),
-        title: "Category",
+        title: 'Category',
         icon: IconPoint,
-        href: "/categories",
+        href: '/categories',
       },
       {
         id: uniqueId(),
-        title: "Menu Sorting",
+        title: 'Menu Sorting',
         icon: IconPoint,
-        href: "/categories/menu-sorting",
+        href: '/categories/menu-sorting',
       },
     ],
   },
   {
     id: uniqueId(),
-    title: "Store Categories",
+    title: 'Store Categories',
     icon: IconAperture,
-    href: "/store-category",
-
+    href: '/store-category',
   },
   {
     id: uniqueId(),
-    title: "Web Order",
+    title: 'Web Order',
     icon: IconAperture,
-    href: "/web-order",
-
+    href: '/web-order',
   },
   {
     id: uniqueId(),
-    title: "Accounts",
+    title: 'Accounts',
     icon: IconBoxMultiple,
-    href: "/accounts",
+    href: '/accounts',
   },
   {
     id: uniqueId(),
-    title: "Customer",
+    title: 'Customer',
     icon: IconBoxMultiple,
-    href: "/customer",
+    href: '/customer',
   },
   {
     id: uniqueId(),
-    title: "CMS",
+    title: 'CMS',
     icon: IconBoxMultiple,
-    href: "/cms",
+    href: '/cms',
     children: [
       {
         id: uniqueId(),
-        title: "Manage Pages",
+        title: 'Manage Pages',
         icon: IconPoint,
-        href: "/cms/manage-pages",
+        href: '/cms/manage-pages',
       },
       {
         id: uniqueId(),
-        title: "Manage News Letter",
+        title: 'Manage News Letter',
         icon: IconPoint,
-        href: "/cms/manage-news-letter",
+        href: '/cms/manage-news-letter',
       },
       // {
       //   id: uniqueId(),
@@ -132,43 +134,42 @@ const Menuitems: MenuitemsType[] = [
       // },
       {
         id: uniqueId(),
-        title: "Manage Slider",
+        title: 'Manage Slider',
         icon: IconPoint,
-        href: "/cms/manage-slider",
+        href: '/cms/manage-slider',
       },
       {
         id: uniqueId(),
-        title: "Sort Trending Products",
+        title: 'Sort Trending Products',
         icon: IconPoint,
-        href: "/cms/sort-trending-products",
+        href: '/cms/sort-trending-products',
       },
       {
         id: uniqueId(),
-        title: "Product Reviews",
+        title: 'Product Reviews',
         icon: IconPoint,
-        href: "/cms/product-reviews",
+        href: '/cms/product-reviews',
       },
       {
         id: uniqueId(),
-        title: "Best Selling Products",
+        title: 'Best Selling Products',
         icon: IconPoint,
-        href: "/cms/best-selling-products",
+        href: '/cms/best-selling-products',
       },
       {
         id: uniqueId(),
-        title: "Abandoned Cart",
+        title: 'Abandoned Cart',
         icon: IconPoint,
-        href: "/cms/abandoned-cart",
+        href: '/cms/abandoned-cart',
       },
       {
         id: uniqueId(),
-        title: "User Tracking",
+        title: 'User Tracking',
         icon: IconPoint,
-        href: "/cms/user-tracking",
+        href: '/cms/user-tracking',
       },
-    ]
+    ],
   },
 ];
-
 
 export default Menuitems;
