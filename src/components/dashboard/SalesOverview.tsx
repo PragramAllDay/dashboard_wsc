@@ -12,8 +12,6 @@ type Props = {
 }
 
 const SalesOverview: FC<Props> = ({ stores }) => {
-
-    // select
     const [selectStore, setSelectStore] = React.useState(0);
 
     const handleChange = (event: any) => {

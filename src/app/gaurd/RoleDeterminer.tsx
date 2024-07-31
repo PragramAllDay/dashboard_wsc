@@ -9,3 +9,4 @@ const determineAllowedRoles = (pathname: string) => {
 };
 
 export default determineAllowedRoles;
+

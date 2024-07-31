@@ -16,15 +16,6 @@ interface MenuitemsType {
 }
 import { IconBoxMultiple, IconPoint, IconAperture } from '@tabler/icons-react';
 
-const MenuitemsTwo: MenuitemsType[] = [
-  { navlabel: true, subheader: 'Home' },
-  {
-    id: uniqueId(),
-    title: 'Dashboard',
-    icon: IconAperture,
-    href: '/store-owner',
-  },
-];
 const Menuitems: MenuitemsType[] = [
   {
     navlabel: true,

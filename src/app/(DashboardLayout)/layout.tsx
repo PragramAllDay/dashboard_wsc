@@ -32,26 +32,18 @@ const PageWrapper = styled('div')(() => ({
 }));
 
 const RootLayout = ({ children, session }: { children: React.ReactNode; session: { isLoggedIn: boolean; role: string } }) => {
-  const [isSidebarOpen, setSidebarOpen] = useState(true);
-  const [isMobileSidebarOpen, setMobileSidebarOpen] = useState(false);
-  const pathname = usePathname();
-
+  const [isMobileSidebarOpen, setMobileSidebarOpen] = useState(false); isMobileSidebarOpen
   const customizer = useSelector((state: AppState) => state.customizer);
-
+  const pathname = usePathname();
   const theme = useTheme();
-  usePathname;
+
   const checkAccess = () => {
     const allowedRoles = determineAllowedRoles(pathname);
+
     return (
       <RoleBasedAccess allowedRoles={allowedRoles} session={session}>
         <MainWrapper>
-          {/* ------------------------------------------- */}
-          {/* Sidebar */}
-          {/* ------------------------------------------- */}
           {customizer.isHorizontal ? '' : <Sidebar session={session} />}
-          {/* ------------------------------------------- */}
-          {/* Main Wrapper */}
-          {/* ------------------------------------------- */}
           <PageWrapper
             className="page-wrapper"
             sx={{
@@ -62,31 +54,16 @@ const RootLayout = ({ children, session }: { children: React.ReactNode; session:
               }),
             }}
           >
-            {/* ------------------------------------------- */}
-            {/* Header */}
-            {/* ------------------------------------------- */}
             {customizer.isHorizontal ? <HorizontalHeader /> : <Header />}
-            {/* PageContent */}
             {customizer.isHorizontal ? <Navigation /> : ''}
             <Container
               sx={{
                 maxWidth: customizer.isLayout === 'boxed' ? 'lg' : '100%!important',
               }}
             >
-              {/* ------------------------------------------- */}
-              {/* PageContent */}
-              {/* ------------------------------------------- */}
-
               <Box sx={{ minHeight: 'calc(100vh - 170px)' }}>
-                {/* <Outlet /> */}
                 {children}
-
-                {/* <Index /> */}
               </Box>
-
-              {/* ------------------------------------------- */}
-              {/* End Page */}
-              {/* ------------------------------------------- */}
             </Container>
             <Customizer />
           </PageWrapper>
