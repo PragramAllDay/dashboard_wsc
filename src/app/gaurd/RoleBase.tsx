@@ -4,25 +4,25 @@ import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
 interface RoleBasedAccessProps {
-    children: React.ReactNode;
-    allowedRoles: string[];
-    session: { isLoggedIn: boolean; role: string };
+  children: React.ReactNode;
+  allowedRoles: string[];
+  session: { isLoggedIn: boolean; role: string };
 }
 
 const RoleBasedAccess = ({ children, allowedRoles, session }: RoleBasedAccessProps) => {
-    const router = useRouter();
+  const router = useRouter();
 
-    useEffect(() => {
-        if (!allowedRoles.includes(session.role)) {
-            router.push('/not-authorized');
-        }
-    }, [allowedRoles, session.role, router]);
-
+  useEffect(() => {
     if (!allowedRoles.includes(session.role)) {
-        return null;
+      router.push('/not-authorized');
     }
+  }, [allowedRoles, session.role, router]);
 
-    return <>{children}</>;
+  if (!allowedRoles.includes(session.role)) {
+    return null;
+  }
+
+  return <>{children}</>;
 };
 
 export default RoleBasedAccess;

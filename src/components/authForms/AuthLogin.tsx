@@ -9,14 +9,13 @@ import CustomFormLabel from '@/components/forms/theme-elements/CustomFormLabel';
 import { useLoginMutation } from '@/store/slice/api/super-admin/auth';
 import { useRouter } from 'next/navigation';
 import Typography from '@mui/material/Typography';
-import "./style.css"
-
+import './style.css';
 
 const AuthLogin = ({ title, subtitle, subtext }: loginType) => {
   const router = useRouter();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [loginError, setLoginError] = useState<LoginErrorType>({ status: false, message: "" })
+  const [loginError, setLoginError] = useState<LoginErrorType>({ status: false, message: '' });
   const [login, { data, error, isLoading }] = useLoginMutation();
 
   const handleSubmit = async (event: any) => {
@@ -25,14 +24,20 @@ const AuthLogin = ({ title, subtitle, subtext }: loginType) => {
       const authData = { email: username, password };
       const response = await login(authData).unwrap();
 
-      console.log(response)
+      console.log(response);
       localStorage.setItem('admin_session', JSON.stringify(response));
 
       // redirect to homepage
-      router.push('/');
+      if (response?.role === 'SUPERADMIN') {
+        console.log('super admin');
+        router.push('/');
+      } else if (response?.role === 'STORE_OWNER') {
+        console.log('store owner');
+        router.push('/store-owner');
+      }
     } catch (err: any) {
       if (err?.data) {
-        setLoginError(() => ({ status: true, message: err?.data?.detail }))
+        setLoginError(() => ({ status: true, message: err?.data?.detail }));
       }
       // handle error, e.g., display error message
       console.error('Login failed', err);
@@ -64,16 +69,13 @@ const AuthLogin = ({ title, subtitle, subtext }: loginType) => {
             <CustomFormLabel htmlFor="password">Password</CustomFormLabel>
             <CustomTextField id="password" type="password" variant="outlined" fullWidth value={password} onChange={(e: any) => setPassword(e.target.value)} />
           </Box>
-          {
-            loginError.status && <p className='err-msg'>Error: {loginError.message}</p>
-          }
+          {loginError.status && <p className="err-msg">Error: {loginError.message}</p>}
           <Box mt={4}>
             <Button color="primary" variant="contained" size="large" fullWidth type="submit" disabled={isLoading}>
               Sign In
             </Button>
           </Box>
         </Stack>
-
       </form>
     </>
   );
