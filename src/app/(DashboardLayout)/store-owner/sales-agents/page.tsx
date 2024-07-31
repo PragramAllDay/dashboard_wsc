@@ -16,7 +16,7 @@ import {
   useGetStoresQuery,
   usePatchStoresMutation,
   usePostStoresMutation
-} from "@/store/slice/api/store";
+} from "@/store/slice/api/super-admin/store";
 import { salesAgentFilterField } from "@/utils/data/table-filter/store-admin";
 import { SalesAgentType } from "@/utils/types/sale-agent";
 import { addSalesAgent, deleteSalesAgent, getSalesAgentList, updateSalesAgent } from "@/store/slice/store-owner/sales-agents";

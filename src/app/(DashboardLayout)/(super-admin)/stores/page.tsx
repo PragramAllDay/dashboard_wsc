@@ -11,7 +11,7 @@ import ReusableModal from "@/components/reusable-modal";
 import ReusableTable2 from "@/components/reusable-table-2";
 import { modalStoresFields, modalStoresTitle } from "@/utils/data/modal/super-admin";
 import { ModalMod } from "@/utils/enum";
-import { useDeleteStoresMutation, useGetStoresQuery, usePatchStoresMutation, usePostStoresMutation } from "@/store/slice/api/store";
+import { useDeleteStoresMutation, useGetStoresQuery, usePatchStoresMutation, usePostStoresMutation } from "@/store/slice/api/super-admin/store";
 import { storeFilterField } from "@/utils/data/table-filter/super-admin";
 
 const initialState = {

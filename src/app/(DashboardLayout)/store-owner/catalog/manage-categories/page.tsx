@@ -28,7 +28,7 @@ import {
   useGetStoresQuery,
   usePatchStoresMutation,
   usePostStoresMutation
-} from "@/store/slice/api/store";
+} from "@/store/slice/api/super-admin/store";
 import { ManageCategoryType } from "@/utils/types/catalog";
 import { initialManageCategoryState } from "@/utils/data/initial-state/store-owner";
 

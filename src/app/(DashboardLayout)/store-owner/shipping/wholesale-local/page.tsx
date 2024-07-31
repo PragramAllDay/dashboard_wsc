@@ -7,22 +7,20 @@ import PageContainer from "@/components/container/PageContainer";
 import ReusableTable2 from "@/components/reusable-table-2";
 import { PaginationType } from "@/utils/types/pagination";
 
-import { CustomerType } from "@/utils/types/stores";
-
-import { customerListCells, customerListColumns } from "@/utils/data/table/store-admin";
-import { customerFilterField } from "@/utils/data/table-filter/store-admin";
-import { getCustomerList } from "@/store/slice/super-admin/customer";
-import { useGetCustomersQuery } from "@/store/slice/api/super-admin/customer";
+import { wholeSaleLocalListCells, wholeSaleLocalListColumns } from "@/utils/data/table/store-admin";
+import { getWholeSaleLocalList } from "@/store/slice/store-owner/shipping/wholesale-local";
+import { useGetStoresQuery } from "@/store/slice/api/super-admin/store";
+import { WholeSaleLocalType } from "@/utils/types/shipping";
 
 
-export default function Customer() {
-    const { data, error, isLoading } = useGetCustomersQuery()
-    const pagination: PaginationType = useSelector((state) => state.customerReducer.customerPagination)
-    const customerList: CustomerType[] = useSelector((state) => state.customerReducer.customerList)
+export default function WholeSaleLocal() {
+    const WholeSaleLocalList: WholeSaleLocalType[] = useSelector((state) => state.wholeSaleLocalReducer.list)
+    const pagination: PaginationType = useSelector((state) => state.wholeSaleLocalReducer.pagination)
+    const { data, error, isLoading } = useGetStoresQuery()
     const dispatch = useDispatch()
 
     useEffect(() => {
-        const fetchCustomerList = async () => {
+        const fetchWholeSaleLocalList = async () => {
             try {
                 if (data) {
                     const newPagination = {
@@ -31,14 +29,14 @@ export default function Customer() {
                         rowsPerPage: 10,
                     }
                     const limitedData = data.slice(0, newPagination.rowsPerPage)
-                    dispatch(getCustomerList({ list: limitedData, newPagination }))
+                    dispatch(getWholeSaleLocalList({ list: limitedData, newPagination }))
                 }
             } catch (error) {
                 console.log(error);
             }
         };
-        if (pagination && customerList.length === 0 && data?.length !== 0) {
-            fetchCustomerList();
+        if (pagination && WholeSaleLocalList.length === 0 && data?.length !== 0) {
+            fetchWholeSaleLocalList();
         }
     }, [dispatch, pagination, data]);
 
@@ -72,38 +70,19 @@ export default function Customer() {
         }
     };
 
-    const handleFilter = (evt: any) => {
-        evt.preventDefault()
-    }
-
-    const handleFilterFieldOnChange = (
-        filterField: any,
-        newValue: string,
-        fieldAlias: string,
-        setValues: any,
-    ) => {
-        setValues({
-            ...filterField,
-            [fieldAlias]: newValue,
-        });
-    };
-
     return (
-        <PageContainer title="Customer" description="this is Customer">
+        <PageContainer title="WholeSaleLocal" description="this is WholeSaleLocal">
             <Box mt={3}>
                 <ReusableTable2
-                    filterFieldList={customerFilterField}
-                    columns={customerListColumns}
-                    cells={customerListCells}
+                    columns={wholeSaleLocalListColumns}
+                    cells={wholeSaleLocalListCells}
                     pagination={pagination}
                     removeAddButton={true}
-                    rows={customerList}
-                    title={"Customer"}
-                    handleFilter={handleFilter}
+                    rows={WholeSaleLocalList}
+                    title={"WholeSaleLocal"}
                     handleRenderCell={renderCell}
                     handleChangePage={handleChangePage}
                     handleChangeRowsPerPage={handleChangeRowsPerPage}
-                    handleFilterFieldOnChange={handleFilterFieldOnChange}
                 />
             </Box>
         </PageContainer>

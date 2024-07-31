@@ -4,6 +4,7 @@ import { combineReducers } from 'redux';
 import ManageCategoryReducer from './slice/store-owner/catalog/manage-categories';
 import ManageAttributeReducer from './slice/store-owner/catalog/manage-attribute';
 import ManageNewsLetterReducer from './slice/super-admin/cms/manage-news-letter';
+import WholeSaleLocalReducer from './slice/store-owner/shipping/wholesale-local';
 import ManageProductReducer from './slice/store-owner/catalog/manage-product';
 import ProductReviewReducer from './slice/super-admin/cms/product-review';
 import AbandonedCartReducer from './slice/super-admin/cms/abandoned-cart';
@@ -22,24 +23,30 @@ import StoresReducer from './slice/super-admin/stores';
 import StateReducer from './slice/super-admin/state';
 import CityReducer from './slice/super-admin/city';
 
-import { storeCategoryApi } from './slice/api/store-category';
-import { abandonedCartApi } from './slice/api/abandoned-cart';
-import { categoriesApi } from './slice/api/categories';
-import { webOrderApi } from './slice/api/web-order';
-import { customerApi } from './slice/api/customer';
-import { accountApi } from './slice/api/account';
-import { countryApi } from './slice/api/country';
-import { storeApi } from './slice/api/store';
-import { stateApi } from './slice/api/state';
-import { cityApi } from './slice/api/city';
-import { authApi } from './slice/api/auth';
+import { storeCategoryApi } from './slice/api/super-admin/store-category';
+import { abandonedCartApi } from './slice/api/super-admin/abandoned-cart';
+import { categoriesApi } from './slice/api/super-admin/categories';
+import { webOrderApi } from './slice/api/super-admin/web-order';
+import UserReducer from './slice/store-owner/users';
+import { customerApi } from './slice/api/super-admin/customer';
+import { accountApi } from './slice/api/super-admin/account';
+import { countryApi } from './slice/api/super-admin/country';
+import { storeApi } from './slice/api/super-admin/store';
+import { stateApi } from './slice/api/super-admin/state';
+import { cityApi } from './slice/api/super-admin/city';
+import { authApi } from './slice/api/super-admin/auth';
+import WholeSaleInternationalReducer from './slice/store-owner/shipping/wholesale-international';
+import ManageGalleriesReducer from './slice/store-owner/cms/manage-galleries';
 
 
 export const store = configureStore({
   reducer: {
+    wholeSaleInternationalReducer: WholeSaleInternationalReducer,
     manageNewsLetterReducer: ManageNewsLetterReducer,
     manageAttributeReducer: ManageAttributeReducer,
+    manageGalleriesReducer:ManageGalleriesReducer,
     manageCategoryReducer: ManageCategoryReducer,
+    wholeSaleLocalReducer: WholeSaleLocalReducer,
     productReviewReducer: ProductReviewReducer,
     manageProductReducer: ManageProductReducer,
     salesAgentReducer: SalesAgentReducer,
@@ -57,6 +64,7 @@ export const store = configureStore({
     sliderReducer: SliderReducer,
     stateReducer: StateReducer,
     cityReducer: CityReducer,
+    userReducer: UserReducer,
 
     [storeApi.reducerPath]: storeApi.reducer,
     [countryApi.reducerPath]: countryApi.reducer,
@@ -86,12 +94,16 @@ export const store = configureStore({
 });
 
 const rootReducer = combineReducers({
+  wholeSaleInternationalReducer: WholeSaleInternationalReducer,
   manageNewsLetterReducer: ManageNewsLetterReducer,
   manageAttributeReducer: ManageAttributeReducer,
   manageCategoryReducer: ManageCategoryReducer,
-  manageProductReducer: ManageProductReducer,
+  wholeSaleLocalReducer: WholeSaleLocalReducer,
   productReviewReducer: ProductReviewReducer,
+  manageProductReducer: ManageProductReducer,
+  salesAgentReducer: SalesAgentReducer,
   abandonedCart: AbandonedCartReducer,
+  backOrderReducer: BackOrderReducer,
   userTracking: UserTrackingReducer,
   webOrderReducer: WebOrderReducer,
   cmsPagesReducer: CmsPagesReducer,
@@ -104,6 +116,7 @@ const rootReducer = combineReducers({
   sliderReducer: SliderReducer,
   stateReducer: StateReducer,
   cityReducer: CityReducer,
+  userReducer: UserReducer,
 });
 
 export type RootState = ReturnType<typeof store.getState>;

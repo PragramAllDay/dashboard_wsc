@@ -1,5 +1,5 @@
 "use client";
-import { useDeleteCustomerMutation, useGetCustomersQuery, usePatchCustomerMutation, usePostCustomerMutation } from "@/store/slice/api/customer";
+import { useDeleteCustomerMutation, useGetCustomersQuery, usePatchCustomerMutation, usePostCustomerMutation } from "@/store/slice/api/super-admin/customer";
 import { addCustomer, deleteCustomerOnID, getCustomerList, updateCustomer } from "@/store/slice/super-admin/customer";
 import { modalCustomerListFields, modalCustomerListTitle } from "@/utils/data/modal/super-admin";
 import { customerListCells, customerListColumns } from "@/utils/data/table/super-admin";

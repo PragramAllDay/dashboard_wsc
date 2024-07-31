@@ -7,7 +7,7 @@ import { IconGridDots } from '@tabler/icons-react';
 import DashboardCard from '../../shared/DashboardCard';
 import SkeletonRevenueUpdatesTwoCard from '../skeleton/RevenueUpdatesTwoCard';
 import CustomSelect from '@/components/forms/theme-elements/CustomSelect';
-import { useGetStoresQuery } from '@/store/slice/api/store';
+import { useGetStoresQuery } from '@/store/slice/api/super-admin/store';
 
 interface RevenueupdatestwoCardProps {
   isLoading: boolean;

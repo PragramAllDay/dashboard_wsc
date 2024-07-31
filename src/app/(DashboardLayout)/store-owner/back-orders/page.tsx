@@ -11,7 +11,7 @@ import { BackOrderType } from "@/utils/types/web-order";
 
 import { backOrderListCells, backOrderListColumns } from "@/utils/data/table/store-admin";
 import { getBackOrderList } from "@/store/slice/store-owner/back-order";
-import { useGetStoresQuery } from "@/store/slice/api/store";
+import { useGetStoresQuery } from "@/store/slice/api/super-admin/store";
 
 
 export default function BackOrder() {

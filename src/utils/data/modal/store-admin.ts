@@ -4,6 +4,8 @@ export const modalManageCategoryTitle = ["Add Parent Category", "Update Category
 export const modalManageAttributeTitle = ["Add Attribute", "Update Attribute"]
 export const modalManageProductTitle = ["Add product", "Update product"]
 export const modalSalesAgentTitle = ["Add sales agent", "Update sales agent"]
+export const modalUserTitle = ["Add user", "Update user"]
+export const modalManageGalleriesTitle = ["Add user", "Update user"]
 
 
 export const modalManageCategoryField: FieldType[] = [
@@ -488,7 +490,7 @@ export const modalSalesAgentField: FieldType[] = [
         ],
     },
     {
-        id:8,
+        id: 8,
         title: "City",
         alias: "city",
         type: "select",
@@ -522,4 +524,326 @@ export const modalSalesAgentField: FieldType[] = [
         column: 6,
     },
 
+]
+
+
+export const modalUserField: FieldType[] = [
+    {
+        id: 1,
+        title: "First Name",
+        alias: "firstName",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 2,
+        title: "Last Name",
+        alias: "lastName",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 3,
+        title: "Email",
+        alias: "email",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 4,
+        title: "Phone",
+        alias: "phone",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 4,
+        title: "Catalog",
+        alias: "catalog",
+        type: "label",
+        column: 12,
+    },
+    {
+        id: 5,
+        title: "Categories",
+        alias: "catalogCategories",
+        type: "checkbox",
+        column: 3,
+    },
+    {
+        id: 6,
+        title: "Attributes",
+        alias: "catalogAttributes",
+        type: "checkbox",
+        column: 3,
+    },
+    {
+        id: 7,
+        title: "Products",
+        alias: "catalogProducts",
+        type: "checkbox",
+        column: 3,
+    },
+    {
+        id: 21,
+        title: "Stock Log",
+        alias: "catalogStockLog",
+        type: "checkbox",
+        column: 3,
+    },
+    {
+        id: 8,
+        title: "Sales & Orders:",
+        alias: "salesAndOrder",
+        type: "label",
+        column: 12,
+    },
+    {
+        id: 9,
+        title: "Wholesale",
+        alias: "salesAndOrderWholesale",
+        type: "checkbox",
+        column: 3,
+    },
+    {
+        id: 10,
+        title: "Dropship",
+        alias: "salesAndOrderDropship",
+        type: "checkbox",
+        column: 3,
+    },
+    {
+        id: 11,
+        title: "Cash & Carry Sale",
+        alias: "salesAndOrderCashAndCarry",
+        type: "checkbox",
+        column: 3
+    },
+    {
+        id: 22,
+        title: "Make Receipt (C & C)",
+        alias: "salesAndOrderMakeReceiptCAndC",
+        type: "checkbox",
+        column: 3
+    },
+    {
+        id: 23,
+        title: "Make Receipt (Web)",
+        alias: "salesAndOrderMakeReceiptWeb",
+        type: "checkbox",
+        column: 3
+    },
+    {
+        id: 24,
+        title: "Credit Notes",
+        alias: "salesAndOrderCreditNote",
+        type: "checkbox",
+        column: 3
+    },
+    {
+        id: 25,
+        title: "Purchase Order",
+        alias: "salesAndOrderPurchaseOrder",
+        type: "checkbox",
+        column: 3
+    },
+    {
+        id: 12,
+        title: "Back Orders:",
+        alias: "backOrders",
+        type: "label",
+        column: 12,
+    },
+    {
+        id: 13,
+        title: "Wholesale",
+        alias: "backOrdersWholesale",
+        type: "checkbox",
+        column: 4,
+    },
+    {
+        id: 36,
+        title: "Dropship",
+        alias: "backOrdersDropship",
+        type: "checkbox",
+        column: 4,
+    },
+    {
+        id: 26,
+        title: "Suppliers",
+        alias: "Suppliers",
+        type: "label",
+        column: 12,
+    },
+    {
+        id: 27,
+        title: "Invoices",
+        alias: "supplierInvoices",
+        type: "checkbox",
+        column: 3,
+    },
+    {
+        id: 28,
+        title: "Payments",
+        alias: "supplierPayment",
+        type: "checkbox",
+        column: 3,
+    },
+    {
+        id: 29,
+        title: "Credit Notes",
+        alias: "supplierCreditNote",
+        type: "checkbox",
+        column: 3,
+    },
+    {
+        id: 30,
+        title: "Debit Notes",
+        alias: "supplierDebitNote",
+        type: "checkbox",
+        column: 3,
+    },
+    {
+        id: 31,
+        title: "Orders",
+        alias: "supplierOrder",
+        type: "checkbox",
+        column: 3,
+    },
+    {
+        id: 32,
+        title: "Ledger",
+        alias: "supplierLedger",
+        type: "checkbox",
+        column: 3,
+    },
+    {
+        id: 33,
+        title: "Analytics",
+        alias: "supplierAnalytics",
+        type: "checkbox",
+        column: 3,
+    },
+    {
+        id: 14,
+        title: "CMS:",
+        alias: "cms",
+        type: "label",
+        column: 12,
+    },
+    {
+        id: 15,
+        title: "Cmp pages",
+        alias: "cmsPages",
+        type: "checkbox",
+        column: 4,
+    },
+    {
+        id: 16,
+        title: "Newsletters",
+        alias: "cmsNewsLetters",
+        type: "checkbox",
+        column: 4,
+    },
+    {
+        id: 17,
+        title: "Accounts:",
+        alias: "accounts",
+        type: "label",
+        column: 12,
+    },
+    {
+        id: 18,
+        title: "Web Sale Report",
+        alias: "accountsWebSaleReport",
+        type: "checkbox",
+        column: 3,
+    },
+    {
+        id: 19,
+        title: "Cash & Carry Sale Report",
+        alias: "accountsCashCarry",
+        type: "checkbox",
+        column: 3,
+    },
+    {
+        id: 20,
+        title: "Sales Agent Report",
+        alias: "accountsSaleAgentReport",
+        type: "checkbox",
+        column: 3,
+    },
+    {
+        id: 34,
+        title: "Receipt Rights (C & C)",
+        alias: "accountReceiptRightsCC",
+        type: "checkbox",
+        column: 3,
+    },
+    {
+        id: 35,
+        title: "Receipt Rights (Web)",
+        alias: "accountReceiptRightsWeb",
+        type: "checkbox",
+        column: 3,
+    },
+    {
+        id: 37,
+        title: "Cheques To Suppliers",
+        alias: "accountChequeSupplier",
+        type: "checkbox",
+        column: 3,
+    },
+    {
+        id: 38,
+        title: "Cash Register",
+        alias: "accountCashRegister",
+        type: "checkbox",
+        column: 3,
+    },
+    {
+        id: 39,
+        title: "Expenditures",
+        alias: "accountExpenditures",
+        type: "checkbox",
+        column: 3,
+    },
+    {
+        id: 40,
+        title: "Expenditures Payments",
+        alias: "accountExpendituresPayment",
+        type: "checkbox",
+        column: 12,
+    },
+    {
+        id: 41,
+        title: "Username",
+        alias: "username",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 42,
+        title: "Password",
+        alias: "password",
+        type: "password",
+        column: 6,
+    },
+    {
+        id: 43,
+        title: "Re-Password",
+        alias: "rePassword",
+        type: "password",
+        column: 6,
+    },
+]
+
+export const modalManageGalleriesField: FieldType[] = [
+    {
+        id: 1,
+        title: "Name",
+        alias: "name",
+        type: "text",
+        column: 6,
+    }
 ]

@@ -104,3 +104,72 @@ export const backOrderListCells: CellType[] = [
     { id: 5, name: "existing" },
     { id: 6, name: "requestedQuantity" },
 ]
+
+
+export const userColumns: CellType[] = [
+    { id: 1, name: "Id" },
+    { id: 2, name: "Name" },
+    { id: 3, name: "Email" },
+    { id: 4, name: "Phone" },
+    { id: 5, name: "Action" },
+]
+
+export const userCells: CellType[] = [
+    { id: 1, name: "id" },
+    { id: 2, name: "name" },
+    { id: 3, name: "email" },
+    { id: 4, name: "phone" },
+]
+
+export const wholeSaleLocalListColumns: CellType[] = [
+    { id: 1, name: "Id" },
+    { id: 2, name: "Post Code" },
+    { id: 3, name: "Free Shipping" },
+    { id: 4, name: "Plan B" },
+    { id: 5, name: "Plan C" },
+    { id: 6, name: "Plan B" },
+]
+
+
+export const wholeSaleLocalListCells: CellType[] = [
+    { id: 1, name: "id" },
+    { id: 2, name: "postCode" },
+    { id: 3, name: "freeShipping" },
+    { id: 4, name: "planB" },
+    { id: 5, name: "planC" },
+    { id: 6, name: "planD" },
+]
+
+
+
+export const wholeSaleInternationalListColumns: CellType[] = [
+    { id: 1, name: "Id" },
+    { id: 2, name: "Post Code" },
+    { id: 3, name: "Free Shipping" },
+    { id: 4, name: "Plan B" },
+    { id: 5, name: "Plan C" },
+    { id: 6, name: "Plan B" },
+]
+
+
+export const wholeSaleInternationalListCells: CellType[] = [
+    { id: 1, name: "id" },
+    { id: 2, name: "postCode" },
+    { id: 3, name: "freeShipping" },
+    { id: 4, name: "planB" },
+    { id: 5, name: "planC" },
+    { id: 6, name: "planD" },
+]
+
+export const manageGalleriesColumns: CellType[] = [
+    { id: 1, name: "Id" },
+    { id: 2, name: "Name" },
+    { id: 6, name: "Action" },
+]
+
+export const manageGalleriesCells: CellType[] = [
+    { id: 1, name: "id" },
+    { id: 2, name: "name" },
+]
+
+

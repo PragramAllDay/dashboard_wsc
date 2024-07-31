@@ -22,6 +22,7 @@ export const checkForSession = () => {
  */
 export const sessionStatus = () => {
   const admin_data = checkForSession();
+  console.log(admin_data)
   if (admin_data) {
     return true;
   } else {

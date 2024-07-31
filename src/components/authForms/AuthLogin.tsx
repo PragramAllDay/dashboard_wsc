@@ -6,7 +6,7 @@ import Stack from '@mui/material/Stack';
 import { LoginErrorType, loginType } from '@/utils/types/auth/auth';
 import CustomTextField from '@/components/forms/theme-elements/CustomTextField';
 import CustomFormLabel from '@/components/forms/theme-elements/CustomFormLabel';
-import { useLoginMutation } from '@/store/slice/api/auth';
+import { useLoginMutation } from '@/store/slice/api/super-admin/auth';
 import { useRouter } from 'next/navigation';
 import Typography from '@mui/material/Typography';
 import "./style.css"

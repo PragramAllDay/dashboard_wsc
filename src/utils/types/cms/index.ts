@@ -74,3 +74,10 @@ export type ProductReviewType = {
     review: string;
     status?: string;
 }
+
+
+export type ManageGalleriesType = {
+    id?: string;
+    name: string;
+    status?: boolean;
+}

@@ -1,10 +1,10 @@
 'use client';
 
 import { sessionStatus } from '@/utils/session/session';
-import { redirect } from 'next/navigation';
 import { useEffect } from 'react';
+import { redirect } from 'next/navigation';
 
-export default function AuthRoute(Component: any) {
+export default function AuthRoute(Component: React.ComponentType<any>) {
   return function AuthRouteComponent(props: any) {
     const session = sessionStatus();
 

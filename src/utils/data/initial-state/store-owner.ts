@@ -1,6 +1,7 @@
 import { ManageAttributeType, ManageCategoryType, ManageProductType } from "@/utils/types/catalog";
+import { ManageGalleriesType } from "@/utils/types/cms";
 import { SalesAgentType } from "@/utils/types/sale-agent";
-import { CustomerType } from "@/utils/types/stores";
+import { UserType } from "@/utils/types/user";
 
 export const initialManageCategoryState: ManageCategoryType = {
     name: "",
@@ -75,5 +76,54 @@ export const initialSalesAgentState: SalesAgentType = {
     postCode: "",
     address: "",
     referenceCode: "",
+    status: false,
+}
+
+
+export const initialUserState: UserType = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    username: "",
+    password: "",
+    rePassword: "",
+    catalogCategories: false,
+    catalogAttributes: false,
+    catalogProducts: false,
+    catalogStockLog: false,
+    salesAndOrderWholesale: false,
+    salesAndOrderDropship: false,
+    salesAndOrderCashAndCarry: false,
+    salesAndOrderMakeReceiptCAndC: false,
+    salesAndOrderMakeReceiptWeb: false,
+    salesAndOrderCreditNote: false,
+    salesAndOrderPurchaseOrder: false,
+    backOrdersWholesale: false,
+    backOrdersDropship: false,
+    supplierInvoices: false,
+    supplierPayment: false,
+    supplierCreditNote: false,
+    supplierDebitNote: false,
+    supplierOrder: false,
+    supplierLedger: false,
+    supplierAnalytics: false,
+    cmsCmpPage: false,
+    accountWebSaleReport: false,
+    accountCashCarryReport: false,
+    accountSalesAgentReport: false,
+    accountReceiptRightsCC: false,
+    accountReceiptRightsWeb: false,
+    accountChequeSupplier: false,
+    accountCashRegister: false,
+    accountExpenditures: false,
+    accountExpendituresPayment: false,
+    cmsNewsLetter: false,
+    status: false,
+}
+
+
+export const initialManageGalleriesState: ManageGalleriesType = {
+    name: "",
     status: false,
 }

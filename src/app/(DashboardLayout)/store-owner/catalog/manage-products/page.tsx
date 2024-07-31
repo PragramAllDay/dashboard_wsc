@@ -16,7 +16,7 @@ import {
     useGetStoresQuery,
     usePatchStoresMutation,
     usePostStoresMutation
-} from "@/store/slice/api/store";
+} from "@/store/slice/api/super-admin/store";
 import { ManageProductType } from "@/utils/types/catalog";
 import { manageProductFilterField } from "@/utils/data/table-filter/store-admin";
 import { addManageProduct, deleteManageProduct, getManageProductList, updateManageProduct } from "@/store/slice/store-owner/catalog/manage-product";

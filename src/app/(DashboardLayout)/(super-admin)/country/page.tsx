@@ -11,7 +11,7 @@ import ReusableTable2 from "@/components/reusable-table-2";
 import { modalCountryListFields, modalCountryListTitle } from "@/utils/data/modal/super-admin";
 import { ModalMod } from "@/utils/enum";
 import { addCountry, deleteCountryById, getCountryList, updateCountry } from "@/store/slice/super-admin/country";
-import { useDeleteCountryMutation, useGetCountryQuery, usePatchCountryMutation, usePostCountryMutation } from "@/store/slice/api/country";
+import { useDeleteCountryMutation, useGetCountryQuery, usePatchCountryMutation, usePostCountryMutation } from "@/store/slice/api/super-admin/country";
 import { countryFilterField } from "@/utils/data/table-filter/super-admin";
 
 export default function Country() {

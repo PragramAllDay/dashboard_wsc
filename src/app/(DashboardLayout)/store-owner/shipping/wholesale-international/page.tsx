@@ -7,22 +7,21 @@ import PageContainer from "@/components/container/PageContainer";
 import ReusableTable2 from "@/components/reusable-table-2";
 import { PaginationType } from "@/utils/types/pagination";
 
-import { CustomerType } from "@/utils/types/stores";
+import { wholeSaleInternationalListCells, wholeSaleInternationalListColumns } from "@/utils/data/table/store-admin";
 
-import { customerListCells, customerListColumns } from "@/utils/data/table/store-admin";
-import { customerFilterField } from "@/utils/data/table-filter/store-admin";
-import { getCustomerList } from "@/store/slice/super-admin/customer";
-import { useGetCustomersQuery } from "@/store/slice/api/super-admin/customer";
+import { getWholeSaleInternationalList } from "@/store/slice/store-owner/shipping/wholesale-international";
+import { WholeSaleInternationalType } from "@/utils/types/shipping";
+import { useGetStoresQuery } from "@/store/slice/api/super-admin/store";
 
 
-export default function Customer() {
-    const { data, error, isLoading } = useGetCustomersQuery()
-    const pagination: PaginationType = useSelector((state) => state.customerReducer.customerPagination)
-    const customerList: CustomerType[] = useSelector((state) => state.customerReducer.customerList)
+export default function WholeSaleInternational() {
+    const WholeSaleInternationalList: WholeSaleInternationalType[] = useSelector((state) => state.wholeSaleInternationalReducer.list)
+    const pagination: PaginationType = useSelector((state) => state.wholeSaleInternationalReducer.pagination)
+    const { data, error, isLoading } = useGetStoresQuery()
     const dispatch = useDispatch()
 
     useEffect(() => {
-        const fetchCustomerList = async () => {
+        const fetchWholeSaleInternationalList = async () => {
             try {
                 if (data) {
                     const newPagination = {
@@ -31,14 +30,14 @@ export default function Customer() {
                         rowsPerPage: 10,
                     }
                     const limitedData = data.slice(0, newPagination.rowsPerPage)
-                    dispatch(getCustomerList({ list: limitedData, newPagination }))
+                    dispatch(getWholeSaleInternationalList({ list: limitedData, newPagination }))
                 }
             } catch (error) {
                 console.log(error);
             }
         };
-        if (pagination && customerList.length === 0 && data?.length !== 0) {
-            fetchCustomerList();
+        if (pagination && WholeSaleInternationalList.length === 0 && data?.length !== 0) {
+            fetchWholeSaleInternationalList();
         }
     }, [dispatch, pagination, data]);
 
@@ -72,38 +71,19 @@ export default function Customer() {
         }
     };
 
-    const handleFilter = (evt: any) => {
-        evt.preventDefault()
-    }
-
-    const handleFilterFieldOnChange = (
-        filterField: any,
-        newValue: string,
-        fieldAlias: string,
-        setValues: any,
-    ) => {
-        setValues({
-            ...filterField,
-            [fieldAlias]: newValue,
-        });
-    };
-
     return (
-        <PageContainer title="Customer" description="this is Customer">
+        <PageContainer title="WholeSaleInternational" description="this is WholeSaleInternational">
             <Box mt={3}>
                 <ReusableTable2
-                    filterFieldList={customerFilterField}
-                    columns={customerListColumns}
-                    cells={customerListCells}
+                    columns={wholeSaleInternationalListColumns}
+                    cells={wholeSaleInternationalListCells}
                     pagination={pagination}
                     removeAddButton={true}
-                    rows={customerList}
-                    title={"Customer"}
-                    handleFilter={handleFilter}
+                    rows={WholeSaleInternationalList}
+                    title={"WholeSaleInternational"}
                     handleRenderCell={renderCell}
                     handleChangePage={handleChangePage}
                     handleChangeRowsPerPage={handleChangeRowsPerPage}
-                    handleFilterFieldOnChange={handleFilterFieldOnChange}
                 />
             </Box>
         </PageContainer>

@@ -16,7 +16,7 @@ import {
   useGetStoresQuery,
   usePatchStoresMutation,
   usePostStoresMutation
-} from "@/store/slice/api/store";
+} from "@/store/slice/api/super-admin/store";
 import { ManageAttributeType } from "@/utils/types/catalog";
 import {
   addManageAttribute,
