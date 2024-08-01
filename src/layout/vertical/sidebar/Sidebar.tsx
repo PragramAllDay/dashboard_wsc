@@ -70,7 +70,7 @@ const Sidebar = (session: any) => {
             {/* Logo */}
             {/* ------------------------------------------- */}
             <Box px={3}>
-              <Logo />
+              <Logo session={session} />
             </Box>
             <Scrollbar sx={{ height: 'calc(100% - 190px)' }}>
               {/* ------------------------------------------- */}
