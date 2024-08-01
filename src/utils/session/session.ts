@@ -8,7 +8,7 @@ export const checkForSession = () => {
     const data = localStorage.getItem('admin_session');
     if (data) {
       const parsedData = JSON.parse(data);
-      console.log(parsedData);
+
       return parsedData;
     } else {
       return false;
@@ -21,10 +21,11 @@ export const checkForSession = () => {
  * @returns  {void}
  */
 export const sessionStatus = () => {
-  const admin_data = checkForSession();
-  if (admin_data) {
-    return true;
+  const data = checkForSession();
+  console.log(data);
+  if (data) {
+    return { isLoggedIn: true, role: data.role };
   } else {
-    return false;
+    return { isLoggedIn: false, role: '' };
   }
 };

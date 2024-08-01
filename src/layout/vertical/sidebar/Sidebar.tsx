@@ -10,15 +10,12 @@ import Scrollbar from '@/components/custom-scroll/Scrollbar';
 import { Profile } from './SidebarProfile/Profile';
 import { AppState } from '@/store/store';
 
-const Sidebar = () => {
+const Sidebar = (session: any) => {
   const lgUp = useMediaQuery((theme: any) => theme.breakpoints.up('lg'));
   const customizer = useSelector((state: AppState) => state.customizer);
   const dispatch = useDispatch();
   const theme = useTheme();
-  const toggleWidth =
-    customizer.isCollapse && !customizer.isSidebarHover
-      ? customizer.MiniSidebarWidth
-      : customizer.SidebarWidth;
+  const toggleWidth = customizer.isCollapse && !customizer.isSidebarHover ? customizer.MiniSidebarWidth : customizer.SidebarWidth;
 
   const onHoverEnter = () => {
     if (customizer.isCollapse) {
@@ -76,11 +73,10 @@ const Sidebar = () => {
               <Logo />
             </Box>
             <Scrollbar sx={{ height: 'calc(100% - 190px)' }}>
-
               {/* ------------------------------------------- */}
               {/* Sidebar Items */}
               {/* ------------------------------------------- */}
-              <SidebarItems />
+              <SidebarItems session={session} />
             </Scrollbar>
             <Profile />
           </Box>

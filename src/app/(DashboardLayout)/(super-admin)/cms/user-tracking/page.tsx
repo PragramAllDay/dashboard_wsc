@@ -1,8 +1,8 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Box from "@mui/material/Box";
 import PageContainer from "@/components/container/PageContainer";
-import { cmsUserTrackingCells, cmsUserTrackingColumns } from "@/utils/data/table";
+import { cmsUserTrackingCells, cmsUserTrackingColumns } from "@/utils/data/table/super-admin";
 // import {
 //     deleteStore,
 //     getStore,
@@ -14,7 +14,6 @@ import { useDispatch, useSelector } from "@/store/hooks";
 import { PaginationType } from "@/utils/types/pagination";
 import ReusableTable2 from "@/components/reusable-table-2";
 import { CMSUserTrackingType } from "@/utils/types/cms";
-import { getUserTrackingList } from "@/store/slice/super-admin/cms/user-tracking";
 
 export default function UserTracking() {
     const pagination: PaginationType = useSelector((state) => state.userTracking.userTrackingPagination)

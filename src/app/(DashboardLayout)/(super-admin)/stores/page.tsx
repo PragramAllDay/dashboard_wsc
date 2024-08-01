@@ -2,16 +2,17 @@
 import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import PageContainer from "@/components/container/PageContainer";
-import { storeFilterField, storesCells, storesColumns } from "@/utils/data/table";
+import { storesCells, storesColumns } from "@/utils/data/table/super-admin";
 import { useDispatch, useSelector } from "@/store/hooks";
 import { addStore, deleteStore, getStoreList, updateStore } from "@/store/slice/super-admin/stores";
 import { StoreType } from "@/utils/types/stores";
 import { PaginationType } from "@/utils/types/pagination";
 import ReusableModal from "@/components/reusable-modal";
 import ReusableTable2 from "@/components/reusable-table-2";
-import { modalStoresFields, modalStoresTitle } from "@/utils/data/modal";
+import { modalStoresFields, modalStoresTitle } from "@/utils/data/modal/super-admin";
 import { ModalMod } from "@/utils/enum";
-import { useDeleteStoresMutation, useGetStoresQuery, usePatchStoresMutation, usePostStoresMutation } from "@/store/slice/api/store";
+import { useDeleteStoresMutation, useGetStoresQuery, usePatchStoresMutation, usePostStoresMutation } from "@/store/slice/api/super-admin/store";
+import { storeFilterField } from "@/utils/data/table-filter/super-admin";
 
 const initialState = {
     id: "",

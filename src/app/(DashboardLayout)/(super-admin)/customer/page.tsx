@@ -1,17 +1,20 @@
 "use client";
-import { useEffect, useState } from "react";
-import Box from "@mui/material/Box";
-import PageContainer from "@/components/container/PageContainer";
-import { customerFilterField, customerListCells, customerListColumns } from "@/utils/data/table";
-import { useDispatch, useSelector } from "@/store/hooks";
+import { useDeleteCustomerMutation, useGetCustomersQuery, usePatchCustomerMutation, usePostCustomerMutation } from "@/store/slice/api/super-admin/customer";
 import { addCustomer, deleteCustomerOnID, getCustomerList, updateCustomer } from "@/store/slice/super-admin/customer";
-import { PaginationType } from "@/utils/types/pagination";
-import ReusableModal from "@/components/reusable-modal";
+import { modalCustomerListFields, modalCustomerListTitle } from "@/utils/data/modal/super-admin";
+import { customerListCells, customerListColumns } from "@/utils/data/table/super-admin";
+import { initialCustomerState } from "@/utils/data/initial-state/super-admin";
+import { customerFilterField } from "@/utils/data/table-filter/super-admin";
+import PageContainer from "@/components/container/PageContainer";
 import ReusableTable2 from "@/components/reusable-table-2";
-import { modalCustomerListFields, modalCustomerListTitle } from "@/utils/data/modal";
-import { ModalMod } from "@/utils/enum";
+import { PaginationType } from "@/utils/types/pagination";
+import { useDispatch, useSelector } from "@/store/hooks";
+import ReusableModal from "@/components/reusable-modal";
 import { CustomerType } from "@/utils/types/stores";
-import { useDeleteCustomerMutation, useGetCustomersQuery, usePatchCustomerMutation, usePostCustomerMutation } from "@/store/slice/api/customer";
+import { useEffect, useState } from "react";
+import { ModalMod } from "@/utils/enum";
+import Box from "@mui/material/Box";
+
 
 export default function Customer() {
     const { data, error, isLoading } = useGetCustomersQuery()
@@ -23,33 +26,7 @@ export default function Customer() {
     const pagination: PaginationType = useSelector((state) => state.customerReducer.customerPagination)
     const customerList: CustomerType[] = useSelector((state) => state.customerReducer.customerList)
     const dispatch = useDispatch()
-    const [editStore, setEditStore] = useState<CustomerType>({
-        id: "",
-        title: "",
-        saleAgentCode: "",
-        firstName: "",
-        lastName: "",
-        companyName: "",
-        companyVat: "",
-        companyRegistration: "",
-        website: "",
-        vat: false,
-        discount: "",
-        contactPerson: "",
-        telephone: "",
-        country: "",
-        state: "",
-        city: "",
-        postCode: "",
-        address: "",
-        email: "",
-        isNewsLetter: false,
-        ebay: "Not applicable",
-        amazon: "Not applicable	",
-        saleYear: 0,
-        saleToDate: 0,
-        status: false,
-    });
+    const [editStore, setEditStore] = useState<CustomerType>(initialCustomerState);
 
     useEffect(() => {
         const fetchCustomerList = async () => {
@@ -76,33 +53,7 @@ export default function Customer() {
         setIsModal(!isModal);
 
         if (editStore.status) {
-            setEditStore({
-                id: "",
-                title: "",
-                saleAgentCode: "",
-                firstName: "",
-                lastName: "",
-                companyName: "",
-                companyVat: "",
-                companyRegistration: "",
-                website: "",
-                vat: false,
-                discount: "",
-                contactPerson: "",
-                telephone: "",
-                country: "",
-                state: "",
-                city: "",
-                postCode: "",
-                address: "",
-                email: "",
-                isNewsLetter: false,
-                ebay: "Not applicable",
-                amazon: "Not applicable	",
-                saleYear: 0,
-                saleToDate: 0,
-                status: false,
-            });
+            setEditStore(initialCustomerState);
         }
     };
 
@@ -124,33 +75,7 @@ export default function Customer() {
             await patchCustomer(values)
             dispatch(updateCustomer(values))
             setIsModal(false);
-            setEditStore({
-                id: "",
-                title: "",
-                saleAgentCode: "",
-                firstName: "",
-                lastName: "",
-                companyName: "",
-                companyVat: "",
-                companyRegistration: "",
-                website: "",
-                vat: false,
-                discount: "",
-                contactPerson: "",
-                telephone: "",
-                country: "",
-                state: "",
-                city: "",
-                postCode: "",
-                address: "",
-                email: "",
-                isNewsLetter: false,
-                ebay: "Not applicable",
-                amazon: "Not applicable	",
-                saleYear: 0,
-                saleToDate: 0,
-                status: false,
-            });
+            setEditStore(initialCustomerState);
         } catch (error) {
             console.log(error);
         }
@@ -261,35 +186,35 @@ export default function Customer() {
         <PageContainer title="Customer" description="this is Customer">
             <Box mt={3}>
                 <ReusableTable2
-                    rows={customerList}
+                    filterFieldList={customerFilterField}
                     columns={customerListColumns}
                     cells={customerListCells}
-                    title={"Customer"}
                     pagination={pagination}
-                    filterFieldList={customerFilterField}
+                    rows={customerList}
+                    title={"Customer"}
+                    handleEdit={handleEdit}
                     handleCreate={handleToggle}
                     handleDelete={handleDelete}
-                    handleEdit={handleEdit}
+                    handleFilter={handleFilter}
                     handleRenderCell={renderCell}
                     handleChangePage={handleChangePage}
-                    handleFilter={handleFilter}
                     handleFilterFieldOnChange={handleFilterFieldOnChange}
                     handleChangeRowsPerPage={handleChangeRowsPerPage}
                 />
 
                 {isModal && (
                     <ReusableModal
-                        handleSubmit={editStore.status ? handleUpdate : handleAdd}
-                        handleToggle={handleToggle}
-                        handleModalFieldOnChange={handleModalFieldOnChange}
-                        editData={editStore}
-                        modalFields={modalCustomerListFields}
-                        isModal={isModal}
                         title={
                             editStore.status
                                 ? modalCustomerListTitle[ModalMod.EDIT]
                                 : modalCustomerListTitle[ModalMod.NEW]
                         }
+                        modalFields={modalCustomerListFields}
+                        isModal={isModal}
+                        editData={editStore}
+                        handleToggle={handleToggle}
+                        handleModalFieldOnChange={handleModalFieldOnChange}
+                        handleSubmit={editStore.status ? handleUpdate : handleAdd}
                     />
                 )}
             </Box>

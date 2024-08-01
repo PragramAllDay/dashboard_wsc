@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import PageContainer from "@/components/container/PageContainer";
-import { categoriesCells, categoriesColumns, categoryFilterField } from "@/utils/data/table";
+import { categoriesCells, categoriesColumns } from "@/utils/data/table/super-admin";
 // import {
 //     deleteStore,
 //     getStore,
@@ -10,32 +10,17 @@ import { categoriesCells, categoriesColumns, categoryFilterField } from "@/utils
 //     postStore,
 // } from "@/lib/request/Store/request";
 import { useDispatch, useSelector } from "@/store/hooks";
-import { addCategory, deleteCategory, getCategoryList, updateCategory } from "@/store/slice/super-admin/category";
-import { CategoryType } from "@/utils/types/categories";
+import { addCategory, deleteCategory, updateCategory } from "@/store/slice/super-admin/category";
+import { modalCategoriesFields, modalCategoriesTitle } from "@/utils/data/modal/super-admin";
+import { categoryFilterField } from "@/utils/data/table-filter/super-admin";
 import { PaginationType } from "@/utils/types/pagination";
-import ReusableModal from "@/components/reusable-modal";
 import ReusableTable2 from "@/components/reusable-table-2";
-import { modalCategoriesFields, modalCategoriesTitle } from "@/utils/data/modal";
+import { CategoryType } from "@/utils/types/categories";
+import ReusableModal from "@/components/reusable-modal";
 import { ModalMod } from "@/utils/enum";
+import { initialCategoriesState } from "@/utils/data/initial-state/super-admin";
 
-const initialState = {
-  id: "",
-  title: "",
-  subTitle: "",
-  parent: "",
-  permalink: "",
-  metaTitle: "",
-  metaDescription: "",
-  metaKeyWord: "",
-  schemaMarkup: "",
-  sortOrder: "",
-  isFeature: true,
-  image1: {},
-  image2: {},
-  icon: {},
-  icon2: {},
-  status: false,
-}
+
 
 
 export default function Categories() {
@@ -43,7 +28,7 @@ export default function Categories() {
   const pagination: PaginationType = useSelector((state) => state.categoryReducer.categoryPagination)
   const categories: CategoryType[] = useSelector((state) => state.categoryReducer.categoryList)
   const dispatch = useDispatch()
-  const [editStore, setEditStore] = useState<CategoryType>(initialState);
+  const [editStore, setEditStore] = useState<CategoryType>(initialCategoriesState);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -65,7 +50,7 @@ export default function Categories() {
     setIsModal(!isModal);
 
     if (editStore.status) {
-      setEditStore(initialState);
+      setEditStore(initialCategoriesState);
     }
   };
 
@@ -86,7 +71,7 @@ export default function Categories() {
       // const { Store } = await patchStore(values);
       dispatch(updateCategory(values))
       setIsModal(false);
-      setEditStore(initialState);
+      setEditStore(initialCategoriesState);
       // if (Store) {
       // }
     } catch (error) {

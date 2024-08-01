@@ -1,20 +1,21 @@
 'use client';
 
 import { sessionStatus } from '@/utils/session/session';
-import { redirect } from 'next/navigation';
 import { useEffect } from 'react';
+import { redirect } from 'next/navigation';
 
-export default function AuthRoute(Component: any) {
+export default function AuthRoute(Component: React.ComponentType<any>) {
   return function AuthRouteComponent(props: any) {
     const session = sessionStatus();
+    console.log(session);
 
     useEffect(() => {
-      if (!session) {
+      if (!session.isLoggedIn) {
         redirect('/login');
       }
     }, []);
-    if (!session) return null;
+    if (!session.isLoggedIn) return null;
 
-    return <Component {...props} />;
+    return <Component {...props} session={session} />;
   };
 }

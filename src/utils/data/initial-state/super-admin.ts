@@ -1,0 +1,50 @@
+import { CategoryType } from "@/utils/types/categories";
+import { CustomerType } from "@/utils/types/stores";
+
+
+export const initialCategoriesState: CategoryType = {
+    id: "",
+    title: "",
+    subTitle: "",
+    parent: "",
+    permalink: "",
+    metaTitle: "",
+    metaDescription: "",
+    metaKeyWord: "",
+    schemaMarkup: "",
+    sortOrder: "",
+    isFeature: true,
+    image1: {},
+    image2: {},
+    icon: {},
+    icon2: {},
+    status: false,
+}
+
+export const initialCustomerState: CustomerType = {
+    id: "",
+    title: "",
+    saleAgentCode: "",
+    firstName: "",
+    lastName: "",
+    companyName: "",
+    companyVat: "",
+    companyRegistration: "",
+    website: "",
+    vat: false,
+    discount: "",
+    contactPerson: "",
+    telephone: "",
+    country: "",
+    state: "",
+    city: "",
+    postCode: "",
+    address: "",
+    email: "",
+    isNewsLetter: false,
+    ebay: "Not applicable",
+    amazon: "Not applicable	",
+    saleYear: 0,
+    saleToDate: 0,
+    status: false,
+}

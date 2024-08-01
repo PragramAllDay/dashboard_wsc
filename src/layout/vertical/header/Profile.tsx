@@ -22,6 +22,10 @@ const Profile = () => {
     setAnchorEl2(null);
   };
 
+  const handleLogout = () => {
+    localStorage.clear();
+  }
+
   return (
     <Box>
       <IconButton
@@ -137,7 +141,14 @@ const Profile = () => {
           </Box>
         ))}
         <Box mt={2}>
-          <Button href="/auth/auth1/login" variant="outlined" color="primary" component={Link} fullWidth>
+          <Button
+            href="/login"
+            onClick={handleLogout}
+            variant="outlined"
+            color="primary"
+            component={Link}
+            fullWidth
+          >
             Logout
           </Button>
         </Box>

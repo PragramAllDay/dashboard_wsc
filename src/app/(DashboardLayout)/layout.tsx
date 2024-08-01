@@ -11,6 +11,9 @@ import HorizontalHeader from '../../layout/horizontal/header/Header';
 import { useSelector } from '@/store/hooks';
 import { AppState } from '@/store/store';
 import AuthRoute from '../gaurd/AuthRoute';
+import determineAllowedRoles from '../gaurd/RoleDeterminer';
+import RoleBasedAccess from '../gaurd/RoleBase';
+import { usePathname } from 'next/navigation';
 
 const MainWrapper = styled('div')(() => ({
   display: 'flex',
@@ -28,64 +31,48 @@ const PageWrapper = styled('div')(() => ({
   backgroundColor: 'transparent',
 }));
 
-interface Props {
-  children: React.ReactNode;
-}
-
-const RootLayout = ({ children }: { children: React.ReactNode }) => {
-  const [isSidebarOpen, setSidebarOpen] = useState(true);
-  const [isMobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+const RootLayout = ({ children, session }: { children: React.ReactNode; session: { isLoggedIn: boolean; role: string } }) => {
+  const [isMobileSidebarOpen, setMobileSidebarOpen] = useState(false); isMobileSidebarOpen
   const customizer = useSelector((state: AppState) => state.customizer);
+  const pathname = usePathname();
   const theme = useTheme();
 
-  return (
-    <MainWrapper>
-      {/* ------------------------------------------- */}
-      {/* Sidebar */}
-      {/* ------------------------------------------- */}
-      {customizer.isHorizontal ? '' : <Sidebar />}
-      {/* ------------------------------------------- */}
-      {/* Main Wrapper */}
-      {/* ------------------------------------------- */}
-      <PageWrapper
-        className="page-wrapper"
-        sx={{
-          ...(customizer.isCollapse && {
-            [theme.breakpoints.up('lg')]: {
-              ml: `${customizer.MiniSidebarWidth}px`,
-            },
-          }),
-        }}
-      >
-        {/* ------------------------------------------- */}
-        {/* Header */}
-        {/* ------------------------------------------- */}
-        {customizer.isHorizontal ? <HorizontalHeader /> : <Header />}
-        {/* PageContent */}
-        {customizer.isHorizontal ? <Navigation /> : ''}
-        <Container
-          sx={{
-            maxWidth: customizer.isLayout === 'boxed' ? 'lg' : '100%!important',
-          }}
-        >
-          {/* ------------------------------------------- */}
-          {/* PageContent */}
-          {/* ------------------------------------------- */}
+  const checkAccess = () => {
+    const allowedRoles = determineAllowedRoles(pathname);
 
-          <Box sx={{ minHeight: 'calc(100vh - 170px)' }}>
-            {/* <Outlet /> */}
-            {children}
-            {/* <Index /> */}
-          </Box>
+    return (
+      <RoleBasedAccess allowedRoles={allowedRoles} session={session}>
+        <MainWrapper>
+          {customizer.isHorizontal ? '' : <Sidebar session={session} />}
+          <PageWrapper
+            className="page-wrapper"
+            sx={{
+              ...(customizer.isCollapse && {
+                [theme.breakpoints.up('lg')]: {
+                  ml: `${customizer.MiniSidebarWidth}px`,
+                },
+              }),
+            }}
+          >
+            {customizer.isHorizontal ? <HorizontalHeader /> : <Header />}
+            {customizer.isHorizontal ? <Navigation /> : ''}
+            <Container
+              sx={{
+                maxWidth: customizer.isLayout === 'boxed' ? 'lg' : '100%!important',
+              }}
+            >
+              <Box sx={{ minHeight: 'calc(100vh - 170px)' }}>
+                {children}
+              </Box>
+            </Container>
+            <Customizer />
+          </PageWrapper>
+        </MainWrapper>
+      </RoleBasedAccess>
+    );
+  };
 
-          {/* ------------------------------------------- */}
-          {/* End Page */}
-          {/* ------------------------------------------- */}
-        </Container>
-        <Customizer />
-      </PageWrapper>
-    </MainWrapper>
-  );
+  return <>{checkAccess()}</>;
 };
 
 export default AuthRoute(RootLayout);

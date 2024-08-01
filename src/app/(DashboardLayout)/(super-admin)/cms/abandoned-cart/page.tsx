@@ -1,8 +1,8 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Box from "@mui/material/Box";
 import PageContainer from "@/components/container/PageContainer";
-import { cmsAbandonedCartCells, cmsAbandonedCartColumns } from "@/utils/data/table";
+import { cmsAbandonedCartCells, cmsAbandonedCartColumns } from "@/utils/data/table/super-admin";
 // import {
 //     deleteStore,
 //     getStore,

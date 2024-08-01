@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import PageContainer from "@/components/container/PageContainer";
-import { storeCategoriesCells, storeCategoriesColumns, storeCategoryFilterField } from "@/utils/data/table";
+import { storeCategoriesCells, storeCategoriesColumns } from "@/utils/data/table/super-admin";
 // import {
 //     deleteStore,
 //     getStore,
@@ -15,8 +15,9 @@ import { CategoryType } from "@/utils/types/categories";
 import { PaginationType } from "@/utils/types/pagination";
 import ReusableModal from "@/components/reusable-modal";
 import ReusableTable2 from "@/components/reusable-table-2";
-import { modalStoreCategoriesFields, modalStoreCategoriesTitle } from "@/utils/data/modal";
+import { modalStoreCategoriesFields, modalStoreCategoriesTitle } from "@/utils/data/modal/super-admin";
 import { ModalMod } from "@/utils/enum";
+import { storeCategoryFilterField } from "@/utils/data/table-filter/super-admin";
 
 const initialState = {
     id: "",

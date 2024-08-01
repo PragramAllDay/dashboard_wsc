@@ -2,21 +2,21 @@
 import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import PageContainer from "@/components/container/PageContainer";
-import { manageNewsLetterCells, manageNewsLetterColumns } from "@/utils/data/table";
-// import {
-//     deleteStore,
-//     getStore,
-//     patchStore,
-//     postStore,
-// } from "@/lib/request/Store/request";
+import { manageNewsLetterCells, manageNewsLetterColumns } from "@/utils/data/table/super-admin";
 import { useDispatch, useSelector } from "@/store/hooks";
 import { addManageNewsLetter, deleteManageNewsLetter, getManageNewsLetterList, updateManageNewsLetter } from "@/store/slice/super-admin/cms/manage-news-letter";
 import { ManageNewsLetterType } from "@/utils/types/cms";
 import { PaginationType } from "@/utils/types/pagination";
 import ReusableModal from "@/components/reusable-modal";
 import ReusableTable2 from "@/components/reusable-table-2";
-import { modalManageNewsLetterFields, modalManageNewsLetterTitle } from "@/utils/data/modal";
+import { modalManageNewsLetterFields, modalManageNewsLetterTitle } from "@/utils/data/modal/super-admin";
 import { ModalMod } from "@/utils/enum";
+// import {
+//     deleteStore,
+//     getStore,
+//     patchStore,
+//     postStore,
+// } from "@/lib/request/Store/request";
 
 export default function ManageNewsLetter() {
     const [isModal, setIsModal] = useState<boolean>(false);

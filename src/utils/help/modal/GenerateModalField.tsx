@@ -1,17 +1,17 @@
 "use client"
 
-import { useEffect, useState } from "react";
 import { Button, FormControlLabel, FormLabel, MenuItem, Paper, Select, TextField } from "@mui/material";
-import { NextPage } from "next";
+import CustomCheckbox from "@/components/forms/theme-elements/CustomCheckbox";
 import { IconCloudUpload } from "@tabler/icons-react";
 import { FieldType } from "@/utils/types/modal";
-import CustomCheckbox from "@/components/forms/theme-elements/CustomCheckbox";
-import dynamic from 'next/dynamic'
-const DynamicQuill = dynamic(() => import('react-quill'), { ssr: false })
+import { useEffect, useState } from "react";
 import "react-quill/dist/quill.snow.css";
-
+import dynamic from 'next/dynamic'
+import { NextPage } from "next";
 import './style.css'
 
+
+const DynamicQuill = dynamic(() => import('react-quill'), { ssr: false })
 
 type Props = {
     values: any;

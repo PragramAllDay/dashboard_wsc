@@ -6,9 +6,10 @@ import Stack from '@mui/material/Stack';
 import { LoginErrorType, loginType } from '@/utils/types/auth/auth';
 import CustomTextField from '@/components/forms/theme-elements/CustomTextField';
 import CustomFormLabel from '@/components/forms/theme-elements/CustomFormLabel';
-import { useLoginMutation } from '@/store/slice/api/auth';
+import { useLoginMutation } from '@/store/slice/api/super-admin/auth';
 import { useRouter } from 'next/navigation';
 import Typography from '@mui/material/Typography';
+import './style.css';
 import './style.css';
 
 const AuthLogin = ({ title, subtitle, subtext }: loginType) => {
@@ -25,12 +26,20 @@ const AuthLogin = ({ title, subtitle, subtext }: loginType) => {
       const response = await login(authData).unwrap();
 
       console.log(response);
+      console.log(response);
       localStorage.setItem('admin_session', JSON.stringify(response));
 
       // redirect to homepage
-      router.push('/');
+      if (response?.role === 'SUPERADMIN') {
+        console.log('super admin');
+        router.push('/');
+      } else if (response?.role === 'STORE_OWNER') {
+        console.log('store owner');
+        router.push('/store-owner');
+      }
     } catch (err: any) {
       if (err?.data) {
+        setLoginError(() => ({ status: true, message: err?.data?.detail }));
         setLoginError(() => ({ status: true, message: err?.data?.detail }));
       }
       // handle error, e.g., display error message
@@ -54,26 +63,17 @@ const AuthLogin = ({ title, subtitle, subtext }: loginType) => {
         </Divider>
       </Box>
       <form onSubmit={handleSubmit}>
-        <Stack
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '1.2rem',
-            width: '100%',
-          }}
-        >
+        <Stack>
           <Box>
-            <Box>
-              <CustomFormLabel htmlFor="username">Username</CustomFormLabel>
-              <CustomTextField id="username" variant="outlined" fullWidth value={username} onChange={(e: any) => setUsername(e.target.value)} />
-            </Box>
-            <Box>
-              <CustomFormLabel htmlFor="password">Password</CustomFormLabel>
-              <CustomTextField id="password" type="password" variant="outlined" fullWidth value={password} onChange={(e: any) => setPassword(e.target.value)} />
-            </Box>
+            <CustomFormLabel htmlFor="username">Username</CustomFormLabel>
+            <CustomTextField id="username" variant="outlined" fullWidth value={username} onChange={(e: any) => setUsername(e.target.value)} />
           </Box>
-          <Box sx={{}}>{loginError.status && <p className="err-msg"> {loginError.message}</p>}</Box>
           <Box>
+            <CustomFormLabel htmlFor="password">Password</CustomFormLabel>
+            <CustomTextField id="password" type="password" variant="outlined" fullWidth value={password} onChange={(e: any) => setPassword(e.target.value)} />
+          </Box>
+          {loginError.status && <p className="err-msg">Error: {loginError.message}</p>}
+          <Box mt={4}>
             <Button color="primary" variant="contained" size="large" fullWidth type="submit" disabled={isLoading}>
               Sign In
             </Button>

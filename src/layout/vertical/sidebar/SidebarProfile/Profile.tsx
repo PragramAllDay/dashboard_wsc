@@ -14,6 +14,10 @@ export const Profile = () => {
   const lgUp = useMediaQuery((theme: any) => theme.breakpoints.up('lg'));
   const hideMenu = lgUp ? customizer.isCollapse && !customizer.isSidebarHover : '';
 
+  const handleLogout = () => {
+    localStorage.clear();
+  }
+
   return (
     <Box display={'flex'} alignItems="center" gap={2} sx={{ m: 3, p: 2, bgcolor: `${'secondary.light'}` }}>
       {!hideMenu ? (
@@ -32,10 +36,7 @@ export const Profile = () => {
                 href="/login"
                 aria-label="logout"
                 size="small"
-                onClick={() => {
-                  // empty local storage
-                  localStorage.clear();
-                }}
+                onClick={handleLogout}
               >
                 <IconPower size="20" />
               </IconButton>
