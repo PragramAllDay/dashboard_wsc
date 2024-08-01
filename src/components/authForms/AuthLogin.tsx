@@ -10,6 +10,7 @@ import { useLoginMutation } from '@/store/slice/api/super-admin/auth';
 import { useRouter } from 'next/navigation';
 import Typography from '@mui/material/Typography';
 import './style.css';
+import './style.css';
 
 const AuthLogin = ({ title, subtitle, subtext }: loginType) => {
   const router = useRouter();
@@ -25,6 +26,7 @@ const AuthLogin = ({ title, subtitle, subtext }: loginType) => {
       const response = await login(authData).unwrap();
 
       console.log(response);
+      console.log(response);
       localStorage.setItem('admin_session', JSON.stringify(response));
 
       // redirect to homepage
@@ -37,6 +39,7 @@ const AuthLogin = ({ title, subtitle, subtext }: loginType) => {
       }
     } catch (err: any) {
       if (err?.data) {
+        setLoginError(() => ({ status: true, message: err?.data?.detail }));
         setLoginError(() => ({ status: true, message: err?.data?.detail }));
       }
       // handle error, e.g., display error message
