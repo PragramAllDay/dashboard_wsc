@@ -1,41 +1,41 @@
+import { StoreBannerType } from "@/utils/types/cms";
 import { PaginationType } from "@/utils/types/pagination";
-import { ManageNewsLetterType } from "@/utils/types/cms";
-import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 interface StateType {
-    list: ManageNewsLetterType[];
     pagination: PaginationType;
+    list: StoreBannerType[];
 }
 
 const initialState: StateType = {
-    list: [],
     pagination: {
         page: 0,
         totalSize: 0,
         rowsPerPage: 10,
     },
+    list: [],
 }
 
-export const ManageNewsLetterSlice = createSlice({
-    name: "manage-news-letter",
+export const StoreBannerSlice = createSlice({
+    name: "manage-attribute",
     initialState,
     reducers: {
-        getManageNewsLetterList: (state: StateType, action) => {
+        getStoreBannerList: (state: StateType, action) => {
             state.list = action.payload.list
             state.pagination = action.payload.newPagination
         },
-        deleteManageNewsLetter: (state: StateType, action) => {
+        deleteStoreBanner: (state: StateType, action) => {
             state.list = state.list.filter((fle) => fle.id !== action.payload)
         },
-        updateManageNewsLetter: (state: StateType, action: PayloadAction<any>) => {
+        updateStoreBanner: (state: StateType, action: PayloadAction<any>) => {
             state.list = state.list.map((fle) =>
                 fle.id === action.payload.id
                     ? { ...action.payload }
                     : fle,
             );
         },
-        addManageNewsLetter: (state: StateType, action: PayloadAction<any>) => {
+        addStoreBanner: (state: StateType, action: PayloadAction<any>) => {
             state.list.push(action.payload)
         },
     }
@@ -43,12 +43,10 @@ export const ManageNewsLetterSlice = createSlice({
 
 
 export const {
-    getManageNewsLetterList,
-    updateManageNewsLetter,
-    deleteManageNewsLetter,
-    addManageNewsLetter,
-} = ManageNewsLetterSlice.actions
+    getStoreBannerList,
+    updateStoreBanner,
+    deleteStoreBanner,
+    addStoreBanner,
+} = StoreBannerSlice.actions
 
-export default ManageNewsLetterSlice.reducer
-
-
+export default StoreBannerSlice.reducer

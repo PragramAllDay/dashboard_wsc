@@ -1,14 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
 
+import WholeSaleInternationalReducer from './slice/store-owner/shipping/wholesale-international';
 import ManageCategoryReducer from './slice/store-owner/catalog/manage-categories';
 import ManageAttributeReducer from './slice/store-owner/catalog/manage-attribute';
 import ManageNewsLetterReducer from './slice/super-admin/cms/manage-news-letter';
 import WholeSaleLocalReducer from './slice/store-owner/shipping/wholesale-local';
 import ManageProductReducer from './slice/store-owner/catalog/manage-product';
+import ManageGalleriesReducer from './slice/store-owner/cms/manage-galleries';
 import ProductReviewReducer from './slice/super-admin/cms/product-review';
 import AbandonedCartReducer from './slice/super-admin/cms/abandoned-cart';
 import UserTrackingReducer from './slice/super-admin/cms/user-tracking';
+import ManagePagesReducer from './slice/store-owner/cms/manage-pages';
 import SalesAgentReducer from './slice/store-owner/sales-agents';
 import CmsPagesReducer from './slice/super-admin/cms/cms-pages';
 import BackOrderReducer from './slice/store-owner/back-order';
@@ -35,8 +38,11 @@ import { storeApi } from './slice/api/super-admin/store';
 import { stateApi } from './slice/api/super-admin/state';
 import { cityApi } from './slice/api/super-admin/city';
 import { authApi } from './slice/api/super-admin/auth';
-import WholeSaleInternationalReducer from './slice/store-owner/shipping/wholesale-international';
-import ManageGalleriesReducer from './slice/store-owner/cms/manage-galleries';
+import StoreBannerReducer from './slice/store-owner/cms/store-banner';
+import HomePageSettingReducer from './slice/store-owner/cms/home-page-setting';
+import ReceiptsReducer from './slice/store-owner/accounts/receipts';
+import ChequeToSupplierReducer from './slice/store-owner/accounts/cheques-to-suppliers';
+import CashRegistryReducer from './slice/store-owner/accounts/cash-register';
 
 
 export const store = configureStore({
@@ -44,11 +50,13 @@ export const store = configureStore({
     wholeSaleInternationalReducer: WholeSaleInternationalReducer,
     manageNewsLetterReducer: ManageNewsLetterReducer,
     manageAttributeReducer: ManageAttributeReducer,
-    manageGalleriesReducer:ManageGalleriesReducer,
+    manageGalleriesReducer: ManageGalleriesReducer,
     manageCategoryReducer: ManageCategoryReducer,
     wholeSaleLocalReducer: WholeSaleLocalReducer,
     productReviewReducer: ProductReviewReducer,
     manageProductReducer: ManageProductReducer,
+    storeBannerReducer: StoreBannerReducer,
+    managePageReducer: ManagePagesReducer,
     salesAgentReducer: SalesAgentReducer,
     abandonedCart: AbandonedCartReducer,
     backOrderReducer: BackOrderReducer,
@@ -65,6 +73,10 @@ export const store = configureStore({
     stateReducer: StateReducer,
     cityReducer: CityReducer,
     userReducer: UserReducer,
+    chequeToSupplierReducer: ChequeToSupplierReducer,
+    homePageSettingReducer: HomePageSettingReducer,
+    cashRegistryReducer: CashRegistryReducer,
+    receiptReducer: ReceiptsReducer,
 
     [storeApi.reducerPath]: storeApi.reducer,
     [countryApi.reducerPath]: countryApi.reducer,

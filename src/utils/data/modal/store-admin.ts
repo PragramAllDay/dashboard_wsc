@@ -5,8 +5,9 @@ export const modalManageAttributeTitle = ["Add Attribute", "Update Attribute"]
 export const modalManageProductTitle = ["Add product", "Update product"]
 export const modalSalesAgentTitle = ["Add sales agent", "Update sales agent"]
 export const modalUserTitle = ["Add user", "Update user"]
-export const modalManageGalleriesTitle = ["Add user", "Update user"]
-
+export const modalManageGalleriesTitle = ["Add galleries", "Update galleries"]
+export const modalManagePagesTitle = ["Add page", "Update pager"]
+export const modalStoreBannerTitle = ["Add banner", "Update banner"]
 
 export const modalManageCategoryField: FieldType[] = [
     {
@@ -846,4 +847,130 @@ export const modalManageGalleriesField: FieldType[] = [
         type: "text",
         column: 6,
     }
+]
+
+export const modalManagePagesField: FieldType[] = [
+    {
+        id: 1,
+        title: "Title",
+        alias: "title",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 2,
+        title: "Permalink",
+        alias: "permaLink",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 3,
+        title: "Sort Order",
+        alias: "sortOrder",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 4,
+        title: "Contents",
+        alias: "contents",
+        type: "text",
+        column: 6,
+    },
+]
+
+
+export const modalStoreBannerField: FieldType[] = [
+    {
+        id: 1,
+        title: "Link Url",
+        alias: "linkUrl",
+        type: "url",
+        column: 6,
+    },
+    {
+        id: 2,
+        title: "Image",
+        alias: "image",
+        type: "upload",
+        column: 6,
+    },
+    {
+        id: 3,
+        title: "Sort Order",
+        alias: "sortOrder",
+        type: "text",
+        column: 6,
+    },
+]
+
+
+export const securityFormField: FieldType[] = [
+    {
+        id: 1,
+        title: "Username",
+        alias: "username",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 2,
+        title: "Password",
+        alias: "password",
+        type: "password",
+        column: 6,
+    },
+    {
+        id: 3,
+        title: "New Password",
+        alias: "newPassword",
+        type: "password",
+        column: 6,
+    },
+    {
+        id: 4,
+        title: "Re-New Password",
+        alias: "reNewPassword",
+        type: "password",
+        column: 6,
+    },
+]
+
+export const storeSettingFormField: FieldType[] = [
+    {
+        id: 1,
+        title: "Title",
+        alias: "title",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 2,
+        title: "Meta-Description",
+        alias: "metaDescription",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 3,
+        title: "Meta-Keyword",
+        alias: "metaKeyword",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 4,
+        title: "Best Sellers",
+        alias: "bestSellers",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 5,
+        title: "Minimum Orders",
+        alias: "minimumOrder",
+        type: "text",
+        column: 6,
+    },
 ]

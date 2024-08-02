@@ -1,7 +1,8 @@
 import { ManageAttributeType, ManageCategoryType, ManageProductType } from "@/utils/types/catalog";
-import { ManageGalleriesType } from "@/utils/types/cms";
+import { ManageGalleriesType, ManagePagesType, SecurityType, StoreBannerType, StoreSettingType } from "@/utils/types/cms";
 import { SalesAgentType } from "@/utils/types/sale-agent";
 import { UserType } from "@/utils/types/user";
+import { string } from "zod";
 
 export const initialManageCategoryState: ManageCategoryType = {
     name: "",
@@ -125,5 +126,41 @@ export const initialUserState: UserType = {
 
 export const initialManageGalleriesState: ManageGalleriesType = {
     name: "",
+    status: false,
+}
+
+
+export const initialManagePagesState: ManagePagesType = {
+    title: "",
+    permaLink: "",
+    sortOrder: "",
+    contents: "",
+    status: false,
+}
+
+export const initialStoreBannerState: StoreBannerType = {
+    image: {},
+    linkUrl: "",
+    sortOrder: "",
+    status: false,
+}
+
+
+
+export const initialSecurityState: SecurityType = {
+    username: "",
+    password: "",
+    newPassword: "",
+    reNewPassword: "",
+    status: false,
+}
+
+
+export const initialStoreSettingState: StoreSettingType = {
+    title: "",
+    metaDescription: "",
+    metaKeyword: "",
+    bestSellers: "",
+    minimumOrder: 0,
     status: false,
 }

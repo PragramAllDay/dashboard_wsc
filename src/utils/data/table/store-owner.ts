@@ -1,4 +1,4 @@
-import { CellType } from "@/utils/types/table"
+    import { CellType } from "@/utils/types/table"
 
 export const manageCategoryColumns: CellType[] = [
     { id: 1, name: "Id" },
@@ -172,4 +172,149 @@ export const manageGalleriesCells: CellType[] = [
     { id: 2, name: "name" },
 ]
 
+
+export const managePagesColumns: CellType[] = [
+    { id: 1, name: "Id" },
+    { id: 2, name: "Title" },
+    { id: 3, name: "Contents" },
+    { id: 6, name: "Action" },
+]
+
+export const managePagesCells: CellType[] = [
+    { id: 1, name: "id" },
+    { id: 2, name: "title" },
+    { id: 2, name: "contents" },
+]
+
+
+export const storeBannerColumns: CellType[] = [
+    { id: 1, name: "Id" },
+    // { id: 2, name: "Image" },
+    { id: 2, name: "Url Link" },
+    { id: 3, name: "Sort Order" },
+    { id: 6, name: "Action" },
+]
+
+export const storeBannerCells: CellType[] = [
+    { id: 1, name: "id" },
+    // { id: 2, name: "image" },
+    { id: 2, name: "linkUrl" },
+    { id: 3, name: "sortOrder" },
+]
+
+
+export const homeBiggerImageColumns: CellType[] = [
+    { id: 1, name: "Id" },
+    // { id: 2, name: "Image" },
+    { id: 2, name: "Alt" },
+    { id: 3, name: "Url" },
+    // { id: 6, name: "Action" },
+]
+
+export const homeBiggerImageCells: CellType[] = [
+    { id: 1, name: "id" },
+    // { id: 2, name: "image" },
+    { id: 2, name: "alt" },
+    { id: 3, name: "linkUrl" },
+]
+
+
+
+export const homeSmallImageColumns: CellType[] = [
+    { id: 1, name: "Id" },
+    // { id: 2, name: "Image" },
+    { id: 2, name: "Alt" },
+    { id: 3, name: "Url" },
+    { id: 3, name: "Sort Order" },
+    // { id: 6, name: "Action" },
+]
+
+export const homeSmallImageCells: CellType[] = [
+    { id: 1, name: "id" },
+    // { id: 2, name: "image" },
+    { id: 2, name: "alt" },
+    { id: 3, name: "linkUrl" },
+    { id: 4, name: "sortOrder" },
+]
+
+export const homeBannerImageColumns: CellType[] = [
+    { id: 1, name: "Id" },
+    // { id: 2, name: "Image" },
+    { id: 2, name: "Alt" },
+    { id: 3, name: "Url" },
+    { id: 3, name: "Sort Order" },
+    // { id: 6, name: "Action" },
+]
+
+export const homeBannerImageCells: CellType[] = [
+    { id: 1, name: "id" },
+    // { id: 2, name: "image" },
+    { id: 2, name: "alt" },
+    { id: 3, name: "linkUrl" },
+    { id: 4, name: "sortOrder" },
+]
+
+
+export const receiptColumns: CellType[] = [
+    { id: 1, name: "Id" },
+    { id: 2, name: "RCPT#" },
+    { id: 3, name: "Order" },
+    { id: 4, name: "Date" },
+    { id: 5, name: "Customer Name" },
+    { id: 6, name: "Company" },
+    { id: 7, name: "Amount" },
+    { id: 8, name: "Payment Method" },
+    { id: 9, name: "Description" },
+]
+
+export const receiptCells: CellType[] = [
+    { id: 1, name: "id" },
+    { id: 2, name: "rcpt" },
+    { id: 3, name: "order" },
+    { id: 4, name: "date" },
+    { id: 5, name: "customerName" },
+    { id: 6, name: "company" },
+    { id: 7, name: "amount" },
+    { id: 8, name: "paymentMethod" },
+    { id: 9, name: "description" },
+]
+
+export const chequeToSupplierColumns: CellType[] = [
+    { id: 1, name: "Id" },
+    { id: 2, name: "Cheque" },
+    { id: 3, name: "Supplier" },
+    { id: 4, name: "Issue Date" },
+    { id: 5, name: "Cheque Date" },
+    { id: 6, name: "Amount" },
+    { id: 7, name: "Date Created" },
+]
+
+export const chequeToSupplierCells: CellType[] = [
+    { id: 1, name: "id" },
+    { id: 2, name: "cheque" },
+    { id: 3, name: "supplier" },
+    { id: 4, name: "issueDate" },
+    { id: 5, name: "chequeDate" },
+    { id: 6, name: "amount" },
+    { id: 7, name: "dateCreated" },
+]
+
+
+export const cashRegisterColumns: CellType[] = [
+    { id: 1, name: "Id" },
+    { id: 2, name: "Date" },
+    { id: 3, name: "User" },
+    { id: 4, name: "Opening Balance" },
+    { id: 5, name: "Cash Sale" },
+    { id: 6, name: "Closing" },
+]
+
+export const cashRegisterCells: CellType[] = [
+    { id: 1, name: "id" },
+    { id: 2, name: "date" },
+    { id: 3, name: "user" },
+    { id: 4, name: "openingBalance" },
+    { id: 5, name: "cashSale" },
+    { id: 6, name: "closing" },
+]
 

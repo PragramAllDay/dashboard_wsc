@@ -66,7 +66,6 @@ const ReusableTable2: NextPage<Props> = ({
   const [open, setOpen] = useState({ isModal: false, id: "" });
   const AddButton = !removeAddButton ? <ModalAddButton handleCreate={handleCreate} /> : <></>
   const [values, setValues] = useState({});
-  const [isDelete, setIsDelete] = useState()
 
   const handleClickOpen = (id: string) => {
     setOpen({ isModal: true, id: id });

@@ -255,6 +255,12 @@ const MenuitemsTwo: MenuitemsType[] = [
     children: [
       {
         id: uniqueId(),
+        title: 'Account Report',
+        icon: IconPoint,
+        href: '/store-owner/accounts',
+      },
+      {
+        id: uniqueId(),
         title: 'Web Sale Report',
         icon: IconPoint,
         href: '/store-owner/accounts/web-sale-report',

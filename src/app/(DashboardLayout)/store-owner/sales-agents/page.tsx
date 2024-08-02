@@ -1,7 +1,7 @@
 "use client";
 
 import { modalSalesAgentField, modalSalesAgentTitle } from "@/utils/data/modal/store-admin";
-import { SalesAgentCells, SalesAgentColumns } from "@/utils/data/table/store-admin";
+import { SalesAgentCells, SalesAgentColumns } from "@/utils/data/table/store-owner";
 import { initialSalesAgentState } from "@/utils/data/initial-state/store-owner";
 import PageContainer from "@/components/container/PageContainer";
 import ReusableTable2 from "@/components/reusable-table-2";
@@ -17,7 +17,7 @@ import {
   usePatchStoresMutation,
   usePostStoresMutation
 } from "@/store/slice/api/super-admin/store";
-import { salesAgentFilterField } from "@/utils/data/table-filter/store-admin";
+import { salesAgentFilterField } from "@/utils/data/table-filter/store-owner";
 import { SalesAgentType } from "@/utils/types/sale-agent";
 import { addSalesAgent, deleteSalesAgent, getSalesAgentList, updateSalesAgent } from "@/store/slice/store-owner/sales-agents";
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { modalManageProductField, modalManageProductTitle } from "@/utils/data/modal/store-admin";
-import { manageProductCells, manageProductColumns } from "@/utils/data/table/store-admin";
+import { manageProductCells, manageProductColumns } from "@/utils/data/table/store-owner";
 import { initialManageProductState } from "@/utils/data/initial-state/store-owner";
 import PageContainer from "@/components/container/PageContainer";
 import ReusableTable2 from "@/components/reusable-table-2";
@@ -18,7 +18,7 @@ import {
     usePostStoresMutation
 } from "@/store/slice/api/super-admin/store";
 import { ManageProductType } from "@/utils/types/catalog";
-import { manageProductFilterField } from "@/utils/data/table-filter/store-admin";
+import { manageProductFilterField } from "@/utils/data/table-filter/store-owner";
 import { addManageProduct, deleteManageProduct, getManageProductList, updateManageProduct } from "@/store/slice/store-owner/catalog/manage-product";
 
 

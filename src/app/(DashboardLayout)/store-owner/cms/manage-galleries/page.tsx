@@ -1,7 +1,7 @@
 "use client";
 
 import { modalManageGalleriesField, modalManageGalleriesTitle } from "@/utils/data/modal/store-admin";
-import { manageGalleriesCells, manageGalleriesColumns } from "@/utils/data/table/store-admin";
+import { manageGalleriesCells, manageGalleriesColumns } from "@/utils/data/table/store-owner";
 import { initialManageGalleriesState } from "@/utils/data/initial-state/store-owner";
 import PageContainer from "@/components/container/PageContainer";
 import ReusableTable2 from "@/components/reusable-table-2";

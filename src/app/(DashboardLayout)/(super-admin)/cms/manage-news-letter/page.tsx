@@ -20,8 +20,8 @@ import { ModalMod } from "@/utils/enum";
 
 export default function ManageNewsLetter() {
     const [isModal, setIsModal] = useState<boolean>(false);
-    const pagination: PaginationType = useSelector((state) => state.manageNewsLetterReducer.manageNewsLetterPagination)
-    const ManageNewsLetter: ManageNewsLetterType[] = useSelector((state) => state.manageNewsLetterReducer.manageNewsLetterList)
+    const pagination: PaginationType = useSelector((state) => state.manageNewsLetterReducer.pagination)
+    const ManageNewsLetter: ManageNewsLetterType[] = useSelector((state) => state.manageNewsLetterReducer.list)
     const dispatch = useDispatch()
     const [editStore, setEditStore] = useState<ManageNewsLetterType>({
         id: "",

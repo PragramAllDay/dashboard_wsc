@@ -1,7 +1,7 @@
 "use client";
 
 import { modalManageAttributeField, modalManageAttributeTitle } from "@/utils/data/modal/store-admin";
-import { manageAttributeCells, manageAttributeColumns } from "@/utils/data/table/store-admin";
+import { manageAttributeCells, manageAttributeColumns } from "@/utils/data/table/store-owner";
 import { initialManageAttributeState } from "@/utils/data/initial-state/store-owner";
 import PageContainer from "@/components/container/PageContainer";
 import ReusableTable2 from "@/components/reusable-table-2";
@@ -24,7 +24,7 @@ import {
   getManageAttributeList,
   updateManageAttribute
 } from "@/store/slice/store-owner/catalog/manage-attribute";
-import { manageAttributeFilterField } from "@/utils/data/table-filter/store-admin";
+import { manageAttributeFilterField } from "@/utils/data/table-filter/store-owner";
 
 
 export default function ManageAttribute() {

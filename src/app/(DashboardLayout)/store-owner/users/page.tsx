@@ -1,7 +1,7 @@
 "use client";
 
 import { modalUserField, modalUserTitle } from "@/utils/data/modal/store-admin";
-import { userCells, userColumns } from "@/utils/data/table/store-admin";
+import { userCells, userColumns } from "@/utils/data/table/store-owner";
 import { initialUserState } from "@/utils/data/initial-state/store-owner";
 import PageContainer from "@/components/container/PageContainer";
 import ReusableTable2 from "@/components/reusable-table-2";

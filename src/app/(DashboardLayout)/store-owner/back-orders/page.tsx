@@ -9,7 +9,7 @@ import { PaginationType } from "@/utils/types/pagination";
 
 import { BackOrderType } from "@/utils/types/web-order";
 
-import { backOrderListCells, backOrderListColumns } from "@/utils/data/table/store-admin";
+import { backOrderListCells, backOrderListColumns } from "@/utils/data/table/store-owner";
 import { getBackOrderList } from "@/store/slice/store-owner/back-order";
 import { useGetStoresQuery } from "@/store/slice/api/super-admin/store";
 

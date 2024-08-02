@@ -22,7 +22,7 @@ import {
 import {
   manageCategoryCells,
   manageCategoryColumns
-} from "@/utils/data/table/store-admin";
+} from "@/utils/data/table/store-owner";
 import {
   useDeleteStoresMutation,
   useGetStoresQuery,

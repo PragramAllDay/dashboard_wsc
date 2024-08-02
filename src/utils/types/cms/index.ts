@@ -81,3 +81,52 @@ export type ManageGalleriesType = {
     name: string;
     status?: boolean;
 }
+
+
+export type ManagePagesType = {
+    id?: string;
+    title: string;
+    permaLink: string;
+    sortOrder: string;
+    contents: string;
+    status?: boolean;
+}
+
+export type StoreBannerType = {
+    id?: string;
+    image: any;
+    linkUrl: string;
+    sortOrder: string;
+    status?: boolean;
+}
+
+
+export type SecurityType = {
+    id?: string;
+    username: string;
+    password: string;
+    newPassword: string;
+    reNewPassword: string;
+    status?: boolean;
+}
+
+
+export type StoreSettingType = {
+    id?: string;
+    title: string;
+    metaDescription: string;
+    metaKeyword: string;
+    bestSellers: string;
+    minimumOrder: number;
+    status?: boolean;
+}
+
+export type HomePageSettingType = {
+    id?: string;
+    image: any;
+    alt: string;
+    url: string;
+    sortOrder: string;
+    status?: boolean;
+}
+

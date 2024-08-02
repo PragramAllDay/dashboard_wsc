@@ -7,7 +7,7 @@ import PageContainer from "@/components/container/PageContainer";
 import ReusableTable2 from "@/components/reusable-table-2";
 import { PaginationType } from "@/utils/types/pagination";
 
-import { wholeSaleInternationalListCells, wholeSaleInternationalListColumns } from "@/utils/data/table/store-admin";
+import { wholeSaleInternationalListCells, wholeSaleInternationalListColumns } from "@/utils/data/table/store-owner";
 
 import { getWholeSaleInternationalList } from "@/store/slice/store-owner/shipping/wholesale-international";
 import { WholeSaleInternationalType } from "@/utils/types/shipping";
