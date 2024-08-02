@@ -13,11 +13,11 @@ const Logo = (session: any) => {
     overflow: 'hidden',
     display: 'block',
   }));
-  console.log(session.session.session);
+  console.log(session);
 
   if (customizer.activeDir === 'ltr') {
     return (
-      <LinkStyled href={session.session.session.role === 'STORE_OWNER' ? '/store-owner' : '/'}>
+      <LinkStyled href={session?.session?.session?.role === 'STORE_OWNER' ? '/store-owner' : '/'}>
         {customizer.activeMode === 'dark' ? (
           <Image src="/images/logos/logo.webp" alt="logo" height={customizer.TopbarHeight} width={250} priority />
         ) : (
@@ -28,7 +28,7 @@ const Logo = (session: any) => {
   }
 
   return (
-    <LinkStyled href={session.session.session.role === 'STORE_OWNER' ? '/store-owner' : '/'}>
+    <LinkStyled href={session?.session?.session?.role === 'STORE_OWNER' ? '/store-owner' : '/'}>
       {customizer.activeMode === 'dark' ? (
         <Image src="/images/logos/logo.webp" alt="logo" height={customizer.TopbarHeight} width={250} priority />
       ) : (
