@@ -1,6 +1,7 @@
 import { ManageAttributeType, ManageCategoryType, ManageProductType } from "@/utils/types/catalog";
 import { ManageGalleriesType, ManagePagesType, SecurityType, StoreBannerType, StoreSettingType } from "@/utils/types/cms";
 import { SalesAgentType } from "@/utils/types/sale-agent";
+import { MakeReceiptsCCType, MakeReceiptsWebType } from "@/utils/types/sale-and-order";
 import { InvoicesType, PaymentType } from "@/utils/types/supplier";
 import { UserType } from "@/utils/types/user";
 import { string } from "zod";
@@ -202,3 +203,25 @@ export const initialPaymentState: PaymentType = {
     status: false,
 }
 
+
+export const initialMakeReceiptsCCState: MakeReceiptsCCType = {
+    customer: "",
+    invoiceAmount: 0,
+    creditNoteAmount: 0,
+    total: 0,
+    date: "",
+    description: "",
+    paymentMethod: "",
+}
+
+
+export const initialMakeReceiptsWebState: MakeReceiptsWebType = {
+    customer: "",
+    invoiceAmount: 0,
+    creditNoteAmount: 0,
+    total: 0,
+    transaction: "",
+    date: "",
+    description: "",
+    paymentMethod: "",
+}

@@ -1173,3 +1173,154 @@ export const modalPaymentField: FieldType[] = [
 ]
 
 
+export const makeReceiptsCCFormField: FieldType[] = [
+    {
+        id: 1,
+        title: "Customer",
+        alias: "customer",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 2,
+        title: "Invoices Amount (£)",
+        alias: "invoiceAmount",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 3,
+        title: "Credit Notes Amount (£)",
+        alias: "creditNoteAmount",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 4,
+        title: "Total (£)",
+        alias: "total",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 5,
+        title: "Date",
+        alias: "date",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 6,
+        title: "Description",
+        alias: "description",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 7,
+        title: "Payment Method",
+        alias: "paymentMethod",
+        type: "select",
+        column: 6,
+        isSelect: true,
+        selectField: [
+            {
+                id: 1,
+                name: "Cash",
+                value: "cash",
+            },
+            {
+                id: 2,
+                name: "Card",
+                value: "card",
+            },
+            {
+                id: 3,
+                name: "Paypal",
+                value: "paypal",
+            }
+        ]
+    },
+]
+
+
+
+export const makeReceiptsWebFormField: FieldType[] = [
+    {
+        id: 1,
+        title: "Customer",
+        alias: "customer",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 2,
+        title: "Invoices Amount (£)",
+        alias: "invoiceAmount",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 3,
+        title: "Credit Notes Amount (£)",
+        alias: "creditNoteAmount",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 4,
+        title: "Total (£)",
+        alias: "total",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 5,
+        title: "Transaction",
+        alias: "transaction",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 6,
+        title: "Date",
+        alias: "date",
+        type: "text",
+        column: 6,
+    },
+    {
+        id:7,
+        title: "Description",
+        alias: "description",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 8,
+        title: "Payment Method",
+        alias: "paymentMethod",
+        type: "select",
+        column: 6,
+        isSelect: true,
+        selectField: [
+            {
+                id: 1,
+                name: "Cash",
+                value: "cash",
+            },
+            {
+                id: 2,
+                name: "Card",
+                value: "card",
+            },
+            {
+                id: 3,
+                name: "Paypal",
+                value: "paypal",
+            }
+        ]
+    },
+]
+
+
+

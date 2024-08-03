@@ -3,12 +3,12 @@
 import { creditNoteCells, creditNoteColumns } from "@/utils/data/table/store-owner";
 import { creditNoteFilterField } from "@/utils/data/table-filter/store-owner";
 import PageContainer from "@/components/container/PageContainer";
-import { CashRegistryType } from "@/utils/types/accounts";
 import ReusableTable2 from "@/components/reusable-table-2";
 import { PaginationType } from "@/utils/types/pagination";
 import { useDispatch, useSelector } from "@/store/hooks";
 import Box from "@mui/material/Box";
 import { useEffect } from "react";
+import { CreditNoteType } from "@/utils/types/supplier";
 // import {
 //     deleteStore,
 //     getStore,
@@ -18,8 +18,8 @@ import { useEffect } from "react";
 
 
 function CreditNote() {
-    const pagination: PaginationType = useSelector((state) => state.cashRegistryReducer.pagination)
-    const creditNoteList: CashRegistryType[] = useSelector((state) => state.cashRegistryReducer.list)
+    const pagination: PaginationType = useSelector((state) => state.creditNoteReducer.pagination)
+    const creditNoteList: CreditNoteType[] = useSelector((state) => state.creditNoteReducer.list)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -84,13 +84,13 @@ function CreditNote() {
     };
 
     return (
-        <PageContainer title="Cheques" description="this is Cheques">
+        <PageContainer title="Supplier Credit Note" description="this is Supplier Credit Note">
             <Box mt={3}>
                 <ReusableTable2
                     rows={creditNoteList}
                     columns={creditNoteColumns}
                     cells={creditNoteCells}
-                    title={"Cheques"}
+                    title={"Supplier Credit Note"}
                     removeAction={true}
                     removeAddButton={true}
                     pagination={pagination}

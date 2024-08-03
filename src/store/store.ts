@@ -38,6 +38,7 @@ import { storeApi } from './slice/api/super-admin/store';
 import { stateApi } from './slice/api/super-admin/state';
 import { cityApi } from './slice/api/super-admin/city';
 import { authApi } from './slice/api/super-admin/auth';
+
 import StoreBannerReducer from './slice/store-owner/cms/store-banner';
 import HomePageSettingReducer from './slice/store-owner/cms/home-page-setting';
 import ReceiptsReducer from './slice/store-owner/accounts/receipts';
@@ -48,45 +49,57 @@ import InvoicesReducer from './slice/store-owner/suppliers/invoices';
 import PaymentReducer from './slice/store-owner/suppliers/payment';
 import CreditNoteReducer from './slice/store-owner/suppliers/credit-note';
 import SupplierOrderReducer from './slice/store-owner/suppliers/supplier-orders';
+import AllOrderReducer from './slice/store-owner/sales-and-order/all-order';
+import WebSiteOrderReducer from './slice/store-owner/sales-and-order/website-order';
+import CashAndCarryOrderReducer from './slice/store-owner/sales-and-order/cash-and-carry-order';
+import BadDebtReducer from './slice/store-owner/sales-and-order/bad-depts';
+import MonthWiseSaleReducer from './slice/store-owner/sales-and-order/month-wise-sale';
+import PurchaseOrderReducer from './slice/store-owner/sales-and-order/purchase-order';
 
 
 export const store = configureStore({
   reducer: {
     wholeSaleInternationalReducer: WholeSaleInternationalReducer,
+    chequeToSupplierReducer: ChequeToSupplierReducer,
     manageNewsLetterReducer: ManageNewsLetterReducer,
+    homePageSettingReducer: HomePageSettingReducer,
     manageAttributeReducer: ManageAttributeReducer,
     manageGalleriesReducer: ManageGalleriesReducer,
     manageCategoryReducer: ManageCategoryReducer,
     wholeSaleLocalReducer: WholeSaleLocalReducer,
     productReviewReducer: ProductReviewReducer,
+    supplierOrderReducer: SupplierOrderReducer,
     manageProductReducer: ManageProductReducer,
+    cashRegistryReducer: CashRegistryReducer,
     storeBannerReducer: StoreBannerReducer,
     managePageReducer: ManagePagesReducer,
     salesAgentReducer: SalesAgentReducer,
+    creditNoteReducer: CreditNoteReducer,
     abandonedCart: AbandonedCartReducer,
+    allSupplierReducer: SupplierReducer,
     backOrderReducer: BackOrderReducer,
+    allOrderReducer: AllOrderReducer,
     userTracking: UserTrackingReducer,
     webOrderReducer: WebOrderReducer,
     cmsPagesReducer: CmsPagesReducer,
     categoryReducer: CategoryReducer,
     customerReducer: CustomerReducer,
+    receiptReducer: ReceiptsReducer,
     accountReducer: AccountsReducer,
+    invoiceReducer: InvoicesReducer,
     countryReducer: CountryReducer,
+    paymentReducer: PaymentReducer,
     customizer: CustomizerReducer,
     storesReducer: StoresReducer,
     sliderReducer: SliderReducer,
     stateReducer: StateReducer,
     cityReducer: CityReducer,
     userReducer: UserReducer,
-    chequeToSupplierReducer: ChequeToSupplierReducer,
-    homePageSettingReducer: HomePageSettingReducer,
-    cashRegistryReducer: CashRegistryReducer,
-    receiptReducer: ReceiptsReducer,
-    allSupplierReducer: SupplierReducer,
-    invoiceReducer: InvoicesReducer,
-    paymentReducer: PaymentReducer,
-    creditNoteReducer: CreditNoteReducer,
-    supplierOrderReducer: SupplierOrderReducer,
+    webSiteReducer: WebSiteOrderReducer,
+    cashAndCarryOrderReducer: CashAndCarryOrderReducer,
+    badDebtsReducer: BadDebtReducer,
+    monthWiseSaleReducer: MonthWiseSaleReducer,
+    purchaseOrderReducer: PurchaseOrderReducer,
 
     [storeApi.reducerPath]: storeApi.reducer,
     [countryApi.reducerPath]: countryApi.reducer,
@@ -117,22 +130,35 @@ export const store = configureStore({
 
 const rootReducer = combineReducers({
   wholeSaleInternationalReducer: WholeSaleInternationalReducer,
+  chequeToSupplierReducer: ChequeToSupplierReducer,
   manageNewsLetterReducer: ManageNewsLetterReducer,
+  homePageSettingReducer: HomePageSettingReducer,
   manageAttributeReducer: ManageAttributeReducer,
+  manageGalleriesReducer: ManageGalleriesReducer,
   manageCategoryReducer: ManageCategoryReducer,
   wholeSaleLocalReducer: WholeSaleLocalReducer,
   productReviewReducer: ProductReviewReducer,
+  supplierOrderReducer: SupplierOrderReducer,
   manageProductReducer: ManageProductReducer,
+  cashRegistryReducer: CashRegistryReducer,
+  storeBannerReducer: StoreBannerReducer,
+  managePageReducer: ManagePagesReducer,
   salesAgentReducer: SalesAgentReducer,
+  creditNoteReducer: CreditNoteReducer,
   abandonedCart: AbandonedCartReducer,
+  allSupplierReducer: SupplierReducer,
   backOrderReducer: BackOrderReducer,
+  allOrderReducer: AllOrderReducer,
   userTracking: UserTrackingReducer,
   webOrderReducer: WebOrderReducer,
   cmsPagesReducer: CmsPagesReducer,
   categoryReducer: CategoryReducer,
   customerReducer: CustomerReducer,
+  receiptReducer: ReceiptsReducer,
   accountReducer: AccountsReducer,
+  invoiceReducer: InvoicesReducer,
   countryReducer: CountryReducer,
+  paymentReducer: PaymentReducer,
   customizer: CustomizerReducer,
   storesReducer: StoresReducer,
   sliderReducer: SliderReducer,

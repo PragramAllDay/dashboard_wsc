@@ -11,7 +11,6 @@ export const manageCategoryCells: CellType[] = [
     { id: 2, name: "name" },
 ]
 
-
 export const manageAttributeColumns: CellType[] = [
     { id: 1, name: "Id" },
     { id: 2, name: "Name" },
@@ -482,6 +481,228 @@ export const supplierOrderCells: CellType[] = [
     { id: 5, name: "vat" },
     { id: 6, name: "amountIV" },
     { id: 7, name: "orderStatus" },
+]
+
+
+export const allOrderColumns: CellType[] = [
+    { id: 1, name: "Id" },
+    { id: 2, name: "Invoice" },
+    { id: 3, name: "Date" },
+    { id: 4, name: "Ref" },
+    { id: 5, name: "Customer" },
+    { id: 6, name: "Email" },
+    { id: 7, name: "Sub-Total Standard" },
+    { id: 8, name: "Sub-Total Zero Rated" },
+    { id: 9, name: "Vat" },
+    { id: 10, name: "Discount" },
+    { id: 11, name: "Shipping" },
+    { id: 12, name: "Amount" },
+    { id: 13, name: "Remaining" },
+    { id: 14, name: "Status" },
+    { id: 15, name: "Pmt. Date" },
+]
+
+
+export const allOrderCells: CellType[] = [
+    { id: 1, name: "id" },
+    { id: 2, name: "invoiceNo" },
+    { id: 3, name: "date" },
+    { id: 4, name: "refund" },
+    { id: 5, name: "customer" },
+    { id: 6, name: "email" },
+    { id: 7, name: "subTotalStandard" },
+    { id: 8, name: "subTotalStandard" },
+    { id: 9, name: "vat" },
+    { id: 10, name: "discount" },
+    { id: 11, name: "shipping" },
+    { id: 12, name: "amount" },
+    { id: 13, name: "remaining" },
+    { id: 14, name: "orderStatus" },
+    { id: 15, name: "pmtdate" },
+]
+
+
+
+
+export const webSiteOrderColumns: CellType[] = [
+    { id: 1, name: "Id" },
+    { id: 2, name: "Order" },
+    { id: 3, name: "Date" },
+    { id: 4, name: "Customer" },
+    { id: 5, name: "Sub-Total Standard" },
+    { id: 6, name: "Sub-Total Zero Rated" },
+    { id: 7, name: "Vat" },
+    { id: 8, name: "Shipping" },
+    { id: 9, name: "Discount" },
+    { id: 10, name: "Amount" },
+    { id: 11, name: "Remaining" },
+    { id: 12, name: "Refund" },
+    { id: 13, name: "Payment" },
+    { id: 14, name: "Paid" },
+    { id: 15, name: "Printed" },
+    { id: 16, name: "Shipped" },
+]
+
+
+export const webSiteOrderCells: CellType[] = [
+    { id: 1, name: "id" },
+    { id: 2, name: "orderNo" },
+    { id: 3, name: "date" },
+    { id: 4, name: "customer" },
+    { id: 5, name: "subTotalStandard" },
+    { id: 6, name: "subTotalZeroRated" },
+    { id: 7, name: "vat" },
+    { id: 8, name: "shipping" },
+    { id: 9, name: "discount" },
+    { id: 10, name: "amount" },
+    { id: 11, name: "remaining" },
+    { id: 12, name: "refund" },
+    { id: 13, name: "payment" },
+    { id: 14, name: "paid" },
+    { id: 15, name: "printed" },
+    { id: 16, name: "shipped" },
+]
+
+
+
+export const cashAndCarryOrderColumns: CellType[] = [
+    { id: 1, name: "Id" },
+    { id: 2, name: "Invoice" },
+    { id: 3, name: "Date" },
+    { id: 4, name: "Ref" },
+    { id: 5, name: "Customer" },
+    { id: 6, name: "Email" },
+    { id: 7, name: "Sub-Total Standard" },
+    { id: 8, name: "Sub-Total Zero Rated" },
+    { id: 9, name: "Vat" },
+    { id: 10, name: "Discount" },
+    { id: 11, name: "Shipping" },
+    { id: 12, name: "Amount" },
+    { id: 13, name: "Remaining" },
+    { id: 14, name: "Status" },
+    { id: 15, name: "Pmt. Date" },
+]
+
+
+export const cashAndCarryOrderCells: CellType[] = [
+    { id: 1, name: "id" },
+    { id: 2, name: "invoiceNo" },
+    { id: 3, name: "date" },
+    { id: 4, name: "refund" },
+    { id: 5, name: "customer" },
+    { id: 6, name: "email" },
+    { id: 7, name: "subTotalStandard" },
+    { id: 8, name: "subTotalStandard" },
+    { id: 9, name: "vat" },
+    { id: 10, name: "discount" },
+    { id: 11, name: "shipping" },
+    { id: 12, name: "amount" },
+    { id: 13, name: "remaining" },
+    { id: 14, name: "orderStatus" },
+    { id: 15, name: "pmtdate" },
+]
+
+
+export const saleOrderCreditNoteColumns: CellType[] = [
+    { id: 1, name: "Id" },
+    { id: 2, name: "CR" },
+    { id: 3, name: "Date" },
+    { id: 4, name: "Customer Name" },
+    { id: 5, name: "Company" },
+    { id: 6, name: "Sub-Total Standard" },
+    { id: 7, name: "Vat" },
+    { id: 8, name: "Others" },
+    { id: 9, name: "Others Amount" },
+    { id: 10, name: "Amount" },
+    { id: 11, name: "Adjusted" },
+    { id: 12, name: "Payment Ref" },
+    { id: 13, name: "Payment Method" },
+    // { id: 6, name: "Action" },
+]
+
+export const saleOrderCreditNoteCells: CellType[] = [
+    { id: 1, name: "id" },
+    { id: 2, name: "creditNote" },
+    { id: 3, name: "date" },
+    { id: 4, name: "customerName" },
+    { id: 5, name: "company" },
+    { id: 6, name: "subTotal" },
+    { id: 7, name: "vat" },
+    { id: 8, name: "others" },
+    { id: 9, name: "othersAmount" },
+    { id: 10, name: "amount" },
+    { id: 11, name: "adjusted" },
+    { id: 12, name: "paymentRef" },
+    { id: 13, name: "paymentMethod" },
+]
+
+
+export const badDebtsCellsColumns: CellType[] = [
+    { id: 1, name: "Id" },
+    { id: 2, name: "Name" },
+    { id: 2, name: "Company" },
+    { id: 2, name: "Email" },
+    { id: 2, name: "Total" },
+]
+
+export const badDebtsCells: CellType[] = [
+    { id: 1, name: "id" },
+    { id: 2, name: "name" },
+    { id: 3, name: "company" },
+    { id: 4, name: "email" },
+    { id: 5, name: "total" },
+]
+
+
+export const monthWiseSaleCellsColumns: CellType[] = [
+    { id: 1, name: "Id" },
+    // { id: 2, name: "IMG" },
+    { id: 3, name: "Product Code" },
+    { id: 4, name: "Product Name" },
+    { id: 5, name: "Attribute" },
+    { id: 6, name: "Sale" },
+    { id: 7, name: "stock" },
+]
+
+export const monthWiseSaleCells: CellType[] = [
+    { id: 1, name: "id" },
+    // { id: 2, name: "image" },
+    { id: 3, name: "code" },
+    { id: 4, name: "name" },
+    { id: 5, name: "attribute" },
+    { id: 6, name: "sale" },
+    { id: 7, name: "stock" },
+]
+
+
+export const purchaseOrderColumns: CellType[] = [
+    { id: 1, name: "Id" },
+    { id: 2, name: "PO Number" },
+    { id: 3, name: "Date" },
+    { id: 4, name: "Customer" },
+    { id: 5, name: "Email" },
+    { id: 6, name: "PO Date" },
+    { id: 7, name: "Exp. Coll. Date" },
+    { id: 8, name: "Coll. Date" },
+    { id: 9, name: "Invoice" },
+    { id: 10, name: "Source" },
+    { id: 11, name: "Contact" },
+    { id: 12, name: "Comments" },
+]
+
+export const purchaseOrderCells: CellType[] = [
+    { id: 1, name: "id" },
+    { id: 2, name: "poNumber" },
+    { id: 3, name: "date" },
+    { id: 4, name: "customer" },
+    { id: 5, name: "email" },
+    { id: 6, name: "poDate" },
+    { id: 7, name: "expCollDate" },
+    { id: 8, name: "collDate" },
+    { id: 9, name: "invoiceNo" },
+    { id: 10, name: "source" },
+    { id: 11, name: "contact" },
+    { id: 12, name: "comments" },
 ]
 
 

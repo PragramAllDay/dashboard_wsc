@@ -26,7 +26,6 @@ export type InvoicesType = {
     notes: string;
     attachInvoice: any;
     attachDeliveryNote: any;
-
     ourRef?: string;
     paid?: number;
     invoiceStatus?: string;
@@ -69,7 +68,10 @@ export type CreditNoteType = {
     adjusted?: string;
     paymentRef?: string;
     supplierName: string;
+    customerName?: string;
+    paymentMethod?: string;
     subTotal?: number;
+    company?: string;
     othersAmount?: number;
     status?: boolean;
 }
