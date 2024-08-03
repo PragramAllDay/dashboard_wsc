@@ -8,6 +8,9 @@ export const modalUserTitle = ["Add user", "Update user"]
 export const modalManageGalleriesTitle = ["Add galleries", "Update galleries"]
 export const modalManagePagesTitle = ["Add page", "Update pager"]
 export const modalStoreBannerTitle = ["Add banner", "Update banner"]
+export const modalInvoicesTitle = ["Add invoice", "Update invoice"]
+export const modalPaymentTitle = ["Add invoice", "Update invoice"]
+
 
 export const modalManageCategoryField: FieldType[] = [
     {
@@ -974,3 +977,199 @@ export const storeSettingFormField: FieldType[] = [
         column: 6,
     },
 ]
+
+
+export const modalInvoicesField: FieldType[] = [
+    {
+        id: 1,
+        title: "Supplier",
+        alias: "supplier",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 2,
+        title: "Invoice no",
+        alias: "invoiceNot",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 3,
+        title: "Account no",
+        alias: "accountNot",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 4,
+        title: "Sub-Total Standard (£)",
+        alias: "subTotalStandard",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 5,
+        title: "Sub-Total Zero Rated (£)",
+        alias: "subTotalZeroRated",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 6,
+        title: "VAT (£)",
+        alias: "vat",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 7,
+        title: "Total(£)",
+        alias: "total",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 8,
+        title: "Invoice Date",
+        alias: "invoiceDate",
+        type: "date",
+        column: 6,
+    },
+    {
+        id: 9,
+        title: "Due Date",
+        alias: "dueDate",
+        type: "date",
+        column: 6,
+    },
+    {
+        id: 10,
+        title: "Delivery Date",
+        alias: "deliveryDate",
+        type: "date",
+        column: 6,
+    },
+    {
+        id: 11,
+        title: "Description",
+        alias: "description",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 12,
+        title: "Notes",
+        alias: "notes",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 13,
+        title: "Attach Invoice",
+        alias: "attachInvoice",
+        type: "upload",
+        column: 6,
+    },
+    {
+        id: 14,
+        title: "Attach Delivery Note",
+        alias: "attachDeliveryNote",
+        type: "upload",
+        column: 6,
+    },
+]
+
+
+export const modalPaymentField: FieldType[] = [
+    {
+        id: 1,
+        title: "Supplier",
+        alias: "supplier",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 2,
+        title: "Invoices Amount (£)",
+        alias: "amount",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 3,
+        title: "Credit Notes Amount (£)",
+        alias: "creditNote",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 4,
+        title: "Debit Notes Amount (£)",
+        alias: "debitNote",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 5,
+        title: "Total (£)",
+        alias: "total",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 6,
+        title: "Payment Date",
+        alias: "paymentDate",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 7,
+        title: "Description",
+        alias: "description",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 8,
+        title: "Notes",
+        alias: "note",
+        type: "text",
+        column: 6,
+    },
+    {
+        id: 9,
+        title: "Attachment",
+        alias: "attachment",
+        type: "upload",
+        column: 6,
+    },
+    {
+        id: 10,
+        title: "Payment Method",
+        alias: "paymentMethod",
+        type: "select",
+        column: 6,
+        isSelect: true,
+        selectField: [
+            {
+                id: 1,
+                name: "Cash",
+                value: "cash",
+            },
+            {
+                id: 2,
+                name: "Card",
+                value: "card",
+            },
+            {
+                id: 3,
+                name: "Paypal",
+                value: "paypal",
+            }
+        ]
+    },
+]
+
+

@@ -1,6 +1,7 @@
 import { ManageAttributeType, ManageCategoryType, ManageProductType } from "@/utils/types/catalog";
 import { ManageGalleriesType, ManagePagesType, SecurityType, StoreBannerType, StoreSettingType } from "@/utils/types/cms";
 import { SalesAgentType } from "@/utils/types/sale-agent";
+import { InvoicesType, PaymentType } from "@/utils/types/supplier";
 import { UserType } from "@/utils/types/user";
 import { string } from "zod";
 
@@ -164,3 +165,40 @@ export const initialStoreSettingState: StoreSettingType = {
     minimumOrder: 0,
     status: false,
 }
+
+
+export const initialInvoicesState: InvoicesType = {
+    supplier: "",
+    invoiceNo: "",
+    accountNo: "",
+    subTotalStandard: 0,
+    subTotalZeroRated: 0,
+    vat: 0,
+    total: 0,
+    invoiceDate: "",
+    dueDate: "",
+    deliveryDate: "",
+    description: "",
+    notes: "",
+    attachInvoice: {},
+    attachDeliveryNote: {},
+    ourRef: "",
+    paid: 0,
+    invoiceStatus: "",
+    status: false,
+}
+
+export const initialPaymentState: PaymentType = {
+    supplier: "",
+    amount: 0,
+    creditNote: 0,
+    debitNote: 0,
+    total: 0,
+    paymentDate: "",
+    description: "",
+    note: "",
+    attachment: {},
+    paymentMethod: "",
+    status: false,
+}
+

@@ -1,4 +1,4 @@
-    import { CellType } from "@/utils/types/table"
+import { CellType } from "@/utils/types/table"
 
 export const manageCategoryColumns: CellType[] = [
     { id: 1, name: "Id" },
@@ -317,4 +317,171 @@ export const cashRegisterCells: CellType[] = [
     { id: 5, name: "cashSale" },
     { id: 6, name: "closing" },
 ]
+
+
+export const allSupplierColumns: CellType[] = [
+    { id: 1, name: "Id" },
+    { id: 2, name: "Supplier" },
+    { id: 3, name: "Reg" },
+    { id: 4, name: "Vat" },
+    { id: 5, name: "Website" },
+    { id: 6, name: "Of Products" },
+    { id: 7, name: "Of Invoices" },
+    { id: 8, name: "Of Credit Notes" },
+]
+
+export const allSupplierCells: CellType[] = [
+    { id: 1, name: "id" },
+    { id: 2, name: "supplier" },
+    { id: 3, name: "reg" },
+    { id: 4, name: "vat" },
+    { id: 5, name: "website" },
+    { id: 6, name: "ofProducts" },
+    { id: 7, name: "ofInvoice" },
+    { id: 8, name: "ofCreditNote" },
+]
+
+
+export const invoicesColumns: CellType[] = [
+    { id: 1, name: "Id" },
+    { id: 2, name: "Our Ref" },
+    { id: 3, name: "INV" },
+    { id: 4, name: "INV. Date" },
+    { id: 5, name: "Delivery Date" },
+    { id: 6, name: "Supplier" },
+    { id: 7, name: "Sub Total Standard" },
+    { id: 8, name: "Sub Total Zero Rated" },
+    { id: 9, name: "VAT" },
+    { id: 10, name: "Total" },
+    { id: 11, name: "Paid" },
+    { id: 12, name: "Due Date" },
+    { id: 13, name: "Status" },
+    { id: 13, name: "Action" },
+]
+
+
+
+export const invoicesCells: CellType[] = [
+    { id: 1, name: "id" },
+    { id: 2, name: "ourRef" },
+    { id: 3, name: "invoiceNo" },
+    { id: 4, name: "invoiceDate" },
+    { id: 5, name: "deliveryDate" },
+    { id: 6, name: "supplier" },
+    { id: 7, name: "subTotalStandard" },
+    { id: 8, name: "subTotalZeroRated" },
+    { id: 9, name: "vat" },
+    { id: 10, name: "total" },
+    { id: 11, name: "paid" },
+    { id: 12, name: "dueDate" },
+    { id: 13, name: "invoiceStatus" },
+]
+
+
+export const paymentColumns: CellType[] = [
+    { id: 1, name: "Id" },
+    { id: 2, name: "Our Ref" },
+    { id: 3, name: "INV." },
+    { id: 4, name: "Date" },
+    { id: 5, name: "Supplier" },
+    { id: 6, name: "Amount" },
+    { id: 7, name: "Payment Method" },
+    { id: 8, name: "Description" },
+    { id: 9, name: "Notes" },
+    { id: 10, name: "Action" },
+]
+
+export const paymentCells: CellType[] = [
+    { id: 1, name: "id" },
+    { id: 2, name: "Our Ref" },
+    { id: 3, name: "INV." },
+    { id: 4, name: "paymentDate" },
+    { id: 5, name: "supplier" },
+    { id: 6, name: "amount" },
+    { id: 7, name: "paymentMethod" },
+    { id: 8, name: "description" },
+    { id: 9, name: "note" },
+]
+
+
+export const creditNoteColumns: CellType[] = [
+    { id: 1, name: "Id" },
+    { id: 2, name: "CR" },
+    { id: 2, name: "Date" },
+    { id: 2, name: "Supplier Name" },
+    { id: 2, name: "Sub-Total" },
+    { id: 2, name: "Vat" },
+    { id: 2, name: "Others" },
+    { id: 2, name: "Others Amount" },
+    { id: 2, name: "Amount" },
+    { id: 2, name: "Adjusted" },
+    { id: 2, name: "Payment Ref" },
+    // { id: 6, name: "Action" },
+]
+
+export const creditNoteCells: CellType[] = [
+    { id: 1, name: "id" },
+    { id: 2, name: "creditNote" },
+    { id: 2, name: "date" },
+    { id: 2, name: "supplierName" },
+    { id: 2, name: "subTotal" },
+    { id: 2, name: "vat" },
+    { id: 2, name: "others" },
+    { id: 2, name: "othersAmount" },
+    { id: 2, name: "amount" },
+    { id: 2, name: "adjusted" },
+    { id: 2, name: "paymentRef" },
+]
+
+
+export const debitNotesColumns: CellType[] = [
+    { id: 1, name: "Id" },
+    { id: 2, name: "CR" },
+    { id: 2, name: "Date" },
+    { id: 2, name: "Supplier Name" },
+    { id: 2, name: "Sub-Total" },
+    { id: 2, name: "Vat" },
+    { id: 2, name: "Others" },
+    { id: 2, name: "Others Amount" },
+    { id: 2, name: "Amount" },
+    { id: 2, name: "Adjusted" },
+    { id: 2, name: "Payment Ref" },
+    // { id: 6, name: "Action" },
+]
+
+export const debitNotesCells: CellType[] = [
+    { id: 1, name: "id" },
+    { id: 2, name: "creditNote" },
+    { id: 2, name: "date" },
+    { id: 2, name: "supplierName" },
+    { id: 2, name: "subTotal" },
+    { id: 2, name: "vat" },
+    { id: 2, name: "others" },
+    { id: 2, name: "othersAmount" },
+    { id: 2, name: "amount" },
+    { id: 2, name: "adjusted" },
+    { id: 2, name: "paymentRef" },
+]
+
+export const supplierOrderColumns: CellType[] = [
+    { id: 1, name: "Id" },
+    { id: 2, name: "Date" },
+    { id: 3, name: "Supplier" },
+    { id: 4, name: "Amount EV" },
+    { id: 5, name: "Vat" },
+    { id: 6, name: "Amount IV" },
+    { id: 7, name: "Status" },
+    // { id: 6, name: "Action" },
+]
+
+export const supplierOrderCells: CellType[] = [
+    { id: 1, name: "id" },
+    { id: 2, name: "date" },
+    { id: 3, name: "supplier" },
+    { id: 4, name: "amountEV" },
+    { id: 5, name: "vat" },
+    { id: 6, name: "amountIV" },
+    { id: 7, name: "orderStatus" },
+]
+
 

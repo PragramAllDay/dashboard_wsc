@@ -149,3 +149,174 @@ export const cashRegisterFilterField: FieldType[] = [
 ]
 
 
+export const allSupplierFilterField: FieldType[] = [
+    {
+        id: 1,
+        title: "Search:",
+        alias: "search",
+        column: 3,
+        type: "text",
+    },
+]
+
+
+export const invoicesFilterField: FieldType[] = [
+    {
+        id: 1,
+        title: "Search:",
+        alias: "search",
+        column: 2.4,
+        type: "text",
+    },
+    {
+        id: 2,
+        title: "Date From:",
+        alias: "dateFrom",
+        column: 2.8,
+        type: "date",
+    },
+    {
+        id: 3,
+        title: "Date To:",
+        alias: "dateTo",
+        column: 2.8,
+        type: "date",
+    },
+    {
+        id: 4,
+        title: "Due Date From:",
+        alias: "dueDateFrom",
+        column: 2.8,
+        type: "date",
+    },
+    {
+        id: 5,
+        title: "Due Date To:",
+        alias: "dueDateTo",
+        column: 2.8,
+        type: "date",
+    },
+    {
+        id: 6,
+        title: "Payment:",
+        alias: "payment",
+        column: 2.4,
+        type: "select",
+        isSelect: true,
+        selectField: [
+            {
+                id: 1,
+                name: "Cash",
+                value: "cash",
+            },
+            {
+                id: 2,
+                name: "Card",
+                value: "card",
+            },
+            {
+                id: 3,
+                name: "Paypal",
+                value: "paypal",
+            }
+        ]
+    },
+]
+
+
+export const paymentFilterField: FieldType[] = [
+    {
+        id: 1,
+        title: "Search:",
+        alias: "search",
+        column: 2.4,
+        type: "text",
+    },
+    {
+        id: 2,
+        title: "Date From:",
+        alias: "dateFrom",
+        column: 2.8,
+        type: "date",
+    },
+    {
+        id: 3,
+        title: "Date To:",
+        alias: "dateTo",
+        column: 2.8,
+        type: "date",
+    },
+]
+
+export const creditNoteFilterField: FieldType[] = [
+    {
+        id: 1,
+        title: "Search:",
+        alias: "search",
+        column: 2.4,
+        type: "text",
+    },
+    {
+        id: 2,
+        title: "Date From:",
+        alias: "dateFrom",
+        column: 2.8,
+        type: "date",
+    },
+    {
+        id: 3,
+        title: "Date To:",
+        alias: "dateTo",
+        column: 2.8,
+        type: "date",
+    },
+]
+
+export const debitNotesFilter: FieldType[] = [
+    {
+        id: 1,
+        title: "Search:",
+        alias: "search",
+        column: 2.4,
+        type: "text",
+    },
+    {
+        id: 2,
+        title: "Date From:",
+        alias: "dateFrom",
+        column: 2.8,
+        type: "date",
+    },
+    {
+        id: 3,
+        title: "Date To:",
+        alias: "dateTo",
+        column: 2.8,
+        type: "date",
+    },
+]
+
+
+export const supplierOrderFilter: FieldType[] = [
+    {
+        id: 1,
+        title: "Search:",
+        alias: "search",
+        column: 2.4,
+        type: "text",
+    },
+    {
+        id: 2,
+        title: "Date From:",
+        alias: "dateFrom",
+        column: 2.8,
+        type: "date",
+    },
+    {
+        id: 3,
+        title: "Date To:",
+        alias: "dateTo",
+        column: 2.8,
+        type: "date",
+    },
+]

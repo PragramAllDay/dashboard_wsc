@@ -43,6 +43,11 @@ import HomePageSettingReducer from './slice/store-owner/cms/home-page-setting';
 import ReceiptsReducer from './slice/store-owner/accounts/receipts';
 import ChequeToSupplierReducer from './slice/store-owner/accounts/cheques-to-suppliers';
 import CashRegistryReducer from './slice/store-owner/accounts/cash-register';
+import SupplierReducer from './slice/store-owner/suppliers/all-supplier';
+import InvoicesReducer from './slice/store-owner/suppliers/invoices';
+import PaymentReducer from './slice/store-owner/suppliers/payment';
+import CreditNoteReducer from './slice/store-owner/suppliers/credit-note';
+import SupplierOrderReducer from './slice/store-owner/suppliers/supplier-orders';
 
 
 export const store = configureStore({
@@ -77,6 +82,11 @@ export const store = configureStore({
     homePageSettingReducer: HomePageSettingReducer,
     cashRegistryReducer: CashRegistryReducer,
     receiptReducer: ReceiptsReducer,
+    allSupplierReducer: SupplierReducer,
+    invoiceReducer: InvoicesReducer,
+    paymentReducer: PaymentReducer,
+    creditNoteReducer: CreditNoteReducer,
+    supplierOrderReducer: SupplierOrderReducer,
 
     [storeApi.reducerPath]: storeApi.reducer,
     [countryApi.reducerPath]: countryApi.reducer,
