@@ -55,6 +55,8 @@ import CashAndCarryOrderReducer from './slice/store-owner/sales-and-order/cash-a
 import BadDebtReducer from './slice/store-owner/sales-and-order/bad-depts';
 import MonthWiseSaleReducer from './slice/store-owner/sales-and-order/month-wise-sale';
 import PurchaseOrderReducer from './slice/store-owner/sales-and-order/purchase-order';
+import WebSaleReportReducer from './slice/store-owner/accounts/web-sale-report';
+import CashAndCarrySaleReportReducer from './slice/store-owner/accounts/cash-and-carry-sale-report';
 
 
 export const store = configureStore({
@@ -95,11 +97,13 @@ export const store = configureStore({
     stateReducer: StateReducer,
     cityReducer: CityReducer,
     userReducer: UserReducer,
-    webSiteReducer: WebSiteOrderReducer,
+    cashAndCarrySaleReportReducer: CashAndCarrySaleReportReducer,
     cashAndCarryOrderReducer: CashAndCarryOrderReducer,
-    badDebtsReducer: BadDebtReducer,
     monthWiseSaleReducer: MonthWiseSaleReducer,
     purchaseOrderReducer: PurchaseOrderReducer,
+    webSaleReportReducer: WebSaleReportReducer,
+    webSiteReducer: WebSiteOrderReducer,
+    badDebtsReducer: BadDebtReducer,
 
     [storeApi.reducerPath]: storeApi.reducer,
     [countryApi.reducerPath]: countryApi.reducer,

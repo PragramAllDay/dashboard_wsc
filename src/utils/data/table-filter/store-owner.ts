@@ -30,6 +30,26 @@ export const customerFilterField: FieldType[] = [
         type: "text",
         placeholder: "Customer name, email, postcode"
     },
+    {
+        id: 6,
+        title: "Status:",
+        alias: "status",
+        column: 2.4,
+        type: "select",
+        isSelect: true,
+        selectField: [
+            {
+                id: 1,
+                name: "All",
+                value: "All",
+            },
+            {
+                id: 2,
+                name: "Bad Debt",
+                value: "Bad Debt",
+            },
+        ]
+    },
 ]
 
 
@@ -615,3 +635,26 @@ export const purchaseOrderFilterField: FieldType[] = [
 ]
 
 
+
+export const wholesaleFilterField: FieldType[] = [
+    {
+        id: 1,
+        title: "Search:",
+        alias: "search",
+        column: 2.4,
+        type: "text",
+        placeholder: "Enter postcode"
+    },
+]
+
+
+export const wholesaleInternationalFilterField: FieldType[] = [
+    {
+        id: 1,
+        title: "Search:",
+        alias: "search",
+        column: 2.4,
+        type: "text",
+        placeholder: "Enter Country"
+    },
+]

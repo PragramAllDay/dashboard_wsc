@@ -130,3 +130,46 @@ export type HomePageSettingType = {
     status?: boolean;
 }
 
+
+
+
+export type AccountSaleSummaryType = {
+    id?: string;
+    title: string;
+    amount: number;
+    status?: boolean;
+}
+
+
+export type AccountSaleReportType = {
+    id?: string;
+    orderNo: string;
+    date: string;
+    customerName: string;
+    subTotalStandard: number;
+    subTotalZeroRated: number;
+    vat: number;
+    stRefund: number;
+    zeroRatedRefund: number;
+    discount: number;
+    shipping: number;
+    total: number;
+    status?: boolean;
+}
+
+
+export type AccountCreditNoteType = {
+    id?: string;
+    creditNote: string;
+    date: string;
+    customerName: string;
+    company: string;
+    subTotal: number;
+    vat: number;
+    others: string;
+    otherAmount: number;
+    amount: number;
+    status?: boolean;
+}
+
+

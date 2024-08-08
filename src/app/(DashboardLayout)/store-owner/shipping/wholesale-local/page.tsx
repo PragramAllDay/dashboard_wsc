@@ -11,6 +11,7 @@ import { wholeSaleLocalListCells, wholeSaleLocalListColumns } from "@/utils/data
 import { getWholeSaleLocalList } from "@/store/slice/store-owner/shipping/wholesale-local";
 import { useGetStoresQuery } from "@/store/slice/api/super-admin/store";
 import { WholeSaleLocalType } from "@/utils/types/shipping";
+import { wholesaleFilterField } from "@/utils/data/table-filter/store-owner";
 
 
 export default function WholeSaleLocal() {
@@ -70,19 +71,39 @@ export default function WholeSaleLocal() {
         }
     };
 
+    const handleFilter = (evt: any) => {
+        evt.preventDefault()
+        console.log("DF")
+    }
+
+    const handleFilterFieldOnChange = (
+        filterField: any,
+        newValue: string,
+        fieldAlias: string,
+        setValues: any,
+    ) => {
+        setValues({
+            ...filterField,
+            [fieldAlias]: newValue,
+        });
+    };
+
     return (
-        <PageContainer title="WholeSaleLocal" description="this is WholeSaleLocal">
+        <PageContainer title="Wholesale Local" description="this is Wholesale Local">
             <Box mt={3}>
                 <ReusableTable2
+                    filterFieldList={wholesaleFilterField}
                     columns={wholeSaleLocalListColumns}
                     cells={wholeSaleLocalListCells}
                     pagination={pagination}
                     removeAddButton={true}
                     rows={WholeSaleLocalList}
-                    title={"WholeSaleLocal"}
+                    title={"Wholesale Local"}
+                    handleFilter={handleFilter}
                     handleRenderCell={renderCell}
                     handleChangePage={handleChangePage}
                     handleChangeRowsPerPage={handleChangeRowsPerPage}
+                    handleFilterFieldOnChange={handleFilterFieldOnChange}
                 />
             </Box>
         </PageContainer>

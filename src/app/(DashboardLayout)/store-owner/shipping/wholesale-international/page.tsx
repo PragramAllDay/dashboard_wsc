@@ -12,6 +12,7 @@ import { wholeSaleInternationalListCells, wholeSaleInternationalListColumns } fr
 import { getWholeSaleInternationalList } from "@/store/slice/store-owner/shipping/wholesale-international";
 import { WholeSaleInternationalType } from "@/utils/types/shipping";
 import { useGetStoresQuery } from "@/store/slice/api/super-admin/store";
+import { wholesaleInternationalFilterField } from "@/utils/data/table-filter/store-owner";
 
 
 export default function WholeSaleInternational() {
@@ -46,9 +47,6 @@ export default function WholeSaleInternational() {
         if (name === "id") {
             return index + 1;
         }
-        if (name == "name") {
-            return rowData['firstName'] + rowData['lastName']
-        }
 
         return rowData[name as never];
     };
@@ -71,19 +69,39 @@ export default function WholeSaleInternational() {
         }
     };
 
+    const handleFilter = (evt: any) => {
+        evt.preventDefault()
+        console.log("DF")
+    }
+
+    const handleFilterFieldOnChange = (
+        filterField: any,
+        newValue: string,
+        fieldAlias: string,
+        setValues: any,
+    ) => {
+        setValues({
+            ...filterField,
+            [fieldAlias]: newValue,
+        });
+    };
+
     return (
-        <PageContainer title="WholeSaleInternational" description="this is WholeSaleInternational">
+        <PageContainer title="Wholesale International" description="this is Wholesale International">
             <Box mt={3}>
                 <ReusableTable2
+                    filterFieldList={wholesaleInternationalFilterField}
                     columns={wholeSaleInternationalListColumns}
                     cells={wholeSaleInternationalListCells}
                     pagination={pagination}
                     removeAddButton={true}
+                    handleFilter={handleFilter}
                     rows={WholeSaleInternationalList}
-                    title={"WholeSaleInternational"}
+                    title={"Wholesale International"}
                     handleRenderCell={renderCell}
                     handleChangePage={handleChangePage}
                     handleChangeRowsPerPage={handleChangeRowsPerPage}
+                    handleFilterFieldOnChange={handleFilterFieldOnChange}
                 />
             </Box>
         </PageContainer>

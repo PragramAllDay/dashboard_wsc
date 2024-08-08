@@ -126,7 +126,7 @@ export const wholeSaleLocalListColumns: CellType[] = [
     { id: 3, name: "Free Shipping" },
     { id: 4, name: "Plan B" },
     { id: 5, name: "Plan C" },
-    { id: 6, name: "Plan B" },
+    { id: 6, name: "Plan D" },
 ]
 
 
@@ -143,21 +143,17 @@ export const wholeSaleLocalListCells: CellType[] = [
 
 export const wholeSaleInternationalListColumns: CellType[] = [
     { id: 1, name: "Id" },
-    { id: 2, name: "Post Code" },
-    { id: 3, name: "Free Shipping" },
-    { id: 4, name: "Plan B" },
-    { id: 5, name: "Plan C" },
-    { id: 6, name: "Plan B" },
+    { id: 2, name: "Country" },
+    { id: 3, name: "Zone" },
+    { id: 4, name: "Amount" },
 ]
 
 
 export const wholeSaleInternationalListCells: CellType[] = [
     { id: 1, name: "id" },
-    { id: 2, name: "postCode" },
-    { id: 3, name: "freeShipping" },
-    { id: 4, name: "planB" },
-    { id: 5, name: "planC" },
-    { id: 6, name: "planD" },
+    { id: 2, name: "country" },
+    { id: 3, name: "zone" },
+    { id: 4, name: "amount" },
 ]
 
 export const manageGalleriesColumns: CellType[] = [
@@ -705,4 +701,74 @@ export const purchaseOrderCells: CellType[] = [
     { id: 12, name: "comments" },
 ]
 
+
+export const accountSaleSummaryColumns: CellType[] = [
+    { id: 1, name: "Id" },
+    { id: 2, name: "Title" },
+    { id: 3, name: "Account" },
+]
+
+export const accountSaleSummaryCells: CellType[] = [
+    { id: 1, name: "id" },
+    { id: 2, name: "title" },
+    { id: 3, name: "account" },
+]
+
+
+export const accountSaleReportListColumns: CellType[] = [
+    { id: 1, name: "Id" },
+    { id: 2, name: "Order" },
+    { id: 3, name: "Date" },
+    { id: 4, name: "Customer" },
+    { id: 5, name: "Standard" },
+    { id: 6, name: "Zero Rated" },
+    { id: 7, name: "Vat" },
+    { id: 8, name: "ST.Refund" },
+    { id: 9, name: "ZR.Refund" },
+    { id: 10, name: "Discount" },
+    { id: 11, name: "Shipping" },
+    { id: 12, name: "Total" },
+]
+
+export const accountSaleReportListCells: CellType[] = [
+    { id: 1, name: "id" },
+    { id: 2, name: "orderNo" },
+    { id: 3, name: "date" },
+    { id: 4, name: "customerName" },
+    { id: 5, name: "subTotalStandard" },
+    { id: 6, name: "subTotalZeroRated" },
+    { id: 7, name: "vat" },
+    { id: 8, name: "stRefund" },
+    { id: 9, name: "zeroRatedRefund" },
+    { id: 10, name: "discount" },
+    { id: 11, name: "shipping" },
+    { id: 12, name: "total" },
+]
+
+
+export const accountCreditNoteColumns: CellType[] = [
+    { id: 1, name: "Id" },
+    { id: 2, name: "CR" },
+    { id: 3, name: "Date" },
+    { id: 4, name: "Customer Name" },
+    { id: 5, name: "Company" },
+    { id: 6, name: "Sub-Total" },
+    { id: 7, name: "Vat" },
+    { id: 8, name: "Others" },
+    { id: 9, name: "Others Amount" },
+    { id: 10, name: "Amount" },
+]
+
+export const accountCreditNoteCells: CellType[] = [
+    { id: 1, name: "id" },
+    { id: 2, name: "creditNote" },
+    { id: 3, name: "date" },
+    { id: 4, name: "customerName" },
+    { id: 5, name: "company" },
+    { id: 6, name: "subTotal" },
+    { id: 7, name: "vat" },
+    { id: 8, name: "others" },
+    { id: 9, name: "otherAmount" },
+    { id: 10, name: "amount" },
+]
 

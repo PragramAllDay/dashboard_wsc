@@ -10,9 +10,9 @@ import { PaginationType } from "@/utils/types/pagination";
 import { CustomerType } from "@/utils/types/stores";
 
 import { customerListCells, customerListColumns } from "@/utils/data/table/store-owner";
+import { useGetCustomersQuery } from "@/store/slice/api/super-admin/customer";
 import { customerFilterField } from "@/utils/data/table-filter/store-owner";
 import { getCustomerList } from "@/store/slice/super-admin/customer";
-import { useGetCustomersQuery } from "@/store/slice/api/super-admin/customer";
 
 
 export default function Customer() {
