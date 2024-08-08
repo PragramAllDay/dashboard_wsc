@@ -15,28 +15,14 @@ type Props = {
   middlecontent?: string | JSX.Element;
 };
 
-const DashboardCard = ({
-  title,
-  subtitle,
-  children,
-  action,
-  footer,
-  cardheading,
-  headtitle,
-  headsubtitle,
-  middlecontent,
-}: Props) => {
+const DashboardCard = ({ title, subtitle, children, action, footer, cardheading, headtitle, headsubtitle, middlecontent }: Props) => {
   const customizer = useSelector((state: AppState) => state.customizer);
 
   const theme = useTheme();
   const borderColor = theme.palette.divider;
 
   return (
-    <Card
-      sx={{ padding: 0, border: !customizer.isCardShadow ?  `1px solid ${borderColor}` : 'none' }}
-      elevation={customizer.isCardShadow ? 9 : 0}
-      variant={!customizer.isCardShadow ? 'outlined' : undefined}
-    >
+    <Card sx={{ padding: 0, border: !customizer.isCardShadow ? `1px solid ${borderColor}` : 'none' }} elevation={customizer.isCardShadow ? 9 : 0} variant={!customizer.isCardShadow ? 'outlined' : undefined}>
       {cardheading ? (
         <CardContent>
           <Typography variant="h5">{headtitle}</Typography>
@@ -45,15 +31,9 @@ const DashboardCard = ({
           </Typography>
         </CardContent>
       ) : (
-        <CardContent sx={{p: "30px"}}>
+        <CardContent sx={{ p: '30px' }}>
           {title ? (
-            <Stack
-              direction="row"
-              spacing={2}
-              justifyContent="space-between"
-              alignItems={'center'}
-              mb={3}
-            >
+            <Stack direction="row" spacing={2} justifyContent="space-between" alignItems={'center'} mb={3}>
               <Box>
                 {title ? <Typography variant="h5">{title}</Typography> : ''}
 

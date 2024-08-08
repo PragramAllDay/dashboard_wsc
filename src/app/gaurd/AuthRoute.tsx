@@ -7,7 +7,6 @@ import { redirect } from 'next/navigation';
 export default function AuthRoute(Component: React.ComponentType<any>) {
   return function AuthRouteComponent(props: any) {
     const session = sessionStatus();
-    console.log(session);
 
     useEffect(() => {
       if (!session.isLoggedIn) {

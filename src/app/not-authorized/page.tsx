@@ -1,3 +1,7 @@
+import { Button } from '@mui/material';
+import Link from 'next/link';
+import React from 'react';
+
 const NotAuthorized = () => {
   return (
     <>
@@ -12,6 +16,11 @@ const NotAuthorized = () => {
       >
         <h1>Not Authorized</h1>
         <p>You do not have permission to view this page.</p>
+        <Button variant="contained" color="primary">
+          <Link href="/login" style={{ textDecoration: 'none', color: 'white' }}>
+            Login
+          </Link>
+        </Button>
       </div>
     </>
   );
