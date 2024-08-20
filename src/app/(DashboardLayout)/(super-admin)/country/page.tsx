@@ -13,42 +13,43 @@ import { ModalMod } from "@/utils/enum";
 import { addCountry, deleteCountryById, getCountryList, updateCountry } from "@/store/slice/super-admin/country";
 import { useDeleteCountryMutation, useGetCountryQuery, usePatchCountryMutation, usePostCountryMutation } from "@/store/slice/api/super-admin/country";
 import { countryFilterField } from "@/utils/data/table-filter/super-admin";
+import { initialCountryState } from "@/utils/data/initial-state/super-admin";
+import { checkForSession } from "@/utils/session/session";
 
 export default function Country() {
-    const { data, error, isLoading } = useGetCountryQuery()
-    const [postCountry] = usePostCountryMutation();
-    const [deleteCountry] = useDeleteCountryMutation();
-    const [patchCountry] = usePatchCountryMutation()
     const [isModal, setIsModal] = useState<boolean>(false);
+    const session = checkForSession()
+    const dispatch = useDispatch()
+    const { data: countries, error, isLoading } = useGetCountryQuery(session.token)
     const pagination: PaginationType = useSelector((state) => state.countryReducer.countryPagination)
     const countryList: CountryType[] = useSelector((state) => state.countryReducer.countryList)
-    const dispatch = useDispatch()
-    const [editStore, setEditStore] = useState<CountryType>({
-        id: "",
-        name: "",
-        status: false,
-    });
+    const [editStore, setEditStore] = useState<CountryType>(initialCountryState);
+
+    const [deleteCountry] = useDeleteCountryMutation();
+    const [patchCountry] = usePatchCountryMutation()
+    const [postCountry] = usePostCountryMutation();
 
     useEffect(() => {
         const fetchCountryList = async () => {
             try {
-                if (data) {
+                if (countries) {
                     const newPagination = {
                         page: 1,
-                        totalSize: data.length,
+                        totalSize: countries.data?.length,
                         rowsPerPage: 10,
                     }
-                    const limitedData = data.slice(0, newPagination.rowsPerPage)
+                    const limitedData = countries.data.slice(0, newPagination.rowsPerPage)
                     dispatch(getCountryList({ list: limitedData, newPagination }))
                 }
             } catch (error) {
                 console.log(error);
             }
         };
-        if (pagination && countryList.length === 0 && data?.length !== 0) {
+        if (countries) {
             fetchCountryList();
         }
-    }, [dispatch, pagination, data]);
+    }, []);
+
 
     const handleToggle = () => {
         setIsModal(!isModal);
@@ -79,11 +80,7 @@ export default function Country() {
             await patchCountry(values)
             dispatch(updateCountry(values))
             setIsModal(false);
-            setEditStore({
-                id: "",
-                name: "",
-                status: false,
-            });
+            setEditStore(initialCountryState);
         } catch (error) {
             console.log(error);
         }
@@ -169,22 +166,25 @@ export default function Country() {
     return (
         <PageContainer title="Country" description="this is Country       ">
             <Box mt={3}>
-                <ReusableTable2
-                    rows={countryList}
-                    columns={countryListColumns}
-                    cells={countryListCells}
-                    title={"Country"}
-                    pagination={pagination}
-                    filterFieldList={countryFilterField}
-                    handleCreate={handleToggle}
-                    handleDelete={handleDelete}
-                    handleEdit={handleEdit}
-                    handleFilter={handleFilter}
-                    handleFilterFieldOnChange={handleFilterFieldOnChange}
-                    handleRenderCell={renderCell}
-                    handleChangePage={handleChangePage}
-                    handleChangeRowsPerPage={handleChangeRowsPerPage}
-                />
+                {
+                    !isLoading &&
+                    <ReusableTable2
+                        filterFieldList={countryFilterField}
+                        columns={countryListColumns}
+                        cells={countryListCells}
+                        pagination={pagination}
+                        rows={countryList}
+                        title={"Country"}
+                        handleEdit={handleEdit}
+                        handleCreate={handleToggle}
+                        handleDelete={handleDelete}
+                        handleFilter={handleFilter}
+                        handleRenderCell={renderCell}
+                        handleChangePage={handleChangePage}
+                        handleChangeRowsPerPage={handleChangeRowsPerPage}
+                        handleFilterFieldOnChange={handleFilterFieldOnChange}
+                    />
+                }
 
                 {isModal && (
                     <ReusableModal

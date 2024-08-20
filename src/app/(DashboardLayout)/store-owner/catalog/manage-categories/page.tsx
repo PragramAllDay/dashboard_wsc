@@ -31,14 +31,16 @@ import {
 } from "@/store/slice/api/super-admin/store";
 import { ManageCategoryType } from "@/utils/types/catalog";
 import { initialManageCategoryState } from "@/utils/data/initial-state/store-owner";
+import { checkForSession } from "@/utils/session/session";
 
 
 export default function ManageCategories() {
+  const session = checkForSession()
   const pagination: PaginationType = useSelector((state) => state.manageCategoryReducer.pagination);
   const [editManageCategory, setEditManageCategory] = useState<ManageCategoryType>(initialManageCategoryState);
   const manageCategories: ManageCategoryType[] = useSelector((state) => state.manageCategoryReducer.list);
   const [isModal, setIsModal] = useState<boolean>(false);
-  const { data, error, isLoading } = useGetStoresQuery();
+  const { data, error, isLoading } = useGetStoresQuery(session.token);
   const [deleteStores] = useDeleteStoresMutation();
   const [patchStores] = usePatchStoresMutation();
   const [postStores] = usePostStoresMutation();
@@ -47,23 +49,21 @@ export default function ManageCategories() {
   useEffect(() => {
     const fetchStores = async () => {
       try {
-        if (data) {
-          const newPagination = {
-            page: 1,
-            totalSize: data.length,
-            rowsPerPage: 10,
-          }
-          const limitedData = data.slice(0, newPagination.rowsPerPage)
-          dispatch(getManageCategoryList({ list: limitedData, newPagination }))
-        }
+        // if (data) {
+        //   const newPagination = {
+        //     page: 1,
+        //     totalSize: data.length,
+        //     rowsPerPage: 10,
+        //   }
+        //   const limitedData = data.slice(0, newPagination.rowsPerPage)
+        //   dispatch(getManageCategoryList({ list: limitedData, newPagination }))
+        // }
       } catch (error) {
         console.log(error);
       }
     };
-    if (pagination && manageCategories.length === 0 && data?.length !== 0) {
-      fetchStores();
-    }
-  }, [dispatch, pagination, data]);
+    fetchStores();
+  }, []);
 
   const handleToggle = () => {
     setIsModal(!isModal);

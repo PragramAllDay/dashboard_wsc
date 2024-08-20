@@ -13,34 +13,34 @@ import { getWholeSaleInternationalList } from "@/store/slice/store-owner/shippin
 import { WholeSaleInternationalType } from "@/utils/types/shipping";
 import { useGetStoresQuery } from "@/store/slice/api/super-admin/store";
 import { wholesaleInternationalFilterField } from "@/utils/data/table-filter/store-owner";
+import { checkForSession } from "@/utils/session/session";
 
 
 export default function WholeSaleInternational() {
+    const session = checkForSession()
     const WholeSaleInternationalList: WholeSaleInternationalType[] = useSelector((state) => state.wholeSaleInternationalReducer.list)
     const pagination: PaginationType = useSelector((state) => state.wholeSaleInternationalReducer.pagination)
-    const { data, error, isLoading } = useGetStoresQuery()
+    const { data, error, isLoading } = useGetStoresQuery(session.token)
     const dispatch = useDispatch()
 
     useEffect(() => {
         const fetchWholeSaleInternationalList = async () => {
             try {
-                if (data) {
-                    const newPagination = {
-                        page: 1,
-                        totalSize: data.length,
-                        rowsPerPage: 10,
-                    }
-                    const limitedData = data.slice(0, newPagination.rowsPerPage)
-                    dispatch(getWholeSaleInternationalList({ list: limitedData, newPagination }))
-                }
+                // if (data) {
+                //     const newPagination = {
+                //         page: 1,
+                //         totalSize: data.length,
+                //         rowsPerPage: 10,
+                //     }
+                //     const limitedData = data.slice(0, newPagination.rowsPerPage)
+                //     dispatch(getWholeSaleInternationalList({ list: limitedData, newPagination }))
+                // }
             } catch (error) {
                 console.log(error);
             }
         };
-        if (pagination && WholeSaleInternationalList.length === 0 && data?.length !== 0) {
-            fetchWholeSaleInternationalList();
-        }
-    }, [dispatch, pagination, data]);
+        fetchWholeSaleInternationalList();
+    }, []);
 
 
     const renderCell = (rowData: any, name: string, index: number) => {

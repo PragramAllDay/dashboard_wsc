@@ -11,7 +11,8 @@ import {
 } from "@mui/material";
 import ReusableTable from "../reusable-table";
 import { FieldType } from "@/utils/types/modal";
-import { GenerateModalField } from "@/utils/help/modal/GenerateModalField";
+import { GenerateModalField } from "../generate-modal-field";
+
 
 type Props = {
   handleModalFieldOnChange: (permission: any, newValue: string, fieldAlias: string, setValues: any) => void;

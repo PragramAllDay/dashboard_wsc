@@ -56,7 +56,7 @@ export const GenerateModalField: NextPage<Props> = ({
                         }
                     }}
                 >
-                    <MenuItem key={0} value={0}>
+                    <MenuItem key={0} value={""}>
                         Select {field.alias}
                     </MenuItem>
                     {field.selectField.map((select: any) => (
@@ -92,6 +92,15 @@ export const GenerateModalField: NextPage<Props> = ({
                     <CustomCheckbox
                         defaultChecked
                         color="secondary"
+                        value={values[field.alias as never]}
+                        onChange={(evt: any) => {
+                            handleModalFieldOnChange(
+                                values,
+                                evt.target.checked,
+                                field.alias,
+                                setValues
+                            );
+                        }}
                         inputProps={{ 'aria-label': 'checkbox with default color' }}
                     />
                 }

@@ -17,10 +17,10 @@ export const storesCells: CellType[] = [
     { id: 1, name: "id" },
     { id: 2, name: "name" },
     { id: 3, name: "email" },
-    { id: 4, name: "phone" },
+    { id: 4, name: "telephone" },
     { id: 5, name: "owner" },
     { id: 6, name: "rent" },
-    { id: 7, name: "commission" },
+    { id: 7, name: "commission_percentage" },
 ];
 
 
@@ -34,9 +34,9 @@ export const categoriesColumns: CellType[] = [
 
 export const categoriesCells: CellType[] = [
     { id: 1, name: "id" },
-    { id: 2, name: "name" },
-    { id: 3, name: "metaTitle" },
-    { id: 4, name: "metaDescription" },
+    { id: 2, name: "title" },
+    { id: 3, name: "meta_title" },
+    { id: 4, name: "meta_description" },
 ]
 
 

@@ -1,13 +1,19 @@
-import {  StateType } from '@/utils/types/categories'
+import { StateType } from '@/utils/types/categories'
+import { RequestResponseType } from '@/utils/types/request'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 
 export const stateApi = createApi({
     reducerPath: 'stateApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000' }),
+    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000/api/v1/superadmin/' }),
     endpoints: (builder) => ({
-        getState: builder.query<StateType[], void>({
-            query: () => "state",
+        getState: builder.query<RequestResponseType, string>({
+            query: (token) => ({
+                url: "states",
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }),
         }),
         postState: builder.mutation<StateType, StateType>({
             query: (newState) => {

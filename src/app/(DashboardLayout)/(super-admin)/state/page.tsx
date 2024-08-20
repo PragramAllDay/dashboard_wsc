@@ -18,18 +18,14 @@ import ReusableTable2 from "@/components/reusable-table-2";
 import { modalStateListFields, modalStateListTitle } from "@/utils/data/modal/super-admin";
 import { ModalMod } from "@/utils/enum";
 import { countryFilterField } from "@/utils/data/table-filter/super-admin";
+import { initialStateState } from "@/utils/data/initial-state/super-admin";
 
 export default function State() {
     const [isModal, setIsModal] = useState<boolean>(false);
     const pagination: PaginationType = useSelector((state) => state.categoryReducer.categoryPagination)
     const stateList: StateType[] = useSelector((state) => state.categoryReducer.categoryList)
+    const [editStore, setEditStore] = useState<StateType>(initialStateState);
     const dispatch = useDispatch()
-    const [editStore, setEditStore] = useState<StateType>({
-        id: "",
-        name: "",
-        countryID: "",
-        status: false,
-    });
 
     useEffect(() => {
         const fetchstateList = async () => {
@@ -51,12 +47,7 @@ export default function State() {
         setIsModal(!isModal);
 
         if (editStore.status) {
-            setEditStore({
-                id: "",
-                name: "",
-                countryID: "",
-                status: false,
-            });
+            setEditStore(initialStateState);
         }
     };
 
@@ -77,12 +68,7 @@ export default function State() {
             // const { Store } = await patchStore(values);
             dispatch(updateCategory(values))
             setIsModal(false);
-            setEditStore({
-                id: "",
-                name: "",
-                countryID: "",
-                status: false,
-            });
+            setEditStore(initialStateState);
             // if (Store) {
             // }
         } catch (error) {
@@ -109,7 +95,6 @@ export default function State() {
             setEditStore({
                 id: state.id,
                 name: state.name,
-                countryID: state.countryID,
                 status: true,
             });
         }

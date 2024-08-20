@@ -1,38 +1,64 @@
-import { CityType, CountryType, StateType } from '@/utils/types/categories'
 import { CustomerType, StoreType } from '@/utils/types/stores'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 
 export const customerApi = createApi({
     reducerPath: 'customerApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000' }),
+    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000/api/v1/superadmin/' }),
     endpoints: (builder) => ({
-        getCustomers: builder.query<CustomerType[], void>({
-            query: () => "customer",
-        }),
-        postCustomer: builder.mutation<CustomerType, StoreType>({
+        postCustomer: builder.mutation<any, any>({
             query: (newCustomer) => {
+                const { token, ...customer } = newCustomer
+
                 return {
-                    url: `customer`,
+                    url: `customers/`,
                     method: "POST",
-                    body: newCustomer,
+                    body: customer,
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+
                 }
             },
         }),
-        patchCustomer: builder.mutation<CustomerType, StoreType>({
-            query: (updateCustomer) => {
+        getCustomers: builder.query<CustomerType[], string>({
+            query: (token) => ({
+                url: "customers",
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+        }),
+        getCustomerById: builder.query<any, any>({
+            query: ({ token, id }) => ({
+                url: `customers/${id}`,
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+        }),
+        patchCustomerStatus: builder.mutation<any, any>({
+            query: (data) => {
+                const { token, id, isActive } = data
                 return {
-                    url: `customer/${updateCustomer.id}`,
+                    url: `customers/${id}/status`,
                     method: "PATCH",
-                    body: updateCustomer,
+                    body: { isActive: isActive },
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+
                 }
             },
         }),
-        deleteCustomer: builder.mutation<CustomerType, string>({
-            query: (id) => {
+        deleteCustomer: builder.mutation<any, any>({
+            query: ({ token, id }) => {
                 return {
-                    url: `customer/${id}`,
+                    url: `customers/${id}`,
                     method: "DELETE",
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
                 }
             },
         }),
@@ -42,8 +68,9 @@ export const customerApi = createApi({
 
 export const {
     useGetCustomersQuery,
+    useGetCustomerByIdQuery,
     usePostCustomerMutation,
-    usePatchCustomerMutation,
+    usePatchCustomerStatusMutation,
     useDeleteCustomerMutation,
 } = customerApi
 

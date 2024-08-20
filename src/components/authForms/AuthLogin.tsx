@@ -3,13 +3,12 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import Stack from '@mui/material/Stack';
-import { LoginErrorType, loginType } from '@/utils/types/auth/auth';
 import CustomTextField from '@/components/forms/theme-elements/CustomTextField';
 import CustomFormLabel from '@/components/forms/theme-elements/CustomFormLabel';
 import { useLoginMutation } from '@/store/slice/api/super-admin/auth';
-import { useRouter } from 'next/navigation';
+import { LoginErrorType, loginType } from '@/utils/types/auth/auth';
 import Typography from '@mui/material/Typography';
-import './style.css';
+import { useRouter } from 'next/navigation';
 import './style.css';
 
 const AuthLogin = ({ title, subtitle, subtext }: loginType) => {
@@ -24,22 +23,15 @@ const AuthLogin = ({ title, subtitle, subtext }: loginType) => {
     try {
       const authData = { email: username, password };
       const response = await login(authData).unwrap();
-
-      console.log(response);
-      console.log(response);
       localStorage.setItem('admin_session', JSON.stringify(response));
 
-      // redirect to homepage
       if (response?.role === 'SUPERADMIN') {
-        console.log('super admin');
         router.push('/');
       } else if (response?.role === 'STORE_OWNER') {
-        console.log('store owner');
         router.push('/store-owner');
       }
     } catch (err: any) {
       if (err?.data) {
-        setLoginError(() => ({ status: true, message: err?.data?.detail }));
         setLoginError(() => ({ status: true, message: err?.data?.detail }));
       }
       // handle error, e.g., display error message

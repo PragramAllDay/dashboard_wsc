@@ -20,15 +20,17 @@ import {
 import { salesAgentFilterField } from "@/utils/data/table-filter/store-owner";
 import { SalesAgentType } from "@/utils/types/sale-agent";
 import { addSalesAgent, deleteSalesAgent, getSalesAgentList, updateSalesAgent } from "@/store/slice/store-owner/sales-agents";
+import { checkForSession } from "@/utils/session/session";
 
 
 export default function SalesAgent() {
+  const session = checkForSession()
   const salesAgents: SalesAgentType[] = useSelector((state) => state.salesAgentReducer.list);
   const pagination: PaginationType = useSelector((state) => state.salesAgentReducer.pagination);
   const [editSalesAgent, setEditSalesAgent] = useState<SalesAgentType>(initialSalesAgentState);
   const [isModal, setIsModal] = useState<boolean>(false);
 
-  const { data, error, isLoading } = useGetStoresQuery();
+  const { data, error, isLoading } = useGetStoresQuery(session.token);
   const [deleteStores] = useDeleteStoresMutation();
   const [patchStores] = usePatchStoresMutation();
   const [postStores] = usePostStoresMutation();
@@ -37,23 +39,21 @@ export default function SalesAgent() {
   useEffect(() => {
     const fetchStores = async () => {
       try {
-        if (data) {
-          const newPagination = {
-            page: 1,
-            totalSize: data.length,
-            rowsPerPage: 10,
-          }
-          const limitedData = data.slice(0, newPagination.rowsPerPage)
-          dispatch(getSalesAgentList({ list: limitedData, newPagination }))
-        }
+        // if (data) {
+        //   const newPagination = {
+        //     page: 1,
+        //     totalSize: data.length,
+        //     rowsPerPage: 10,
+        //   }
+        //   const limitedData = data.slice(0, newPagination.rowsPerPage)
+        //   dispatch(getSalesAgentList({ list: limitedData, newPagination }))
+        // }
       } catch (error) {
         console.log(error);
       }
     };
-    if (pagination && SalesAgent.length === 0 && data?.length !== 0) {
-      fetchStores();
-    }
-  }, [dispatch, pagination, data]);
+    fetchStores();
+  }, []);
 
   const handleToggle = () => {
     setIsModal(!isModal);

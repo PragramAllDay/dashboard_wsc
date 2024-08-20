@@ -4,10 +4,8 @@ import RevenueUpdates from "@/components/dashboard/modern/RevenueUpdates";
 import PageContainer from "@/components/container/PageContainer";
 import SalesOverview from "@/components/dashboard/SalesOverview";
 import WelcomeCard from "@/components/dashboard/WelcomeCard";
-import Expence from "@/components/dashboard/Expence";
 import { useEffect, useState } from "react";
 import { Box, Grid } from "@mui/material";
-import Sales from "@/components/dashboard/Sales";
 
 const StoreOwner = () => {
 

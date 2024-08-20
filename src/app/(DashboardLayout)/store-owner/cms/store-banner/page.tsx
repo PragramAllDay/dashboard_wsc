@@ -19,15 +19,17 @@ import {
 } from "@/store/slice/api/super-admin/store";
 import { StoreBannerType } from "@/utils/types/cms";
 import { addStoreBanner, deleteStoreBanner, getStoreBannerList, updateStoreBanner } from "@/store/slice/store-owner/cms/store-banner";
+import { checkForSession } from "@/utils/session/session";
 
 
 export default function StoreBanner() {
+    const session = checkForSession()
     const storeBanners: StoreBannerType[] = useSelector((state) => state.storeBannerReducer.list);
     const pagination: PaginationType = useSelector((state) => state.storeBannerReducer.pagination);
     const [editStoreBanner, setEditStoreBanner] = useState<StoreBannerType>(initialStoreBannerState);
     const [isModal, setIsModal] = useState<boolean>(false);
 
-    const { data, error, isLoading } = useGetStoresQuery();
+    const { data, error, isLoading } = useGetStoresQuery(session.token);
     const [deleteStores] = useDeleteStoresMutation();
     const [patchStores] = usePatchStoresMutation();
     const [postStores] = usePostStoresMutation();
@@ -36,23 +38,21 @@ export default function StoreBanner() {
     useEffect(() => {
         const fetchStores = async () => {
             try {
-                if (data) {
-                    const newPagination = {
-                        page: 1,
-                        totalSize: data.length,
-                        rowsPerPage: 10,
-                    }
-                    const limitedData = data.slice(0, newPagination.rowsPerPage)
-                    dispatch(getStoreBannerList({ list: limitedData, newPagination }))
-                }
+                // if (data) {
+                //     const newPagination = {
+                //         page: 1,
+                //         totalSize: data.length,
+                //         rowsPerPage: 10,
+                //     }
+                //     const limitedData = data.slice(0, newPagination.rowsPerPage)
+                //     dispatch(getStoreBannerList({ list: limitedData, newPagination }))
+                // }
             } catch (error) {
                 console.log(error);
             }
         };
-        if (pagination && StoreBanner.length === 0 && data?.length !== 0) {
-            fetchStores();
-        }
-    }, [dispatch, pagination, data]);
+        fetchStores();
+    }, []);
 
     const handleToggle = () => {
         setIsModal(!isModal);

@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { PaginationType } from "@/utils/types/pagination";
-import { InvoicesType } from "@/utils/types/shipping";
+import { InvoicesType } from "@/utils/types/supplier";
 
 interface StateType {
     pagination: PaginationType;

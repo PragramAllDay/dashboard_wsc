@@ -12,34 +12,34 @@ import { getWholeSaleLocalList } from "@/store/slice/store-owner/shipping/wholes
 import { useGetStoresQuery } from "@/store/slice/api/super-admin/store";
 import { WholeSaleLocalType } from "@/utils/types/shipping";
 import { wholesaleFilterField } from "@/utils/data/table-filter/store-owner";
+import { checkForSession } from "@/utils/session/session";
 
 
 export default function WholeSaleLocal() {
+    const session = checkForSession()
     const WholeSaleLocalList: WholeSaleLocalType[] = useSelector((state) => state.wholeSaleLocalReducer.list)
     const pagination: PaginationType = useSelector((state) => state.wholeSaleLocalReducer.pagination)
-    const { data, error, isLoading } = useGetStoresQuery()
+    const { data, error, isLoading } = useGetStoresQuery(session.token)
     const dispatch = useDispatch()
 
     useEffect(() => {
         const fetchWholeSaleLocalList = async () => {
             try {
-                if (data) {
-                    const newPagination = {
-                        page: 1,
-                        totalSize: data.length,
-                        rowsPerPage: 10,
-                    }
-                    const limitedData = data.slice(0, newPagination.rowsPerPage)
-                    dispatch(getWholeSaleLocalList({ list: limitedData, newPagination }))
-                }
+                // if (data) {
+                //     const newPagination = {
+                //         page: 1,
+                //         totalSize: data.length,
+                //         rowsPerPage: 10,
+                //     }
+                //     const limitedData = data.slice(0, newPagination.rowsPerPage)
+                //     dispatch(getWholeSaleLocalList({ list: limitedData, newPagination }))
+                // }
             } catch (error) {
                 console.log(error);
             }
         };
-        if (pagination && WholeSaleLocalList.length === 0 && data?.length !== 0) {
-            fetchWholeSaleLocalList();
-        }
-    }, [dispatch, pagination, data]);
+        fetchWholeSaleLocalList();
+    }, []);
 
 
     const renderCell = (rowData: any, name: string, index: number) => {

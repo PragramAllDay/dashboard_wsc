@@ -1,13 +1,13 @@
 "use client"
 
 import { initialStoreSettingState } from "@/utils/data/initial-state/store-owner";
-import { GenerateModalField } from "@/utils/help/modal/GenerateModalField"
 import { storeSettingFormField } from "@/utils/data/modal/store-admin"
 import PageContainer from "@/components/container/PageContainer"
 import DashboardCard from "@/components/shared/DashboardCard"
 import { Box, Button, Grid } from "@mui/material"
 import { StoreSettingType } from "@/utils/types/cms"
 import { useState } from "react";
+import { GenerateModalField } from "@/components/generate-modal-field";
 
 
 const StoreSetting = () => {

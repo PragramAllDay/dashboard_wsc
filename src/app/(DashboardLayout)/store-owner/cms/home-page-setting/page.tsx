@@ -12,80 +12,76 @@ import { useDispatch, useSelector } from "@/store/hooks";
 import { HomePageSettingType } from "@/utils/types/cms";
 import Box from "@mui/material/Box";
 import { useEffect } from "react";
+import { checkForSession } from "@/utils/session/session";
 
 
 export default function HomePageSetting() {
+    const session = checkForSession()
     const smallImageList: HomePageSettingType[] = useSelector((state) => state.homePageSettingReducer.smallImageList);
     const biggerImageList: HomePageSettingType[] = useSelector((state) => state.homePageSettingReducer.biggerImageList);
     const bannerImageList: HomePageSettingType[] = useSelector((state) => state.homePageSettingReducer.bannerImageList);
     const smallImagePagination: PaginationType = useSelector((state) => state.homePageSettingReducer.smallImagePagination);
     const biggerImagePagination: PaginationType = useSelector((state) => state.homePageSettingReducer.biggerImagePagination);
     const bannerImagePagination: PaginationType = useSelector((state) => state.homePageSettingReducer.bannerImagePagination);
-    const { data, error, isLoading } = useGetStoresQuery();
+    const { data, error, isLoading } = useGetStoresQuery(session.token);
     const dispatch = useDispatch();
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                if (data) {
-                    const newPagination = {
-                        page: 1,
-                        totalSize: data.length,
-                        rowsPerPage: 10,
-                    }
-                    const limitedData = data.slice(0, newPagination.rowsPerPage)
-                    dispatch(getSmallImageList({ list: limitedData, newPagination }))
-                }
+                // if (data) {
+                //     const newPagination = {
+                //         page: 1,
+                //         totalSize: data.length,
+                //         rowsPerPage: 10,
+                //     }
+                //     const limitedData = data.slice(0, newPagination.rowsPerPage)
+                //     dispatch(getSmallImageList({ list: limitedData, newPagination }))
+                // }
             } catch (error) {
                 console.log(error);
             }
         };
-        if (smallImagePagination && smallImageList.length === 0 && data?.length !== 0) {
-            fetchData();
-        }
-    }, [dispatch, smallImagePagination, data]);
+        fetchData();
+    }, []);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                if (data) {
-                    const newPagination = {
-                        page: 1,
-                        totalSize: data.length,
-                        rowsPerPage: 10,
-                    }
-                    const limitedData = data.slice(0, newPagination.rowsPerPage)
-                    dispatch(getSmallImageList({ list: limitedData, newPagination }))
-                }
+                // if (data) {
+                //     const newPagination = {
+                //         page: 1,
+                //         totalSize: data.length,
+                //         rowsPerPage: 10,
+                //     }
+                //     const limitedData = data.slice(0, newPagination.rowsPerPage)
+                //     dispatch(getSmallImageList({ list: limitedData, newPagination }))
+                // }
             } catch (error) {
                 console.log(error);
             }
         };
-        if (biggerImagePagination && biggerImageList.length === 0 && data?.length !== 0) {
-            fetchData();
-        }
-    }, [dispatch, biggerImagePagination, data]);
+        fetchData();
+    }, []);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                if (data) {
-                    const newPagination = {
-                        page: 1,
-                        totalSize: data.length,
-                        rowsPerPage: 10,
-                    }
-                    const limitedData = data.slice(0, newPagination.rowsPerPage)
-                    dispatch(getSmallImageList({ list: limitedData, newPagination }))
-                }
+                // if (data) {
+                //     const newPagination = {
+                //         page: 1,
+                //         totalSize: data.length,
+                //         rowsPerPage: 10,
+                //     }
+                //     const limitedData = data.slice(0, newPagination.rowsPerPage)
+                //     dispatch(getSmallImageList({ list: limitedData, newPagination }))
+                // }
             } catch (error) {
                 console.log(error);
             }
         };
-        if (bannerImagePagination && bannerImageList.length === 0 && data?.length !== 0) {
-            fetchData();
-        }
-    }, [dispatch, bannerImagePagination, data]);
+        fetchData();
+    }, []);
 
 
     const renderCell = (rowData: any, name: string, index: number) => {

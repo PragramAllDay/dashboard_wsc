@@ -20,15 +20,17 @@ import {
 import { paymentFilterField } from "@/utils/data/table-filter/store-owner";
 import { PaymentType } from "@/utils/types/supplier";
 import { addPayment, deletePayment, getPaymentList, updatePayment } from "@/store/slice/store-owner/suppliers/payment";
+import { checkForSession } from "@/utils/session/session";
 
 
 export default function Payment() {
+    const session = checkForSession()
     const pagination: PaginationType = useSelector((state) => state.paymentReducer.pagination);
     const paymentList: PaymentType[] = useSelector((state) => state.paymentReducer.list);
     const [editPayment, setEditPayment] = useState<PaymentType>(initialPaymentState);
     const [isModal, setIsModal] = useState<boolean>(false);
 
-    const { data, error, isLoading } = useGetStoresQuery();
+    const { data, error, isLoading } = useGetStoresQuery(session.token);
     const [deleteStores] = useDeleteStoresMutation();
     const [patchStores] = usePatchStoresMutation();
     const [postStores] = usePostStoresMutation();
@@ -37,23 +39,21 @@ export default function Payment() {
     useEffect(() => {
         const fetchStores = async () => {
             try {
-                if (data) {
-                    const newPagination = {
-                        page: 1,
-                        totalSize: data.length,
-                        rowsPerPage: 10,
-                    }
-                    const limitedData = data.slice(0, newPagination.rowsPerPage)
-                    dispatch(getPaymentList({ list: limitedData, newPagination }))
-                }
+                // if (data) {
+                //     const newPagination = {
+                //         page: 1,
+                //         totalSize: data.length,
+                //         rowsPerPage: 10,
+                //     }
+                //     const limitedData = data.slice(0, newPagination.rowsPerPage)
+                //     dispatch(getPaymentList({ list: limitedData, newPagination }))
+                // }
             } catch (error) {
                 console.log(error);
             }
         };
-        if (pagination && paymentList.length === 0 && data?.length !== 0) {
-            fetchStores();
-        }
-    }, [dispatch, pagination, data]);
+        fetchStores();
+    }, []);
 
     const handleToggle = () => {
         setIsModal(!isModal);

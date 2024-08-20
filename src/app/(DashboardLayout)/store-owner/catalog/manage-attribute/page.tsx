@@ -25,15 +25,17 @@ import {
   updateManageAttribute
 } from "@/store/slice/store-owner/catalog/manage-attribute";
 import { manageAttributeFilterField } from "@/utils/data/table-filter/store-owner";
+import { checkForSession } from "@/utils/session/session";
 
 
 export default function ManageAttribute() {
+  const session = checkForSession()
   const manageAttributes: ManageAttributeType[] = useSelector((state) => state.manageAttributeReducer.list);
   const pagination: PaginationType = useSelector((state) => state.manageAttributeReducer.pagination);
   const [editManageAttribute, setEditManageAttribute] = useState<ManageAttributeType>(initialManageAttributeState);
   const [isModal, setIsModal] = useState<boolean>(false);
 
-  const { data, error, isLoading } = useGetStoresQuery();
+  const { data, error, isLoading } = useGetStoresQuery(session.token);
   const [deleteStores] = useDeleteStoresMutation();
   const [patchStores] = usePatchStoresMutation();
   const [postStores] = usePostStoresMutation();
@@ -42,23 +44,21 @@ export default function ManageAttribute() {
   useEffect(() => {
     const fetchStores = async () => {
       try {
-        if (data) {
-          const newPagination = {
-            page: 1,
-            totalSize: data.length,
-            rowsPerPage: 10,
-          }
-          const limitedData = data.slice(0, newPagination.rowsPerPage)
-          dispatch(getManageAttributeList({ list: limitedData, newPagination }))
-        }
+        // if (data) {
+        //   const newPagination = {
+        //     page: 1,
+        //     totalSize: data.length,
+        //     rowsPerPage: 10,
+        //   }
+        //   const limitedData = data.slice(0, newPagination.rowsPerPage)
+        //   dispatch(getManageAttributeList({ list: limitedData, newPagination }))
+        // }
       } catch (error) {
         console.log(error);
       }
     };
-    if (pagination && ManageAttribute.length === 0 && data?.length !== 0) {
-      fetchStores();
-    }
-  }, [dispatch, pagination, data]);
+    fetchStores();
+  }, []);
 
   const handleToggle = () => {
     setIsModal(!isModal);

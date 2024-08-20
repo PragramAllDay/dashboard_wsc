@@ -19,15 +19,17 @@ import {
 } from "@/store/slice/api/super-admin/store";
 import { UserType } from "@/utils/types/user";
 import { addUser, deleteUser, getUserList, updateUser } from "@/store/slice/store-owner/users";
+import { checkForSession } from "@/utils/session/session";
 
 
 export default function User() {
+    const session = checkForSession()
     const pagination: PaginationType = useSelector((state) => state.userReducer.pagination);
     const Users: UserType[] = useSelector((state) => state.userReducer.list);
     const [editUser, setEditUser] = useState<UserType>(initialUserState);
     const [isModal, setIsModal] = useState<boolean>(false);
 
-    const { data, error, isLoading } = useGetStoresQuery();
+    const { data, error, isLoading } = useGetStoresQuery(session.token);
     const [deleteStores] = useDeleteStoresMutation();
     const [patchStores] = usePatchStoresMutation();
     const [postStores] = usePostStoresMutation();
@@ -36,23 +38,21 @@ export default function User() {
     useEffect(() => {
         const fetchStores = async () => {
             try {
-                if (data) {
-                    const newPagination = {
-                        page: 1,
-                        totalSize: data.length,
-                        rowsPerPage: 10,
-                    }
-                    const limitedData = data.slice(0, newPagination.rowsPerPage)
-                    dispatch(getUserList({ list: limitedData, newPagination }))
-                }
+                // if (data) {
+                //     const newPagination = {
+                //         page: 1,
+                //         totalSize: data.length,
+                //         rowsPerPage: 10,
+                //     }
+                //     const limitedData = data.slice(0, newPagination.rowsPerPage)
+                //     dispatch(getUserList({ list: limitedData, newPagination }))
+                // }
             } catch (error) {
                 console.log(error);
             }
         };
-        if (pagination && User.length === 0 && data?.length !== 0) {
-            fetchStores();
-        }
-    }, [dispatch, pagination, data]);
+        fetchStores();
+    }, []);
 
     const handleToggle = () => {
         setIsModal(!isModal);

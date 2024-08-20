@@ -1,37 +1,42 @@
-import { CityType, CountryType, StateType } from '@/utils/types/categories'
-import { CustomerType, StoreType } from '@/utils/types/stores'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { CountryType } from '@/utils/types/categories'
+import { RequestResponseType } from '@/utils/types/request'
 
 
 export const countryApi = createApi({
     reducerPath: 'countryApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000' }),
+    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000/api/v1/superadmin/' }),
     endpoints: (builder) => ({
-        getCountry: builder.query<CountryType[], void>({
-            query: () => "country",
+        getCountry: builder.query<RequestResponseType, string>({
+            query: (token) => ({
+                url: "countries/",
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }),
         }),
-        postCountry: builder.mutation<CountryType, StoreType>({
+        postCountry: builder.mutation<any, CountryType>({
             query: (newCountry) => {
                 return {
-                    url: `country`,
+                    url: `countries/`,
                     method: "POST",
                     body: newCountry,
                 }
             },
         }),
-        patchCountry: builder.mutation<CountryType, StoreType>({
+        patchCountry: builder.mutation<any, CountryType>({
             query: (updateCountry) => {
                 return {
-                    url: `country/${updateCountry.id}`,
+                    url: `countries`,
                     method: "PATCH",
                     body: updateCountry,
                 }
             },
         }),
-        deleteCountry: builder.mutation<CountryType, string>({
+        deleteCountry: builder.mutation<any, string>({
             query: (id) => {
                 return {
-                    url: `country/${id}`,
+                    url: `countries/${id}`,
                     method: "DELETE",
                 }
             },

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import dynamic from "next/dynamic";
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 import { useTheme } from '@mui/material/styles';
@@ -8,13 +8,17 @@ import DashboardCard from '../../shared/DashboardCard';
 import SkeletonRevenueUpdatesTwoCard from '../skeleton/RevenueUpdatesTwoCard';
 import CustomSelect from '@/components/forms/theme-elements/CustomSelect';
 import { useGetStoresQuery } from '@/store/slice/api/super-admin/store';
+import { checkForSession } from '@/utils/session/session';
+import { RequestDataType } from '@/utils/types/request';
+import { StoreType } from '@/utils/types/stores';
 
-interface RevenueupdatestwoCardProps {
+interface Props {
   isLoading: boolean;
 }
 
-const   RevenueUpdates = ({ isLoading }: RevenueupdatestwoCardProps) => {
-  const { data: stores, error } = useGetStoresQuery()
+const RevenueUpdates: FC<Props> = ({ isLoading }) => {
+  const session = checkForSession()
+  const { data: stores, error } = useGetStoresQuery(session.token)
   const [selectStore, setSelectStore] = React.useState("0");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -114,9 +118,9 @@ const   RevenueUpdates = ({ isLoading }: RevenueupdatestwoCardProps) => {
               >
                 <MenuItem key={"0"} value={"0"}>Select Store</MenuItem>
                 {
-                  stores?.map((store) => {
+                  stores?.data?.map((store: any) => {
                     return (
-                      <MenuItem key={store.id} value={store.id}>{store.name}</MenuItem>
+                      <MenuItem key={store.id} value={store.id}>{store?.name}</MenuItem>
                     )
                   })
                 }

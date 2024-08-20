@@ -1,13 +1,13 @@
 "use client"
 
 import { initialMakeReceiptsWebState } from "@/utils/data/initial-state/store-owner";
-import { GenerateModalField } from "@/utils/help/modal/GenerateModalField"
 import { makeReceiptsWebFormField } from "@/utils/data/modal/store-admin"
 import { MakeReceiptsWebType } from "@/utils/types/sale-and-order";
 import PageContainer from "@/components/container/PageContainer"
 import DashboardCard from "@/components/shared/DashboardCard"
 import { Box, Button, Grid } from "@mui/material"
 import { useState } from "react";
+import { GenerateModalField } from "@/components/generate-modal-field";
 
 
 const MakeReceiptsWeb = () => {

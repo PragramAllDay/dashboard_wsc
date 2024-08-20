@@ -15,16 +15,16 @@ import {
   TablePagination,
   Button,
 } from "@mui/material";
+import { GenerateModalField } from "../generate-modal-field";
 import { IconPencil, IconTrash } from "@tabler/icons-react";
-import DashboardCard from "../shared/DashboardCard";
 import { PaginationType } from "@/utils/types/pagination";
+import DashboardCard from "../shared/DashboardCard";
 import ModalAddButton from "../modal-add-button";
-import { CellType } from "@/utils/types/table";
 import { FieldType } from "@/utils/types/modal";
-import { GenerateModalField } from "@/utils/help/modal/GenerateModalField";
+import { CellType } from "@/utils/types/table";
+import AlertDialog from "../alert-dialog";
 import { useState } from "react";
 import './style.css';
-import AlertDialog from "../alert-dialog";
 
 type Props = {
   title: string;

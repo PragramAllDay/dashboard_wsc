@@ -12,10 +12,12 @@ import { BackOrderType } from "@/utils/types/web-order";
 import { backOrderListCells, backOrderListColumns } from "@/utils/data/table/store-owner";
 import { getBackOrderList } from "@/store/slice/store-owner/back-order";
 import { useGetStoresQuery } from "@/store/slice/api/super-admin/store";
+import { checkForSession } from "@/utils/session/session";
 
 
 export default function BackOrder() {
-    const { data, error, isLoading } = useGetStoresQuery()
+    const session = checkForSession()
+    const { data, error, isLoading } = useGetStoresQuery(session.token)
     const pagination: PaginationType = useSelector((state) => state.backOrderReducer.pagination)
     const BackOrderList: BackOrderType[] = useSelector((state) => state.backOrderReducer.list)
     const dispatch = useDispatch()
@@ -23,23 +25,23 @@ export default function BackOrder() {
     useEffect(() => {
         const fetchBackOrderList = async () => {
             try {
-                if (data) {
-                    const newPagination = {
-                        page: 1,
-                        totalSize: data.length,
-                        rowsPerPage: 10,
-                    }
-                    const limitedData = data.slice(0, newPagination.rowsPerPage)
-                    dispatch(getBackOrderList({ list: limitedData, newPagination }))
-                }
+                // if (data) {
+                //     const newPagination = {
+                //         page: 1,
+                //         totalSize: data.length,
+                //         rowsPerPage: 10,
+                //     }
+                //     const limitedData = data.slice(0, newPagination.rowsPerPage)
+                //     dispatch(getBackOrderList({ list: limitedData, newPagination }))
+                // }
             } catch (error) {
                 console.log(error);
             }
         };
-        if (pagination && BackOrderList.length === 0 && data?.length !== 0) {
+        if (data) {
             fetchBackOrderList();
         }
-    }, [dispatch, pagination, data]);
+    }, []);
 
 
     const renderCell = (rowData: any, name: string, index: number) => {

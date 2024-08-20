@@ -19,14 +19,16 @@ import {
 } from "@/store/slice/api/super-admin/store";
 import { ManageGalleriesType } from "@/utils/types/cms";
 import { addManageGalleries, deleteManageGalleries, getManageGalleriesList, updateManageGalleries } from "@/store/slice/store-owner/cms/manage-galleries";
+import { checkForSession } from "@/utils/session/session";
 
 export default function ManageGalleries() {
+    const session = checkForSession()
     const manageGalleriess: ManageGalleriesType[] = useSelector((state) => state.manageGalleriesReducer.list);
     const pagination: PaginationType = useSelector((state) => state.manageGalleriesReducer.pagination);
     const [editManageGalleries, setEditManageGalleries] = useState<ManageGalleriesType>(initialManageGalleriesState);
     const [isModal, setIsModal] = useState<boolean>(false);
 
-    const { data, error, isLoading } = useGetStoresQuery();
+    const { data, error, isLoading } = useGetStoresQuery(session.token);
     const [deleteStores] = useDeleteStoresMutation();
     const [patchStores] = usePatchStoresMutation();
     const [postStores] = usePostStoresMutation();
@@ -35,23 +37,21 @@ export default function ManageGalleries() {
     useEffect(() => {
         const fetchStores = async () => {
             try {
-                if (data) {
-                    const newPagination = {
-                        page: 1,
-                        totalSize: data.length,
-                        rowsPerPage: 10,
-                    }
-                    const limitedData = data.slice(0, newPagination.rowsPerPage)
-                    dispatch(getManageGalleriesList({ list: limitedData, newPagination }))
-                }
+                // if (data) {
+                //     const newPagination = {
+                //         page: 1,
+                //         totalSize: data.length,
+                //         rowsPerPage: 10,
+                //     }
+                //     const limitedData = data.slice(0, newPagination.rowsPerPage)
+                //     dispatch(getManageGalleriesList({ list: limitedData, newPagination }))
+                // }
             } catch (error) {
                 console.log(error);
             }
         };
-        if (pagination && ManageGalleries.length === 0 && data?.length !== 0) {
-            fetchStores();
-        }
-    }, [dispatch, pagination, data]);
+        fetchStores();
+    }, []);
 
     const handleToggle = () => {
         setIsModal(!isModal);

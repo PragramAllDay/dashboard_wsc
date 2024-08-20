@@ -20,15 +20,17 @@ import {
 import { invoicesFilterField } from "@/utils/data/table-filter/store-owner";
 import { addInvoice, deleteInvoice, getInvoiceList, updateInvoice } from "@/store/slice/store-owner/suppliers/invoices";
 import { InvoicesType } from "@/utils/types/supplier";
+import { checkForSession } from "@/utils/session/session";
 
 
 export default function Invoices() {
+    const session = checkForSession()
     const invoicesList: InvoicesType[] = useSelector((state) => state.invoiceReducer.list);
     const pagination: PaginationType = useSelector((state) => state.invoiceReducer.pagination);
     const [editInvoices, setEditInvoices] = useState<InvoicesType>(initialInvoicesState);
     const [isModal, setIsModal] = useState<boolean>(false);
 
-    const { data, error, isLoading } = useGetStoresQuery();
+    const { data, error, isLoading } = useGetStoresQuery(session.token);
     const [deleteStores] = useDeleteStoresMutation();
     const [patchStores] = usePatchStoresMutation();
     const [postStores] = usePostStoresMutation();
@@ -37,23 +39,21 @@ export default function Invoices() {
     useEffect(() => {
         const fetchStores = async () => {
             try {
-                if (data) {
-                    const newPagination = {
-                        page: 1,
-                        totalSize: data.length,
-                        rowsPerPage: 10,
-                    }
-                    const limitedData = data.slice(0, newPagination.rowsPerPage)
-                    dispatch(getInvoiceList({ list: limitedData, newPagination }))
-                }
+                // if (data) {
+                //     const newPagination = {
+                //         page: 1,
+                //         totalSize: data.length,
+                //         rowsPerPage: 10,
+                //     }
+                //     const limitedData = data.slice(0, newPagination.rowsPerPage)
+                //     dispatch(getInvoiceList({ list: limitedData, newPagination }))
+                // }
             } catch (error) {
                 console.log(error);
             }
         };
-        if (pagination && invoicesList.length === 0 && data?.length !== 0) {
-            fetchStores();
-        }
-    }, [dispatch, pagination, data]);
+        fetchStores();
+    }, []);
 
     const handleToggle = () => {
         setIsModal(!isModal);

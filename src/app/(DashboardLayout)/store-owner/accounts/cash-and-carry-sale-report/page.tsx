@@ -12,82 +12,75 @@ import { PaginationType } from "@/utils/types/pagination";
 import { useDispatch, useSelector } from "@/store/hooks";
 import Box from "@mui/material/Box";
 import { useEffect } from "react";
+import { checkForSession } from "@/utils/session/session";
 
 
 export default function CashAndCarrySaleReport() {
+    const session = checkForSession()
     const accountCreditNote: AccountCreditNoteType[] = useSelector((state) => state.cashAndCarrySaleReportReducer.accountCreditNoteList);
     const accountSaleSummary: AccountSaleSummaryType[] = useSelector((state) => state.cashAndCarrySaleReportReducer.accountSaleSummaryList);
     const accountSaleReportList: AccountSaleReportType[] = useSelector((state) => state.cashAndCarrySaleReportReducer.accountSaleReportList);
-
     const accountSaleSummaryPagination: PaginationType = useSelector((state) => state.cashAndCarrySaleReportReducer.accountSaleSummaryPagination);
     const accountCreditNotePagination: PaginationType = useSelector((state) => state.cashAndCarrySaleReportReducer.accountCreditNotePagination);
     const accountSaleReportPagination: PaginationType = useSelector((state) => state.cashAndCarrySaleReportReducer.accountSaleReportPagination);
-
-    const { data, error, isLoading } = useGetStoresQuery();
     const dispatch = useDispatch();
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                if (data) {
-                    const newPagination = {
-                        page: 1,
-                        totalSize: data.length,
-                        rowsPerPage: 10,
-                    }
-                    const limitedData = data.slice(0, newPagination.rowsPerPage)
-                    dispatch(getAccountCreditNoteList({ list: limitedData, newPagination }))
-                }
+                // if (storeList) {
+                //     const newPagination = {
+                //         page: 1,
+                //         totalSize: storeList.data.length,
+                //         rowsPerPage: 10,
+                //     }
+                //     const limitedData = storeList.data.slice(0, newPagination.rowsPerPage)
+                //     dispatch(getAccountCreditNoteList({ list: limitedData, newPagination }))
+                // }
             } catch (error) {
                 console.log(error);
             }
         };
-        if (accountCreditNotePagination && accountCreditNote.length === 0 && data?.length !== 0) {
-            fetchData();
-        }
-    }, [dispatch, accountCreditNotePagination, data]);
+        fetchData();
+    }, []);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                if (data) {
-                    const newPagination = {
-                        page: 1,
-                        totalSize: data.length,
-                        rowsPerPage: 10,
-                    }
-                    const limitedData = data.slice(0, newPagination.rowsPerPage)
-                    dispatch(getAccountSaleReportList({ list: limitedData, newPagination }))
-                }
+                // if (data) {
+                //     const newPagination = {
+                //         page: 1,
+                //         totalSize: data.length,
+                //         rowsPerPage: 10,
+                //     }
+                //     const limitedData = data.slice(0, newPagination.rowsPerPage)
+                //     dispatch(getAccountSaleReportList({ list: limitedData, newPagination }))
+                // }
             } catch (error) {
                 console.log(error);
             }
         };
-        if (accountSaleSummaryPagination && accountSaleSummary.length === 0 && data?.length !== 0) {
-            fetchData();
-        }
-    }, [dispatch, accountSaleSummaryPagination, data]);
+        fetchData();
+    }, []);
 
     useEffect(() => {
         const fetchData = async () => {
-            try {
-                if (data) {
-                    const newPagination = {
-                        page: 1,
-                        totalSize: data.length,
-                        rowsPerPage: 10,
-                    }
-                    const limitedData = data.slice(0, newPagination.rowsPerPage)
-                    dispatch(getAccountCreditNoteList({ list: limitedData, newPagination }))
-                }
-            } catch (error) {
-                console.log(error);
-            }
+            // try {
+            //     if (data) {
+            //         const newPagination = {
+            //             page: 1,
+            //             totalSize: data.length,
+            //             rowsPerPage: 10,
+            //         }
+            //         const limitedData = data.slice(0, newPagination.rowsPerPage)
+            //         dispatch(getAccountCreditNoteList({ list: limitedData, newPagination }))
+            //     }
+            // } catch (error) {
+            //     console.log(error);
+            // }
         };
-        if (accountSaleReportPagination && accountSaleReportList.length === 0 && data?.length !== 0) {
-            fetchData();
-        }
-    }, [dispatch, accountSaleReportPagination, data]);
+        fetchData();
+    }, []);
 
 
     const renderCell = (rowData: any, name: string, index: number) => {

@@ -1,133 +1,91 @@
 "use client";
-import { useEffect, useState } from "react";
-import Box from "@mui/material/Box";
-import PageContainer from "@/components/container/PageContainer";
-import { storesCells, storesColumns } from "@/utils/data/table/super-admin";
-import { useDispatch, useSelector } from "@/store/hooks";
-import { addStore, deleteStore, getStoreList, updateStore } from "@/store/slice/super-admin/stores";
-import { StoreType } from "@/utils/types/stores";
-import { PaginationType } from "@/utils/types/pagination";
-import ReusableModal from "@/components/reusable-modal";
-import ReusableTable2 from "@/components/reusable-table-2";
 import { modalStoresFields, modalStoresTitle } from "@/utils/data/modal/super-admin";
-import { ModalMod } from "@/utils/enum";
-import { useDeleteStoresMutation, useGetStoresQuery, usePatchStoresMutation, usePostStoresMutation } from "@/store/slice/api/super-admin/store";
+import { storesCells, storesColumns } from "@/utils/data/table/super-admin";
+import { initialStoreState } from "@/utils/data/initial-state/super-admin";
+import { useGetCountryQuery } from "@/store/slice/api/super-admin/country";
 import { storeFilterField } from "@/utils/data/table-filter/super-admin";
+import { useGetStateQuery } from "@/store/slice/api/super-admin/state";
+import { useGetCityQuery } from "@/store/slice/api/super-admin/city";
+import { AddStoreType, NewStoreType } from "@/utils/types/stores";
+import PageContainer from "@/components/container/PageContainer";
+import ReusableTable2 from "@/components/reusable-table-2";
+import { PaginationType } from "@/utils/types/pagination";
+import { checkForSession } from "@/utils/session/session";
+import ReusableModal from "@/components/reusable-modal";
+import { RequestDataType } from "@/utils/types/request";
+import { useSelector } from "@/store/hooks";
+import { ModalMod } from "@/utils/enum";
+import Box from "@mui/material/Box";
+import { useState } from "react";
+import {
+    useDeleteStoresMutation,
+    useGetStoresQuery,
+    usePatchStoresMutation,
+    usePostStoresMutation
+} from "@/store/slice/api/super-admin/store";
+import {
+    handleAddStore,
+    populateStoreSelectFields,
+    storeFilterFieldOnChange,
+    storeModalFieldOnChange,
+    storeRenderCell
+} from "@/utils/help";
 
-const initialState = {
-    id: "",
-    name: "",
-    permalink: "",
-    rent: "",
-    minimumOrder: "",
-    commission: "",
-    vat: "",
-    registrationNo: "",
-    phone: "",
-    logo: "",
-    icon: "",
-    icon2: "",
-    banner: "",
-    banner2: "",
-    sideBanner: "",
-    fax: "",
-    address1: "",
-    address2: "",
-    description: "",
-    metaTitle: "",
-    metaDescription: "",
-    metaKeywords: "",
-    schemaMarkup: "",
-    catalogCategories: false,
-    catalogAttributes: false,
-    catalogProducts: false,
-    salesAndOrderWholesale: false,
-    salesAndOrderDropship: false,
-    salesAndOrderCashAndCarry: false,
-    backOrdersWholesale: false,
-    backOrdersDropship: false,
-    cmsPages: false,
-    cmsNewsLetters: false,
-    accountsWebSaleReport: false,
-    accountsCashCarry: false,
-    accountsSaleAgentReport: false,
-    country: "",
-    state: "",
-    city: "",
-    zip: "",
-    owner: "",
-    email: "",
-    payPalDetails: "",
-    payPalEmail: "",
-    payPalUsername: "",
-    payPalPassword: "",
-    payPalSignature: "",
-    psID: "",
-    userID: "",
-    psWD: "",
-    password: "",
-    rePassword: "",
-    status: false,
-}
 
 export default function Stores() {
-    const { data, error, isLoading } = useGetStoresQuery()
-    const [postStores] = usePostStoresMutation();
+    const session = checkForSession()
+    const { data: stores, refetch } = useGetStoresQuery(session.token)
+    const { data: countryList, isLoading } = useGetCountryQuery(session.token)
+    const { data: cityList } = useGetCityQuery(session.token)
+    const { data: stateList } = useGetStateQuery(session.token)
+    const [isModal, setIsModal] = useState<boolean>(false);
     const [deleteStores] = useDeleteStoresMutation();
     const [patchStores] = usePatchStoresMutation()
-    const [isModal, setIsModal] = useState<boolean>(false);
+    const [postStores, { error }] = usePostStoresMutation();
     const pagination: PaginationType = useSelector((state) => state.storesReducer.storePagination)
-    const stores: StoreType[] = useSelector((state) => state.storesReducer.storeList)
-    const dispatch = useDispatch()
-    const [editStore, setEditStore] = useState<StoreType>(initialState);
+    const [editStore, setEditStore] = useState<AddStoreType>(initialStoreState);
 
-    useEffect(() => {
-        const fetchStores = async () => {
-            try {
-                if (data) {
-                    const newPagination = {
-                        page: 1,
-                        totalSize: data.length,
-                        rowsPerPage: 10,
-                    }
-                    const limitedData = data.slice(0, newPagination.rowsPerPage)
-                    dispatch(getStoreList({ list: limitedData, newPagination }))
-                }
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        if (pagination && stores.length === 0 && data?.length !== 0) {
-            fetchStores();
-        }
-    }, [dispatch, pagination, data]);
+    console.log(stores)
+
+    if (countryList) {
+        populateStoreSelectFields(40, modalStoresFields, countryList, "name", "id")
+    }
+
+    if (stateList) {
+        populateStoreSelectFields(41, modalStoresFields, stateList, "name", "id")
+    }
+
+    if (cityList) {
+        populateStoreSelectFields(42, modalStoresFields, cityList, "name", "id")
+    }
 
     const handleToggle = () => {
         setIsModal(!isModal);
 
         if (editStore.status) {
-            setEditStore(initialState);
+            setEditStore(initialStoreState);
         }
     };
 
     const handleAdd = async (values: any) => {
         try {
-            const uuId = crypto.randomUUID()
-            values.id = uuId
-            await postStores(values)
-            dispatch(addStore(values))
+            const newStore: NewStoreType = handleAddStore(values)
+            if (session?.token) {
+                await postStores({ ...newStore, token: session?.token as string })
+            }
+            refetch()
             setIsModal(false);
-        } catch (error) {
-            console.log(error);
+        } catch (error: any) {
+            console.log(error.message);
         }
     };
 
     const handleUpdate = async (values: any) => {
         try {
             await patchStores(values)
-            dispatch(updateStore(values))
+            refetch()
             setIsModal(false);
-            setEditStore(initialState);
+            setEditStore(initialStoreState);
         } catch (error) {
             console.log(error);
         }
@@ -135,95 +93,27 @@ export default function Stores() {
 
     const handleDelete = async (id: string) => {
         try {
-            await deleteStores(id)
-            dispatch(deleteStore(id))
+            if (session.token) {
+                await deleteStores({ id, token: session?.token })
+                refetch()
+            }
         } catch (error) {
             console.log(error);
         }
     };
 
     const handleEdit = (id: string) => {
-        const store = stores?.find((perm: any) => perm.id === id);
+        const store: (RequestDataType | undefined | null) = stores?.data?.find((perm: any) => perm.id === id);
 
         if (store) {
             setIsModal(true);
-            setEditStore({
-                id: store.id,
-                name: store.name,
-                permalink: store.permalink,
-                rent: store.rent,
-                minimumOrder: store.minimumOrder,
-                commission: store.commission,
-                vat: store.vat,
-                registrationNo: store.registrationNo,
-                phone: store.phone,
-                logo: store.logo,
-                icon: store.icon,
-                icon2: store.icon2,
-                banner: store.banner,
-                banner2: store.banner2,
-                sideBanner: store.sideBanner,
-                fax: store.fax,
-                address1: store.address1,
-                address2: store.address2,
-                description: store.description,
-                metaTitle: store.metaTitle,
-                metaDescription: store.metaDescription,
-                metaKeywords: store.metaKeywords,
-                schemaMarkup: store.schemaMarkup,
-                catalogCategories: store.catalogCategories,
-                catalogAttributes: store.catalogAttributes,
-                catalogProducts: store.catalogProducts,
-                salesAndOrderWholesale: store.salesAndOrderWholesale,
-                salesAndOrderDropship: store.salesAndOrderDropship,
-                salesAndOrderCashAndCarry: store.salesAndOrderCashAndCarry,
-                backOrdersWholesale: store.backOrdersWholesale,
-                backOrdersDropship: store.backOrdersDropship,
-                cmsPages: store.cmsPages,
-                cmsNewsLetters: store.cmsNewsLetters,
-                accountsWebSaleReport: store.accountsWebSaleReport,
-                accountsCashCarry: store.accountsCashCarry,
-                accountsSaleAgentReport: store.accountsSaleAgentReport,
-                country: store.country,
-                state: store.state,
-                city: store.city,
-                zip: store.zip,
-                owner: store.owner,
-                email: store.email,
-                payPalDetails: store.payPalDetails,
-                payPalEmail: store.payPalEmail,
-                payPalUsername: store.payPalUsername,
-                payPalPassword: store.payPalPassword,
-                payPalSignature: store.payPalSignature,
-                psID: store.psID,
-                userID: store.userID,
-                psWD: store.psWD,
-                password: store.password,
-                rePassword: store.rePassword,
-                status: true,
-            });
+            refetch()
+            /*setEditStore((state: AddStoreType) => ({
+                ...state,
+            }));*/
         }
     };
 
-    const renderCell = (rowData: any, name: string, index: number) => {
-        if (name === "id") {
-            return index + 1;
-        }
-
-        return rowData[name as never];
-    };
-
-    const handleModalFieldOnChange = (
-        rowData: any,
-        newValue: string,
-        fieldAlias: string,
-        setValues: any,
-    ) => {
-        setValues({
-            ...rowData,
-            [fieldAlias]: newValue,
-        });
-    };
 
     const handleChangePage = async (evt: any, value: number) => {
         try {
@@ -247,53 +137,47 @@ export default function Stores() {
         //Filter
     }
 
-    const handleFilterFieldOnChange = (
-        filterField: any,
-        newValue: string,
-        fieldAlias: string,
-        setValues: any,
-    ) => {
-        setValues({
-            ...filterField,
-            [fieldAlias]: newValue,
-        });
-    };
 
     return (
-        <PageContainer title="Uploads" description="this is Uploads">
+        <PageContainer title="Store" description="this is Store">
             <Box mt={3}>
-                <ReusableTable2
-                    rows={stores}
-                    columns={storesColumns}
-                    cells={storesCells}
-                    title={"Store"}
-                    pagination={pagination}
-                    filterFieldList={storeFilterField}
-                    handleCreate={handleToggle}
-                    handleDelete={handleDelete}
-                    handleEdit={handleEdit}
-                    handleRenderCell={renderCell}
-                    handleChangePage={handleChangePage}
-                    handleFilter={handleFilter}
-                    handleFilterFieldOnChange={handleFilterFieldOnChange}
-                    handleChangeRowsPerPage={handleChangeRowsPerPage}
-                />
-
-                {isModal && (
-                    <ReusableModal
-                        handleSubmit={editStore.status ? handleUpdate : handleAdd}
-                        handleToggle={handleToggle}
-                        handleModalFieldOnChange={handleModalFieldOnChange}
-                        editData={editStore}
-                        modalFields={modalStoresFields}
-                        isModal={isModal}
-                        title={
-                            editStore.status
-                                ? modalStoresTitle[ModalMod.EDIT]
-                                : modalStoresTitle[ModalMod.NEW]
-                        }
+                {
+                    !isLoading &&
+                    <ReusableTable2
+                        filterFieldList={storeFilterField}
+                        rows={stores?.data as any}
+                        columns={storesColumns}
+                        cells={storesCells}
+                        title={"Store"}
+                        pagination={pagination}
+                        handleEdit={handleEdit}
+                        handleCreate={handleToggle}
+                        handleDelete={handleDelete}
+                        handleFilter={handleFilter}
+                        handleRenderCell={storeRenderCell}
+                        handleChangePage={handleChangePage}
+                        handleChangeRowsPerPage={handleChangeRowsPerPage}
+                        handleFilterFieldOnChange={storeFilterFieldOnChange}
                     />
-                )}
+                }
+
+                {
+                    isModal && (
+                        <ReusableModal
+                            handleSubmit={editStore.status ? handleUpdate : handleAdd}
+                            handleModalFieldOnChange={storeModalFieldOnChange}
+                            modalFields={modalStoresFields}
+                            handleToggle={handleToggle}
+                            editData={editStore}
+                            isModal={isModal}
+                            title={
+                                editStore.status
+                                    ? modalStoresTitle[ModalMod.EDIT]
+                                    : modalStoresTitle[ModalMod.NEW]
+                            }
+                        />
+                    )
+                }
             </Box>
         </PageContainer>
     );

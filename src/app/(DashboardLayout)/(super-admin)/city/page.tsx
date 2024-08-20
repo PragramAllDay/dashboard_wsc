@@ -18,21 +18,17 @@ import ReusableTable2 from "@/components/reusable-table-2";
 import { modalCityListFields, modalCityListTitle } from "@/utils/data/modal/super-admin";
 import { ModalMod } from "@/utils/enum";
 import { countryFilterField } from "@/utils/data/table-filter/super-admin";
+import { initialCityState } from "@/utils/data/initial-state/super-admin";
 
 export default function City() {
-    const [isModal, setIsModal] = useState<boolean>(false);
     const pagination: PaginationType = useSelector((state) => state.categoryReducer.categoryPagination)
     const cityList: CityType[] = useSelector((state) => state.categoryReducer.categoryList)
+    const [editStore, setEditStore] = useState<CityType>(initialCityState);
+    const [isModal, setIsModal] = useState<boolean>(false);
     const dispatch = useDispatch()
-    const [editStore, setEditStore] = useState<CityType>({
-        id: "",
-        name: "",
-        stateID: "",
-        status: false,
-    });
 
     useEffect(() => {
-        const fetchcityList = async () => {
+        const fetchCityList = async () => {
             try {
                 // const { StoreList, newPagination } = await getStore(pagination);
                 // if (StoreList) {
@@ -43,7 +39,7 @@ export default function City() {
             }
         };
         if (pagination) {
-            fetchcityList();
+            fetchCityList();
         }
     }, [dispatch, pagination]);
 
@@ -51,12 +47,7 @@ export default function City() {
         setIsModal(!isModal);
 
         if (editStore.status) {
-            setEditStore({
-                id: "",
-                name: "",
-                stateID: "",
-                status: false,
-            });
+            setEditStore(initialCityState);
         }
     };
 
@@ -77,12 +68,7 @@ export default function City() {
             // const { Store } = await patchStore(values);
             dispatch(updateCategory(values))
             setIsModal(false);
-            setEditStore({
-                id: "",
-                name: "",
-                stateID: "",
-                status: false,
-            });
+            setEditStore(initialCityState);
             // if (Store) {
             // }
         } catch (error) {
@@ -109,7 +95,6 @@ export default function City() {
             setEditStore({
                 id: state.id,
                 name: state.name,
-                stateID: state.stateID,
                 status: true,
             });
         }

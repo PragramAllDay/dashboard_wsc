@@ -20,16 +20,18 @@ import {
 import { ManageProductType } from "@/utils/types/catalog";
 import { manageProductFilterField } from "@/utils/data/table-filter/store-owner";
 import { addManageProduct, deleteManageProduct, getManageProductList, updateManageProduct } from "@/store/slice/store-owner/catalog/manage-product";
+import { checkForSession } from "@/utils/session/session";
 
 
 export default function ManageProduct() {
+    const session = checkForSession()
     const manageProducts: ManageProductType[] = useSelector((state) => state.manageProductReducer.list);
     const pagination: PaginationType = useSelector((state) => state.manageProductReducer.pagination);
 
     const [editManageProduct, setEditManageProduct] = useState<ManageProductType>(initialManageProductState);
     const [isModal, setIsModal] = useState<boolean>(false);
 
-    const { data, error, isLoading } = useGetStoresQuery();
+    const { data, error, isLoading } = useGetStoresQuery(session.token);
     const [deleteStores] = useDeleteStoresMutation();
     const [patchStores] = usePatchStoresMutation();
     const [postStores] = usePostStoresMutation();
@@ -38,23 +40,21 @@ export default function ManageProduct() {
     useEffect(() => {
         const fetchStores = async () => {
             try {
-                if (data) {
-                    const newPagination = {
-                        page: 1,
-                        totalSize: data.length,
-                        rowsPerPage: 10,
-                    }
-                    const limitedData = data.slice(0, newPagination.rowsPerPage)
-                    dispatch(getManageProductList({ list: limitedData, newPagination }))
-                }
+                // if (data) {
+                //     const newPagination = {
+                //         page: 1,
+                //         totalSize: data.length,
+                //         rowsPerPage: 10,
+                //     }
+                //     const limitedData = data.slice(0, newPagination.rowsPerPage)
+                //     dispatch(getManageProductList({ list: limitedData, newPagination }))
+                // }
             } catch (error) {
                 console.log(error);
             }
         };
-        if (pagination && ManageProduct.length === 0 && data?.length !== 0) {
-            fetchStores();
-        }
-    }, [dispatch, pagination, data]);
+        fetchStores();
+    }, []);
 
     const handleToggle = () => {
         setIsModal(!isModal);

@@ -19,15 +19,17 @@ import {
 } from "@/store/slice/api/super-admin/store";
 import { ManagePagesType } from "@/utils/types/cms";
 import { addManagePages, deleteManagePages, getManagePagesList, updateManagePages } from "@/store/slice/store-owner/cms/manage-pages";
+import { checkForSession } from "@/utils/session/session";
 
 
 export default function ManagePages() {
+    const session = checkForSession()
     const managePagesList: ManagePagesType[] = useSelector((state) => state.managePageReducer.list);
     const pagination: PaginationType = useSelector((state) => state.managePageReducer.pagination);
     const [editManagePages, setEditManagePages] = useState<ManagePagesType>(initialManagePagesState);
     const [isModal, setIsModal] = useState<boolean>(false);
 
-    const { data, error, isLoading } = useGetStoresQuery();
+    const { data, error, isLoading } = useGetStoresQuery(session.token);
     const [deleteStores] = useDeleteStoresMutation();
     const [patchStores] = usePatchStoresMutation();
     const [postStores] = usePostStoresMutation();
@@ -36,23 +38,21 @@ export default function ManagePages() {
     useEffect(() => {
         const fetchStores = async () => {
             try {
-                if (data) {
-                    const newPagination = {
-                        page: 1,
-                        totalSize: data.length,
-                        rowsPerPage: 10,
-                    }
-                    const limitedData = data.slice(0, newPagination.rowsPerPage)
-                    dispatch(getManagePagesList({ list: limitedData, newPagination }))
-                }
+                // if (data) {
+                //     const newPagination = {
+                //         page: 1,
+                //         totalSize: data.length,
+                //         rowsPerPage: 10,
+                //     }
+                //     const limitedData = data.slice(0, newPagination.rowsPerPage)
+                //     dispatch(getManagePagesList({ list: limitedData, newPagination }))
+                // }
             } catch (error) {
                 console.log(error);
             }
         };
-        if (pagination && managePagesList.length === 0 && data?.length !== 0) {
-            fetchStores();
-        }
-    }, [dispatch, pagination, data]);
+        fetchStores();
+    }, []);
 
     const handleToggle = () => {
         setIsModal(!isModal);

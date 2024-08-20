@@ -1,13 +1,19 @@
 import { CityType } from '@/utils/types/categories'
+import { RequestResponseType } from '@/utils/types/request'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 
 export const cityApi = createApi({
     reducerPath: 'cityApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000' }),
+    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000/api/v1/superadmin/' }),
     endpoints: (builder) => ({
-        getCity: builder.query<CityType[], void>({
-            query: () => "city",
+        getCity: builder.query<RequestResponseType, string>({
+            query: (token) => ({
+                url: "cities/",
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }),
         }),
         postCity: builder.mutation<CityType, CityType>({
             query: (newCity) => {

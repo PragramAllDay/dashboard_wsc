@@ -1,5 +1,5 @@
 import { PaginationType } from "@/utils/types/pagination";
-import { SupplierType } from "@/utils/types/shipping";
+import { SupplierType } from "@/utils/types/supplier";
 import { createSlice } from "@reduxjs/toolkit";
 
 interface StateType {

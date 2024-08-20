@@ -13,7 +13,6 @@ const Logo = (session: any) => {
     overflow: 'hidden',
     display: 'block',
   }));
-  console.log(session);
 
   if (customizer.activeDir === 'ltr') {
     return (
